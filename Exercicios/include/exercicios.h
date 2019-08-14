@@ -10,22 +10,9 @@ private:
   int idade;
 
 public:
-  Pessoa (int diaN, int mesN, int anoN) {
-    dia = diaN;
-    mes = mesN;
-    ano = anoN;
-    calculaIdade(13, 3, 2019);
-  }
-
-  void calculaIdade (int diaAtual, int mesAtual, int anoAtual) {
-    idade = anoAtual - ano;
-    if(mesAtual < mes || (mesAtual == mes && diaAtual < dia))
-      idade--;
-  }
-
-  int getIdade () {
-    return idade;
-  }
+  Pessoa (int diaN, int mesN, int anoN);
+  void calculaIdade (int diaAtual, int mesAtual, int anoAtual);
+  int getIdade ();
 };
 
 #endif /* ___EXERCICIOS_H__ */
