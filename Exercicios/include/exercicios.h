@@ -3,12 +3,13 @@
 #include <stdio.h>
 
 struct Pessoa {
-public:
+private:
   int dia;
   int mes;
   int ano;
   int idade;
 
+public:
   Pessoa (int diaN, int mesN, int anoN) {
     dia = diaN;
     mes = mesN;
@@ -20,6 +21,10 @@ public:
     idade = anoAtual - ano;
     if(mesAtual < mes || (mesAtual == mes && diaAtual < dia))
       idade--;
+  }
+
+  int getIdade () {
+    return idade;
   }
 };
 
