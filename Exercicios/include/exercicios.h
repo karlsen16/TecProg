@@ -4,15 +4,18 @@
 
 struct Pessoa {
 private:
+  char nome[30];
   int dia;
   int mes;
   int ano;
   int idade;
 
 public:
-  Pessoa (int diaN, int mesN, int anoN);
+  Pessoa (char *S, int diaN, int mesN, int anoN);
   void calculaIdade (int diaAtual, int mesAtual, int anoAtual);
   int getIdade ();
+  char* getNome ();
+  void imprimeIdade ();
 };
 
 #endif /* ___EXERCICIOS_H__ */

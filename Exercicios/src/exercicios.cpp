@@ -1,6 +1,8 @@
+#include <string.h>
 #include "exercicios.h"
 
-Pessoa::Pessoa (int diaN, int mesN, int anoN) {
+Pessoa::Pessoa (char *S, int diaN, int mesN, int anoN) {
+  strcpy(nome, S);
   dia = diaN;
   mes = mesN;
   ano = anoN;
@@ -15,4 +17,12 @@ void Pessoa::calculaIdade (int diaAtual, int mesAtual, int anoAtual) {
 
 int Pessoa::getIdade () {
   return idade;
+}
+
+char* Pessoa::getNome () {
+  return nome;
+}
+
+void Pessoa::imprimeIdade () {
+  printf("A idade de %s seria %d \n", getNome(), getIdade());
 }
