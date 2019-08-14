@@ -1,29 +1,27 @@
 
-APPS 			= ./apps
+COMP			= g++
 BIN 			= ./bin
 INCLUDE		= ./include
-LIB 			= ./lib
 OBJ 			= ./obj
 SRC 			= ./src
-FLAGS 		= -Wall -std=gnu99
-LIBS			= -lab -lm -L $(LIB)
+FLAGS 		= -c -Wall
+ARQV			= exercicios
 
-all: libab app
+all: comp app
 
 new: clean all run
 
-libab: \
-	$(OBJ)/arvoreb.o \
-	$(OBJ)/exercicios.o
-	ar -rcs $(LIB)/libab.a $(OBJ)/*.o
+neu: all run
+
+comp: $(OBJ)/main.o $(OBJ)/$(ARQV).o
 
 app: $(BIN)/main
 
-$(BIN)/%: $(APPS)/%.c
-	gcc $(FLAGS) $< -I $(INCLUDE) $(LIBS) -o $@
+$(OBJ)/%.o:	$(SRC)/%.cpp $(INCLUDE)/$(ARQV).h
+	$(COMP) $(FLAGS) $< -I $(INCLUDE) -o $@
 
-$(OBJ)/%.o: $(SRC)/%.c $(INCLUDE)/%.h
-	gcc $(FLAGS) -c $< -I $(INCLUDE) -o $@
+$(BIN)/%: $(OBJ)/%.o $(OBJ)/$(ARQV).o
+	$(COMP) $< $(OBJ)/$(ARQV).o -I $(INCLUDE) -o $@
 
 run:
 	$(BIN)/main
@@ -31,4 +29,3 @@ run:
 clean:
 	rm $(OBJ)/*
 	rm $(BIN)/*
-	rm $(LIB)/*
