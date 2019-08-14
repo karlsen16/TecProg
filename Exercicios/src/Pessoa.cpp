@@ -2,9 +2,17 @@
 #include <iostream>
 using std::cout;
 using std::endl;
-#include "exercicios.h"
+#include "Pessoa.h"
+
+Pessoa::Pessoa () {
+  inicializa(0, 0, 0);
+}
 
 Pessoa::Pessoa (int diaN, int mesN, int anoN, char *S) {
+  inicializa(diaN, mesN, anoN, S);
+}
+
+void Pessoa::inicializa (int diaN, int mesN, int anoN, char *S) {
   strcpy(nome, S);
   dia = diaN;
   mes = mesN;

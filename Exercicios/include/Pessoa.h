@@ -1,8 +1,7 @@
-#ifndef ___EXERCICIOS_H__
-#define ___EXERCICIOS_H__
-#include <stdio.h>
+#ifndef ___PESSOA_H__
+#define ___PESSOA_H__
 
-struct Pessoa {
+class Pessoa {
 private:
   char nome[30];
   int dia;
@@ -11,11 +10,13 @@ private:
   int idade;
 
 public:
+  Pessoa ();
   Pessoa (int diaN, int mesN, int anoN, char *S = "");
+  void inicializa (int diaN, int mesN, int anoN, char *S = "");
   void calculaIdade (int diaAtual, int mesAtual, int anoAtual);
   int getIdade ();
   char* getNome ();
   void imprimeIdade ();
 };
 
-#endif /* ___EXERCICIOS_H__ */
+#endif /* ___PESSOA_H__ */
