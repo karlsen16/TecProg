@@ -10,6 +10,6 @@ typedef struct pessoa {
 } Pessoa;
 
 void inicializa (Pessoa *P, int diaN, int mesN, int anoN);
-int calculaIdade (Pessoa *P, int anoAtual);
+int calculaIdade (Pessoa *P, int diaAtual, int mesAtual, int anoAtual);
 
 #endif /* ___EXERCICIOS_H__ */

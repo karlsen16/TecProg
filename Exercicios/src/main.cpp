@@ -1,7 +1,7 @@
 #include "exercicios.h"
 
 int main () {
-  Pessoa Einstein, Newton;
+  Pessoa Einstein, Newton, LS;
 
   inicializa(&Einstein, 14, 3, 1879);
   inicializa(&Newton, 4, 1, 1643);
