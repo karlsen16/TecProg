@@ -2,6 +2,14 @@
 #define ___EXERCICIOS_H__
 #include <stdio.h>
 
-void mePrinta ();
+typedef struct pessoa {
+  int dia;
+  int mes;
+  int ano;
+  int idade;
+} Pessoa;
+
+void inicializa (Pessoa *P, int diaN, int mesN, int anoN);
+int calculaIdade (Pessoa *P, int anoAtual);
 
 #endif /* ___EXERCICIOS_H__ */
