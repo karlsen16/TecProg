@@ -1,7 +1,10 @@
 #include <string.h>
+#include <iostream>
+using std::cout;
+using std::endl;
 #include "exercicios.h"
 
-Pessoa::Pessoa (char *S, int diaN, int mesN, int anoN) {
+Pessoa::Pessoa (int diaN, int mesN, int anoN, char *S) {
   strcpy(nome, S);
   dia = diaN;
   mes = mesN;
@@ -24,5 +27,5 @@ char* Pessoa::getNome () {
 }
 
 void Pessoa::imprimeIdade () {
-  printf("A idade de %s seria %d \n", getNome(), getIdade());
+  cout << "A idade de " << getNome() << " seria " << getIdade() << endl;
 }

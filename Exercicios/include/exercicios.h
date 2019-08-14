@@ -11,7 +11,7 @@ private:
   int idade;
 
 public:
-  Pessoa (char *S, int diaN, int mesN, int anoN);
+  Pessoa (int diaN, int mesN, int anoN, char *S = "");
   void calculaIdade (int diaAtual, int mesAtual, int anoAtual);
   int getIdade ();
   char* getNome ();
