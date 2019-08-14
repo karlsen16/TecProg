@@ -9,7 +9,7 @@ typedef struct pessoa {
   int idade;
 } Pessoa;
 
-void inicializa (Pessoa *P, int diaN, int mesN, int anoN);
-int calculaIdade (Pessoa *P, int diaAtual, int mesAtual, int anoAtual);
+void inicializa (Pessoa& P, int diaN, int mesN, int anoN);
+void calculaIdade (Pessoa& P, int diaAtual, int mesAtual, int anoAtual);
 
 #endif /* ___EXERCICIOS_H__ */
