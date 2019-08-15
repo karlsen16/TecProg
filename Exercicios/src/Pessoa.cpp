@@ -17,12 +17,12 @@ void Pessoa::inicializa (int diaN, int mesN, int anoN, char *S) {
   dia = diaN;
   mes = mesN;
   ano = anoN;
-  calculaIdade(13, 3, 2019);
+  idade = 0;
 }
 
-void Pessoa::calculaIdade (int diaAtual, int mesAtual, int anoAtual) {
-  idade = anoAtual - ano;
-  if(mesAtual < mes || (mesAtual == mes && diaAtual < dia))
+void Pessoa::calculaIdade (int diaParam, int mesParam, int anoParam) {
+  idade = anoParam - ano;
+  if(mesParam < mes || (mesParam == mes && diaParam < dia))
     idade--;
 }
 

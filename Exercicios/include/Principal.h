@@ -7,6 +7,10 @@ private:
   Pessoa Einstein;
   Pessoa Newton;
 
+  int diaAtual;
+  int mesAtual;
+  int anoAtual;
+
 public:
   Principal ();
   void Executar ();

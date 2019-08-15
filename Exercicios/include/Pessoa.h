@@ -13,7 +13,7 @@ public:
   Pessoa ();
   Pessoa (int diaN, int mesN, int anoN, char *S = "");
   void inicializa (int diaN, int mesN, int anoN, char *S = "");
-  void calculaIdade (int diaAtual, int mesAtual, int anoAtual);
+  void calculaIdade (int diaParam, int mesParam, int anoParam);
   int getIdade ();
   char* getNome ();
   void imprimeIdade ();
