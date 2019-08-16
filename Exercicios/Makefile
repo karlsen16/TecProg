@@ -4,43 +4,31 @@ BIN 			= ./bin
 INC				= ./include
 OBJ 			= ./obj
 SRC 			= ./src
-INCLUDE		= -I./include
-CFLAGS 		= -c -Wall
-LFLAGS 		= -Wall
+CFLAGS 		= -c -Wall -w
+LFLAGS 		= -Wall -w
 MAIN			= Main
 DEFN			= Principal Pessoa
 MODS			= $(MAIN) $(DEFN)
+EXEC			= $(BIN)/$(MAIN)
 SRCS			= $(addsuffix .cpp, $(addprefix $(SRC)/,$(MODS)))
 OBJS			= $(addsuffix .o, $(addprefix $(OBJ)/,$(MODS)))
 HEAD			= $(addsuffix .h, $(addprefix $(INC)/,$(DEFN)))
 
-#default:
-	#$(MAIN) \
-	#$(DEFN) \
-	#$(MODS) \
-	#$(SRCS) \
-	#$(OBJS) \
-	#$(HEAD)
-
-all: comp app
+all: $(OBJS) $(EXEC)
 
 new: clean all run
 
 neu: all run
 
-comp: $(OBJS)
-
-app: $(BIN)/$(MAIN)
-
 $(OBJ)/%.o:	$(SRC)/%.cpp $(HEAD)
-	$(CC) $(CFLAGS) $< $(INCLUDE) -o $@
+	$(CC) $(CFLAGS) $< -I$(INC) -o $@
 
-$(BIN)/%: $(OBJS)
-	$(CC) $(OBJS) -o $@
+$(EXEC): $(OBJS)
+	$(CC) $(LFLAGS) $^ -o $@
 
 run:
-	$(BIN)/$(MAIN)
+	$(EXEC)
 
 clean:
 	rm $(OBJ)/*
-	rm $(BIN)/*
+	rm $(EXEC)
