@@ -1,5 +1,4 @@
-#ifndef ___PRINCIPAL_H__
-#define ___PRINCIPAL_H__
+#pragma once
 #include "Pessoa.h"
 
 class Principal {
@@ -13,7 +12,6 @@ private:
 
 public:
   Principal ();
+  ~Principal ();
   void Executar ();
 };
-
-#endif /* ___PRINCIPAL_H__  */

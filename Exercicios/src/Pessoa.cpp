@@ -1,7 +1,4 @@
-#include <string.h>
-#include <iostream>
-using std::cout;
-using std::endl;
+#include "stdafx.h"
 #include "Pessoa.h"
 
 Pessoa::Pessoa () {
@@ -10,6 +7,9 @@ Pessoa::Pessoa () {
 
 Pessoa::Pessoa (int diaN, int mesN, int anoN, char *S) {
   inicializa(diaN, mesN, anoN, S);
+}
+
+Pessoa::~Pessoa () {
 }
 
 void Pessoa::inicializa (int diaN, int mesN, int anoN, char *S) {
