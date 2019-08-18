@@ -5,20 +5,23 @@ Pessoa::Pessoa () {
   inicializa(0, 0, 0);
 }
 
-Pessoa::Pessoa (int diaN, int mesN, int anoN, char *S) {
-  inicializa(diaN, mesN, anoN, S);
+Pessoa::Pessoa (int diaN, int mesN, int anoN, char *S,
+                Universidade *U, Departamento *D) {
+  inicializa(diaN, mesN, anoN, S, U, D);
 }
 
 Pessoa::~Pessoa () {
 }
 
-void Pessoa::inicializa (int diaN, int mesN, int anoN, char *S) {
+void Pessoa::inicializa (int diaN, int mesN, int anoN,
+                         char *S, Universidade *U, Departamento *D) {
   strcpy(nome, S);
   dia = diaN;
   mes = mesN;
   ano = anoN;
   idade = 0;
-  uni = NULL;
+  uni = U;
+  dep = D;
 }
 
 void Pessoa::calculaIdade (int diaParam, int mesParam, int anoParam) {
@@ -44,7 +47,7 @@ void Pessoa::setUni (Universidade *U) {
 }
 
 void Pessoa::setDep (Departamento *D) {
-  uni->setDep(D);
+  dep = D;
 }
 
 void Pessoa::printUni () {
@@ -52,5 +55,11 @@ void Pessoa::printUni () {
 }
 
 void Pessoa::printDep () {
-  uni->imprimeDep();
+  dep->imprimeDep();
+}
+
+void Pessoa::imprimeTudo () {
+  imprimeIdade();
+  printUni();
+  printDep();
 }
