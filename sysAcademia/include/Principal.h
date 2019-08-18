@@ -3,14 +3,9 @@
 
 class Principal {
 private:
-  Pessoa Einstein;
-  Pessoa Newton;
-
-  Universidade Princeton;
-  Universidade Cambrigde;
-
-  Departamento Fisica;
-  Departamento Matematica;
+  Pessoa Jean, Simao, Einstein, Newton;
+  Universidade UTFPR, Princeton, Cambrigde;
+  Departamento DAINF, DAELN, Fisica, Matematica;
 
   int diaAtual;
   int mesAtual;
