@@ -11,7 +11,7 @@ Principal::Principal ():
   Einstein(14, 3, 1879, "Einstein", &Princeton, &Fisica),
   Newton(4, 1, 1643, "Newton", &Cambrigde, &Matematica)
  {
-  UTFPR.setDep(&DAELN, 1);
+  UTFPR.setDep(&DAELN);
   Fisica.setUni(&Princeton);
   Matematica.setUni(&Cambrigde);
 

@@ -3,9 +3,7 @@
 
 Universidade::Universidade (char *S, Departamento *dep) {
   setNome(S);
-  D[0] = dep;
-  int i;
-  for(i = 1; i < QD; i++) D[i] = NULL;
+  setDep(dep);
 }
 
 Universidade::~Universidade () {
@@ -23,8 +21,8 @@ void Universidade::imprimeUni () {
   cout << "Universidade: " << getNome() << ".\n";
 }
 
-void Universidade::setDep (Departamento *N, int i) {
-  D[i] = N;
+void Universidade::setDep (Departamento *dep) {
+  D.push_back(dep);
 }
 
 void Universidade::imprimeDep (int i) {
@@ -33,8 +31,7 @@ void Universidade::imprimeDep (int i) {
 
 void Universidade::imprimeDepS () {
   cout << "\nDepartamentos da Universidade " << getNome() << ":\n";
-  int i;
-  for(i = 0; i < QD; i++)
-    if(D[i] != NULL)
-      D[i]->imprimeDep();
+  int i, tam = (int)D.size();
+  for(i = 0; i < tam; i++)
+    D[i]->imprimeDep();
 }

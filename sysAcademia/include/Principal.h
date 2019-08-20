@@ -1,9 +1,9 @@
 #pragma once
-#include "Pessoa.h"
+#include "Professor.h"
 
 class Principal {
 private:
-  Pessoa Jean, Simao, Einstein, Newton;
+  Professor Jean, Simao, Einstein, Newton;
   Universidade UTFPR, Princeton, Cambrigde;
   Departamento DAINF, DAELN, Fisica, Matematica;
 

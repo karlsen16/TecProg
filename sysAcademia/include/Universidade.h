@@ -1,11 +1,12 @@
 #pragma once
 #include "Departamento.h"
-#define QD 50
+#include <vector>
+using namespace std;
 
 class Universidade {
 private:
   char nome[50];
-  Departamento* D[QD];
+  vector<Departamento*> D;
 
 public:
   Universidade (char *S = "", Departamento *dep = NULL);
@@ -13,7 +14,7 @@ public:
   void setNome (char *S);
   char* getNome ();
   void imprimeUni ();
-  void setDep (Departamento *N, int i);
+  void setDep (Departamento *dep);
   void imprimeDep (int i);
   void imprimeDepS ();
 };

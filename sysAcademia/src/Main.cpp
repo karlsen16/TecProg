@@ -3,6 +3,6 @@
 
 int main () {
   Principal init;
-  
+
   return 0;
 }
