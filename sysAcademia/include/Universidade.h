@@ -7,9 +7,7 @@ private:
   vector<Departamento*> D;
 
 public:
-  Universidade ();
-  Universidade (char *S, Departamento *dep);
-  void inicializa (char *S = "", Departamento *dep = NULL);
+  Universidade (char *S = "");
   ~Universidade ();
   void setNome (char *S);
   char* getNome ();

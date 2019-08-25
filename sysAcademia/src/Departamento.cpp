@@ -3,19 +3,19 @@
 #include "Universidade.h"
 
 Departamento::Departamento () {
-  inicializa();
+  pDisIni = pDisAtual = NULL;
+  inicializa();  
 }
 
-Departamento::Departamento (char *S, Universidade *U, Disciplina *I, int id) {
-  inicializa(S, U, I, id);
+Departamento::Departamento (char *S, Universidade *U, int id) {
+  pDisIni = pDisAtual = NULL;
+  inicializa(S, U, id);
 }
 
-void Departamento::inicializa (char *S, Universidade *U, Disciplina *I, int id) {
+void Departamento::inicializa (char *S, Universidade *U, int id) {
   setNome(S);
   setUni(U);
   setID(id);
-  pDisIni = I;
-  pDisAtual = I;
 }
 
 Departamento::~Departamento () {
@@ -33,6 +33,8 @@ char* Departamento::getNome () {
 
 void Departamento::setUni (Universidade *U) {
   uni = U;
+  if(U)
+    U->incluirDep(this);
 }
 
 Universidade* Departamento::getUni () {

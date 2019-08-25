@@ -3,10 +3,12 @@
 #include "Universidade.h"
 
 Disciplina::Disciplina () {
+  prox = NULL;
   inicializa();
 }
 
 Disciplina::Disciplina (char *S, char *A, Departamento *D, int id) {
+  prox = NULL;
   inicializa(S, A, D, id);
 }
 
@@ -15,7 +17,6 @@ void Disciplina::inicializa (char *S, char *A, Departamento *D, int id) {
   setArea(A);
   setDep(D);
   setID(id);
-  prox = NULL;
 }
 
 Disciplina::~Disciplina () {
@@ -41,6 +42,8 @@ char* Disciplina::getArea () {
 
 void Disciplina::setDep (Departamento *D) {
   dep = D;
+  if(D)
+    D->incluirDis(this);
 }
 
 Departamento* Disciplina::getDep () {

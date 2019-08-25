@@ -12,8 +12,8 @@ private:
 
 public:
   Departamento ();
-  Departamento (char *S, Universidade *U, Disciplina *I, int id);
-  void inicializa (char *S = "", Universidade *U = NULL, Disciplina *I = NULL, int id = 0);
+  Departamento (char *S, Universidade *U, int id);
+  void inicializa (char *S = "", Universidade *U = NULL, int id = 0);
   ~Departamento ();
   void setNome (char *S);
   char* getNome ();

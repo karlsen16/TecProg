@@ -1,17 +1,8 @@
 #include "stdafx.h"
 #include "Universidade.h"
 
-Universidade::Universidade () {
-  setNome("");
-}
-
-Universidade::Universidade (char *S, Departamento *dep) {
-  inicializa(S, dep);
-}
-
-void Universidade::inicializa (char *S, Departamento *dep) {
+Universidade::Universidade (char *S) {
   setNome(S);
-  incluirDep(dep);
 }
 
 Universidade::~Universidade () {
