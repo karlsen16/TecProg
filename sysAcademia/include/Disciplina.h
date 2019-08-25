@@ -1,6 +1,7 @@
 #pragma once
 class Departamento;
 class Universidade;
+class Aluno;
 
 class Disciplina {
 private:
@@ -8,7 +9,8 @@ private:
   char area[150];
   Departamento *dep;
   Disciplina *prox, *ant;
-  int ID;
+  int ID, nAlunos, contAlunos;
+  Aluno *pAluIni, *pAluAtual;
 
 public:
   Disciplina ();
@@ -28,4 +30,8 @@ public:
   void imprimeDis ();
   void setID (int id);
   int getID ();
+  void addCont ();
+  void addAluno (Aluno *L);
+  void imprimeAlu ();
+  void imprimeAlu2 ();
 };

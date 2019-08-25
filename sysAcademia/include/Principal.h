@@ -1,5 +1,6 @@
 #pragma once
 #include "Professor.h"
+#include "Aluno.h"
 
 class Principal {
 private:
@@ -8,6 +9,7 @@ private:
   Departamento DAINF, DADIN, DAFIS, DAMAT, FisicaP, MatematicaP, FisicaC, MatematicaC;
   Disciplina comp1_2019, mat_2019, design_2019, graph_2017, opt_2000, tec_2008,
              comp2_2015, quant_2010, disc_2011, neut_2001;
+  Aluno fulano, ciclano, judete, julia, juliana, julius, fulan;
 
   int diaAtual;
   int mesAtual;
@@ -22,6 +24,7 @@ public:
   void Init_Departamentos ();
   void Init_Professores ();
   void Init_Disciplinas ();
+  void Init_Alunos ();
 
   void Executar ();
   void calculaIdadeProfs ();

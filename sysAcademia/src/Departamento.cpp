@@ -60,6 +60,7 @@ void Departamento::imprimeDis () {
   while(peao != NULL) {
     cout << "\t\tA Disciplina " << peao->getNome() << " da area " << peao->getArea()
     << " pertence ao Departamento " << getNome() << "\n";
+    peao->imprimeAlu();
     peao = peao->getProx();
   }
 }
@@ -69,6 +70,7 @@ void Departamento::imprimeDis2 () {
   while(peao != NULL) {
     cout << "\t\tA Disciplina " << peao->getNome() << " da area " << peao->getArea()
     << " pertence ao Departamento " << getNome() << "\n";
+    peao->imprimeAlu2();
     peao = peao->getAnt();
   }
 }
