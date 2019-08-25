@@ -4,7 +4,7 @@
 
 Departamento::Departamento () {
   pDisIni = pDisAtual = NULL;
-  inicializa();  
+  inicializa();
 }
 
 Departamento::Departamento (char *S, Universidade *U, int id) {
@@ -50,6 +50,7 @@ void Departamento::incluirDis (Disciplina *dis) {
     pDisIni = pDisAtual = dis;
   else {
     pDisAtual->setProx(dis);
+    dis->setAnt(pDisAtual);
     pDisAtual = dis;
   }
 }
@@ -60,6 +61,15 @@ void Departamento::imprimeDis () {
     cout << "\t\tA Disciplina " << peao->getNome() << " da area " << peao->getArea()
     << " pertence ao Departamento " << getNome() << "\n";
     peao = peao->getProx();
+  }
+}
+
+void Departamento::imprimeDis2 () {
+  Disciplina *peao = pDisAtual;
+  while(peao != NULL) {
+    cout << "\t\tA Disciplina " << peao->getNome() << " da area " << peao->getArea()
+    << " pertence ao Departamento " << getNome() << "\n";
+    peao = peao->getAnt();
   }
 }
 

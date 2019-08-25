@@ -3,12 +3,12 @@
 #include "Universidade.h"
 
 Disciplina::Disciplina () {
-  prox = NULL;
+  prox = ant = NULL;
   inicializa();
 }
 
 Disciplina::Disciplina (char *S, char *A, Departamento *D, int id) {
-  prox = NULL;
+  prox = ant = NULL;
   inicializa(S, A, D, id);
 }
 
@@ -21,7 +21,7 @@ void Disciplina::inicializa (char *S, char *A, Departamento *D, int id) {
 
 Disciplina::~Disciplina () {
   dep = NULL;
-  prox = NULL;
+  prox = ant = NULL;
 }
 
 void Disciplina::setNome (char *S) {
@@ -56,6 +56,14 @@ void Disciplina::setProx (Disciplina *I) {
 
 Disciplina* Disciplina::getProx () {
   return prox;
+}
+
+void Disciplina::setAnt (Disciplina *I) {
+  ant = I;
+}
+
+Disciplina* Disciplina::getAnt () {
+  return ant;
 }
 
 void Disciplina::imprimeDis () {

@@ -22,6 +22,7 @@ public:
   void imprimeDep ();
   void incluirDis (Disciplina *dis);
   void imprimeDis ();
+  void imprimeDis2 ();
   void setID (int id);
   int getID ();
 };
