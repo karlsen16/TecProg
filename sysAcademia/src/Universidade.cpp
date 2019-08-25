@@ -1,9 +1,17 @@
 #include "stdafx.h"
 #include "Universidade.h"
 
+Universidade::Universidade () {
+  setNome("");
+}
+
 Universidade::Universidade (char *S, Departamento *dep) {
+  inicializa(S, dep);
+}
+
+void Universidade::inicializa (char *S, Departamento *dep) {
   setNome(S);
-  setDep(dep);
+  incluirDep(dep);
 }
 
 Universidade::~Universidade () {
@@ -18,10 +26,10 @@ char* Universidade::getNome () {
 }
 
 void Universidade::imprimeUni () {
-  cout << "Universidade: " << getNome() << ".\n";
+  cout << "Universidade " << getNome() << ".\n";
 }
 
-void Universidade::setDep (Departamento *dep) {
+void Universidade::incluirDep (Departamento *dep) {
   D.push_back(dep);
 }
 
@@ -29,9 +37,22 @@ void Universidade::imprimeDep (int i) {
   D[i]->imprimeDep();
 }
 
+void Universidade::imprimeDis (int i) {
+  D[i]->imprimeDis();
+}
+
 void Universidade::imprimeDepS () {
   cout << "\nDepartamentos da Universidade " << getNome() << ":\n";
   int i, tam = (int)D.size();
   for(i = 0; i < tam; i++)
-    D[i]->imprimeDep();
+    imprimeDep(i);
+}
+
+void Universidade::imprimeTudo () {
+  cout << "\nDepartamentos da Universidade " << getNome() << ":\n";
+  int i, tam = (int)D.size();
+  for(i = 0; i < tam; i++) {
+    imprimeDep(i);
+    imprimeDis(i);
+  }
 }

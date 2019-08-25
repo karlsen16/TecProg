@@ -2,11 +2,19 @@
 #include "Professor.h"
 
 Professor::Professor (): Pessoa() {
+  inicializa(0, 0, 0, "");
 }
 
 Professor::Professor (int diaN, int mesN, int anoN, char *S,
                 Universidade *U, Departamento *D):
   Pessoa(diaN, mesN, anoN, S) {
+  inicializa(diaN, mesN, anoN, S, U, D);
+}
+
+void Professor::inicializa (int diaN, int mesN, int anoN, char *S,
+                Universidade *U, Departamento *D) {
+  setData(diaN, mesN, anoN);
+  setNome(S);
   setUni(U);
   setDep(D);
 }
@@ -25,6 +33,7 @@ Universidade* Professor::getUni () {
 }
 
 void Professor::printUni () {
+  cout << "Professor " << getNome() << " trabalha na ";
   uni->imprimeUni();
 }
 
@@ -44,4 +53,5 @@ void Professor::imprimeTudo () {
   imprimeIdade();
   printUni();
   printDep();
+  cout << "\n";
 }

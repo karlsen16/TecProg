@@ -9,9 +9,6 @@ Pessoa::Pessoa (int diaN, int mesN, int anoN, char *S) {
   inicializa(diaN, mesN, anoN, S);
 }
 
-Pessoa::~Pessoa () {
-}
-
 void Pessoa::inicializa (int diaN, int mesN, int anoN, char *S) {
   setNome(S);
   dia = diaN;
@@ -19,6 +16,9 @@ void Pessoa::inicializa (int diaN, int mesN, int anoN, char *S) {
   ano = anoN;
   idade = 0;
   ID = 0;
+}
+
+Pessoa::~Pessoa () {
 }
 
 void Pessoa::calculaIdade (int diaParam, int mesParam, int anoParam) {
@@ -45,6 +45,12 @@ void Pessoa::setNome (char *S) {
 
 char* Pessoa::getNome () {
   return nome;
+}
+
+void Pessoa::setData (int d, int m, int a) {
+  dia = d;
+  mes = m;
+  ano = a;
 }
 
 void Pessoa::imprimeIdade () {

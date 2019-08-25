@@ -2,6 +2,7 @@
 #include "Aluno.h"
 
 Aluno::Aluno (): Pessoa() {
+  setRA(0);
 }
 
 Aluno::Aluno (int diaN, int mesN, int anoN, char *S, int i):
