@@ -25,7 +25,7 @@ void Disciplina::inicializa (char *S, char *A, Departamento *D, int id) {
 
 Disciplina::~Disciplina () {
   elAluno *peao = pAluIni;
-  while(peao != NULL) {
+  while(peao) {
     pAluIni = peao->getProx();
     delete (peao);
     peao = pAluIni;
@@ -79,7 +79,7 @@ void Disciplina::addAluno (Aluno *L) {
       pAluAtual = pAluIni = novo;
     else {
       elAluno *peao = pAluIni, *aux = NULL;
-      while(peao != NULL && strcmp(peao->getAluno()->getNome(), L->getNome()) < 0) {
+      while(peao && strcmp(peao->getAluno()->getNome(), L->getNome()) < 0) {
         aux = peao;
         peao = peao->getProx();
       }
@@ -103,7 +103,7 @@ void Disciplina::addAluno (Aluno *L) {
 void Disciplina::removeAluno (Aluno *L) {
   if(contAlunos > 0) {
     elAluno *peao = pAluIni;
-    while(peao != NULL && strcmp(peao->getAluno()->getNome(), L->getNome()) != 0)
+    while(peao && strcmp(peao->getAluno()->getNome(), L->getNome()) != 0)
       peao = peao->getProx();
     if(peao) {
       peao->getAnt()->setProx(peao->getProx());
@@ -122,7 +122,7 @@ void Disciplina::imprimeAlu () {
   int cont = 1;
   if(contAlunos > 0) {
     cout << "\t\t\tLista de Alunos:\n";
-    while(peao != NULL) {
+    while(peao) {
       cout << "\t\t\t" << cont << "# " << peao->getAluno()->getNome() << "\n";
       cont++;
       peao = peao->getProx();
@@ -134,7 +134,7 @@ void Disciplina::imprimeAlu2 () {
   elAluno *peao = pAluAtual;
   int cont = 1;
   cout << "\t\t\tLista de Alunos:\n";
-  while(peao != NULL) {
+  while(peao) {
     cout << "\t\t\t" << cont << "# " << peao->getAluno()->getNome() << "\n";
     cont++;
     peao = peao->getAnt();

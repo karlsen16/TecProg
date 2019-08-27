@@ -19,8 +19,14 @@ void Departamento::inicializa (char *S, Universidade *U, int id) {
 }
 
 Departamento::~Departamento () {
-  pDisIni = pDisAtual = NULL;
+  elDisciplina *peao = pDisIni;
+  while(peao) {
+    pDisIni = peao->getProx();
+    delete (peao);
+    peao = pDisIni;
+  }
   uni = NULL;
+  pDisAtual = NULL;
 }
 
 void Departamento::setNome (char *S) {
@@ -58,7 +64,7 @@ void Departamento::incluirDis (Disciplina *dis) {
 
 void Departamento::imprimeDis () {
   elDisciplina *peao = pDisIni;
-  while(peao != NULL) {
+  while(peao) {
     cout << "\t\tA Disciplina " << peao->getDis()->getNome()
     << " da area " << peao->getDis()->getArea()
     << " pertence ao Departamento " << getNome() << "\n";
@@ -69,7 +75,7 @@ void Departamento::imprimeDis () {
 
 void Departamento::imprimeDis2 () {
   elDisciplina *peao = pDisAtual;
-  while(peao != NULL) {
+  while(peao) {
     cout << "\t\tA Disciplina " << peao->getDis()->getNome()
     << " da area " << peao->getDis()->getArea()
     << " pertence ao Departamento " << getNome() << "\n";
