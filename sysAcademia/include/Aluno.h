@@ -5,7 +5,6 @@ class Disciplina;
 class Aluno: public Pessoa {
 private:
   int RA;
-  Aluno *prox, *ant;
 
 public:
   Aluno ();
@@ -14,9 +13,5 @@ public:
   ~Aluno ();
   void setRA (int i);
   int getRA ();
-  void setProx (Aluno *p);
-  Aluno* getProx ();
-  void setAnt (Aluno *p);
-  Aluno* getAnt ();
   void matricula (Disciplina *I);
 };

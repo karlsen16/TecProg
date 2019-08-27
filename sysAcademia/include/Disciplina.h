@@ -1,7 +1,6 @@
 #pragma once
+#include "elAluno.h"
 class Departamento;
-class Universidade;
-class Aluno;
 
 class Disciplina {
 private:
@@ -10,7 +9,7 @@ private:
   Departamento *dep;
   Disciplina *prox, *ant;
   int ID, nAlunos, contAlunos;
-  Aluno *pAluIni, *pAluAtual;
+  elAluno *pAluIni, *pAluAtual;
 
 public:
   Disciplina ();

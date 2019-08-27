@@ -76,6 +76,9 @@ void Principal::Executar () {
   localTrabalho();
   depTrabalho();
   imprimeDepDisS();
+  // comp1_2019.removeAluno(&fulano);
+  // tec_2008.removeAluno(&fulano);
+  // tec_2008.imprimeAlu();
 }
 
 void Principal::calculaIdadeProfs () {
