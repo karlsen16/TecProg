@@ -20,11 +20,11 @@ public:
   ~Principal ();
 
   void Init ();
-  void Init_Universidades ();
-  void Init_Departamentos ();
+  void Init_Alunos ();
   void Init_Professores ();
   void Init_Disciplinas ();
-  void Init_Alunos ();
+  void Init_Departamentos ();
+  void Init_Universidades ();
 
   void Executar ();
   void calculaIdadeProfs ();

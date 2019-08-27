@@ -30,8 +30,8 @@ public:
   void imprimeDis ();
   void setID (int id);
   int getID ();
-  void addCont ();
   void addAluno (Aluno *L);
+  void removeAluno (Aluno *L);
   void imprimeAlu ();
   void imprimeAlu2 ();
 };

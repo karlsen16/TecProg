@@ -6,12 +6,16 @@
 Disciplina::Disciplina () {
   prox = ant = NULL;
   pAluIni = pAluAtual = NULL;
+  contAlunos = 0;
+  nAlunos = 45;
   inicializa();
 }
 
 Disciplina::Disciplina (char *S, char *A, Departamento *D, int id) {
   prox = ant = NULL;
   pAluIni = pAluAtual = NULL;
+  contAlunos = 0;
+  nAlunos = 45;
   inicializa(S, A, D, id);
 }
 
@@ -20,8 +24,6 @@ void Disciplina::inicializa (char *S, char *A, Departamento *D, int id) {
   setArea(A);
   setDep(D);
   setID(id);
-  nAlunos = 45;
-  contAlunos = 0;
 }
 
 Disciplina::~Disciplina () {
@@ -84,10 +86,6 @@ int Disciplina::getID () {
   return ID;
 }
 
-void Disciplina::addCont () {
-  contAlunos++;
-}
-
 void Disciplina::addAluno (Aluno *L) {
   if(contAlunos <= nAlunos) {
     if(!pAluIni)
@@ -109,10 +107,27 @@ void Disciplina::addAluno (Aluno *L) {
       if(!L->getAnt())
         pAluIni = L;
     }
-    addCont();
+    contAlunos++;
   }
   else
-    cout << "\nTurma cheia! Tente novamente no proximo semestre..";
+    cout << "\nTurma cheia! Tente novamente no proximo semestre..\n";
+}
+
+void Disciplina::removeAluno (Aluno *L) {
+  if(contAlunos > 0) {
+    Aluno *peao = pAluIni;
+    while(peao != NULL && strcmp(peao->getNome(), L->getNome()) != 0)
+      peao = peao->getProx();
+    if(peao) {
+      peao->getAnt()->setProx(peao->getProx());
+      peao->getProx()->setAnt(peao->getAnt());
+      contAlunos--;
+    }
+    else
+      cout << "\nO aluno " << L->getNome() << " nao pertence a " << getNome() << ".\n";
+  }
+  else
+    cout << "\nTurma de " << getNome() << " vazia!\n";
 }
 
 void Disciplina::imprimeAlu () {

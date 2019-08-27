@@ -17,11 +17,28 @@ Principal::~Principal () {
 }
 
 void Principal::Init () {
-  Init_Disciplinas();
   Init_Alunos();
+  Init_Professores();
+  Init_Disciplinas();
   Init_Departamentos();
   Init_Universidades();
-  Init_Professores();
+}
+
+void Principal::Init_Alunos () {
+  fulano.inicializa("fulano", &tec_2008);
+  ciclano.inicializa("ciclano", &tec_2008);
+  judete.inicializa("judete", &tec_2008);
+  julia.inicializa("julia", &tec_2008);
+  juliana.inicializa("juliana", &tec_2008);
+  julius.inicializa("julius", &tec_2008);
+  fulan.inicializa("fulan", &tec_2008);
+}
+
+void Principal::Init_Professores () {
+  Joana.inicializa(3, 10, 1987, "Joana", &UTFPR, &DADIN);
+  Simao.inicializa(31, 12, 2000, "Simao", &UTFPR, &DAINF);
+  Einstein.inicializa(14, 3, 1879, "Einstein", &Princeton, &FisicaP);
+  Newton.inicializa(4, 1, 1643, "Newton", &Cambrigde, &MatematicaC);
 }
 
 void Principal::Init_Disciplinas () {
@@ -35,16 +52,6 @@ void Principal::Init_Disciplinas () {
   disc_2011.inicializa("Discrete Math", "Exatas", &MatematicaP, 687);
   opt_2000.inicializa("Optics", "Fisica", &FisicaC, 128);
   graph_2017.inicializa("Graph Teory", "Exatas", &MatematicaC, 549);
-}
-
-void Principal::Init_Alunos () {
-  fulano.inicializa("fulano", &tec_2008);
-  ciclano.inicializa("ciclano", &tec_2008);
-  judete.inicializa("judete", &tec_2008);
-  julia.inicializa("julia", &tec_2008);
-  juliana.inicializa("juliana", &tec_2008);
-  julius.inicializa("julius", &tec_2008);
-  fulan.inicializa("fulan", &tec_2008);
 }
 
 void Principal::Init_Departamentos () {
@@ -62,14 +69,6 @@ void Principal::Init_Universidades () {
   UTFPR.setNome("UTFPR");
   Princeton.setNome("Princeton");
   Cambrigde.setNome("Cambrigde");
-}
-
-
-void Principal::Init_Professores () {
-  Joana.inicializa(3, 10, 1987, "Joana", &UTFPR, &DADIN);
-  Simao.inicializa(31, 12, 2000, "Simao", &UTFPR, &DAINF);
-  Einstein.inicializa(14, 3, 1879, "Einstein", &Princeton, &FisicaP);
-  Newton.inicializa(4, 1, 1643, "Newton", &Cambrigde, &MatematicaC);
 }
 
 void Principal::Executar () {
