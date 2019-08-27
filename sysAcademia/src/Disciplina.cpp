@@ -3,7 +3,6 @@
 #include "Departamento.h"
 
 Disciplina::Disciplina () {
-  prox = ant = NULL;
   pAluIni = pAluAtual = NULL;
   contAlunos = 0;
   nAlunos = 45;
@@ -11,7 +10,6 @@ Disciplina::Disciplina () {
 }
 
 Disciplina::Disciplina (char *S, char *A, Departamento *D, int id) {
-  prox = ant = NULL;
   pAluIni = pAluAtual = NULL;
   contAlunos = 0;
   nAlunos = 45;
@@ -26,9 +24,14 @@ void Disciplina::inicializa (char *S, char *A, Departamento *D, int id) {
 }
 
 Disciplina::~Disciplina () {
+  elAluno *peao = pAluIni;
+  while(peao != NULL) {
+    pAluIni = peao->getProx();
+    delete (peao);
+    peao = pAluIni;
+  }
   dep = NULL;
-  prox = ant = NULL;
-  pAluIni = pAluAtual = NULL;
+  pAluAtual = NULL;
 }
 
 void Disciplina::setNome (char *S) {
@@ -55,22 +58,6 @@ void Disciplina::setDep (Departamento *D) {
 
 Departamento* Disciplina::getDep () {
   return dep;
-}
-
-void Disciplina::setProx (Disciplina *I) {
-  prox = I;
-}
-
-Disciplina* Disciplina::getProx () {
-  return prox;
-}
-
-void Disciplina::setAnt (Disciplina *I) {
-  ant = I;
-}
-
-Disciplina* Disciplina::getAnt () {
-  return ant;
 }
 
 void Disciplina::imprimeDis () {

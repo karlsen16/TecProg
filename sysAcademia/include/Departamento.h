@@ -1,13 +1,12 @@
 #pragma once
-#include "Disciplina.h"
+#include "elDisciplina.h"
 class Universidade;
 
 class Departamento {
 private:
   char nome[150];
   Universidade *uni;
-  Disciplina *pDisIni;
-  Disciplina *pDisAtual;
+  elDisciplina *pDisIni, *pDisAtual;
   int ID;
 
 public:

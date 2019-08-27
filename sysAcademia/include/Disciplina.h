@@ -7,7 +7,6 @@ private:
   char nome[150];
   char area[150];
   Departamento *dep;
-  Disciplina *prox, *ant;
   int ID, nAlunos, contAlunos;
   elAluno *pAluIni, *pAluAtual;
 
@@ -22,10 +21,6 @@ public:
   char* getArea ();
   void setDep (Departamento *D);
   Departamento* getDep ();
-  void setProx (Disciplina *I);
-  Disciplina* getProx ();
-  void setAnt (Disciplina *I);
-  Disciplina* getAnt ();
   void imprimeDis ();
   void setID (int id);
   int getID ();

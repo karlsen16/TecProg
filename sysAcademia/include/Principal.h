@@ -21,6 +21,7 @@ public:
 
   void Init ();
   void Init_Alunos ();
+  void Matriculas ();
   void Init_Professores ();
   void Init_Disciplinas ();
   void Init_Departamentos ();

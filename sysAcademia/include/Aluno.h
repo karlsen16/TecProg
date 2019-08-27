@@ -9,9 +9,10 @@ private:
 public:
   Aluno ();
   Aluno (int diaN, int mesN, int anoN, char *S, int i = 0);
-  void inicializa (char *S, Disciplina *I);
   ~Aluno ();
   void setRA (int i);
   int getRA ();
-  void matricula (Disciplina *I);
+  void matricula (Disciplina *I1 = NULL, Disciplina *I2 = NULL, Disciplina *I3 = NULL,
+  Disciplina *I4 = NULL, Disciplina *I5 = NULL, Disciplina *I6 = NULL, Disciplina *I7 = NULL,
+  Disciplina *I8 = NULL, Disciplina *I9 = NULL, Disciplina *I10 = NULL);
 };

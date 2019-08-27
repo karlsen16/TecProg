@@ -25,13 +25,24 @@ void Principal::Init () {
 }
 
 void Principal::Init_Alunos () {
-  fulano.inicializa("fulano", &tec_2008);
-  ciclano.inicializa("ciclano", &tec_2008);
-  judete.inicializa("judete", &tec_2008);
-  julia.inicializa("julia", &tec_2008);
-  juliana.inicializa("juliana", &tec_2008);
-  julius.inicializa("julius", &tec_2008);
-  fulan.inicializa("fulan", &tec_2008);
+  fulano.setNome("fulano");
+  ciclano.setNome("ciclano");
+  judete.setNome("judete");
+  julia.setNome("julia");
+  juliana.setNome("juliana");
+  julius.setNome("julius");
+  fulan.setNome("fulan");
+  Matriculas();
+}
+
+void Principal::Matriculas () {
+  fulano.matricula(&tec_2008, &comp1_2019, &comp2_2015, &neut_2001);
+  ciclano.matricula(&tec_2008, &disc_2011, &design_2019, &graph_2017);
+  judete.matricula(&tec_2008, &mat_2019, &opt_2000, &mat_2019);
+  julia.matricula(&tec_2008, &quant_2010, &graph_2017, &opt_2000);
+  juliana.matricula(&tec_2008, &disc_2011, &mat_2019, &comp1_2019);
+  julius.matricula(&tec_2008, &design_2019, &neut_2001, &graph_2017);
+  fulan.matricula(&tec_2008, &graph_2017, &disc_2011, &quant_2010);
 }
 
 void Principal::Init_Professores () {
@@ -76,7 +87,7 @@ void Principal::Executar () {
   localTrabalho();
   depTrabalho();
   imprimeDepDisS();
-  // comp1_2019.removeAluno(&fulano);
+  // comp1_2019.removeAluno(&julius);
   // tec_2008.removeAluno(&fulano);
   // tec_2008.imprimeAlu();
 }

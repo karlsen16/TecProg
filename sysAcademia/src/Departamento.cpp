@@ -46,31 +46,34 @@ void Departamento::imprimeDep () {
 }
 
 void Departamento::incluirDis (Disciplina *dis) {
+  elDisciplina *novo = new elDisciplina(dis);
   if(!pDisIni)
-    pDisIni = pDisAtual = dis;
+    pDisIni = pDisAtual = novo;
   else {
-    pDisAtual->setProx(dis);
-    dis->setAnt(pDisAtual);
-    pDisAtual = dis;
+    pDisAtual->setProx(novo);
+    novo->setAnt(pDisAtual);
+    pDisAtual = novo;
   }
 }
 
 void Departamento::imprimeDis () {
-  Disciplina *peao = pDisIni;
+  elDisciplina *peao = pDisIni;
   while(peao != NULL) {
-    cout << "\t\tA Disciplina " << peao->getNome() << " da area " << peao->getArea()
+    cout << "\t\tA Disciplina " << peao->getDis()->getNome()
+    << " da area " << peao->getDis()->getArea()
     << " pertence ao Departamento " << getNome() << "\n";
-    peao->imprimeAlu();
+    peao->getDis()->imprimeAlu();
     peao = peao->getProx();
   }
 }
 
 void Departamento::imprimeDis2 () {
-  Disciplina *peao = pDisAtual;
+  elDisciplina *peao = pDisAtual;
   while(peao != NULL) {
-    cout << "\t\tA Disciplina " << peao->getNome() << " da area " << peao->getArea()
+    cout << "\t\tA Disciplina " << peao->getDis()->getNome()
+    << " da area " << peao->getDis()->getArea()
     << " pertence ao Departamento " << getNome() << "\n";
-    peao->imprimeAlu2();
+    peao->getDis()->imprimeAlu2();
     peao = peao->getAnt();
   }
 }
