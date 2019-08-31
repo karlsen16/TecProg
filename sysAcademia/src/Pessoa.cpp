@@ -54,5 +54,5 @@ void Pessoa::setData (int d, int m, int a) {
 }
 
 void Pessoa::imprimeIdade () {
-  cout << "A idade de " << getNome() << " seria " << getIdade() << endl;
+  cout << "A idade de " << getNome() << " seria " << getIdade();
 }

@@ -3,11 +3,13 @@
 
 elDisciplina::elDisciplina (Disciplina *D) {
   dis = D;
+  prof = NULL;
   prox = ant = NULL;
 }
 
 elDisciplina::~elDisciplina () {
   dis = NULL;
+  prof = NULL;
   prox = ant = NULL;
 }
 
@@ -29,4 +31,12 @@ void elDisciplina::setAnt (elDisciplina *D) {
 
 elDisciplina* elDisciplina::getAnt () {
   return ant;
+}
+
+void elDisciplina::setProf (Professor *P) {
+  prof = P;
+}
+
+Professor* elDisciplina::getProf () {
+  return prof;
 }

@@ -1,10 +1,12 @@
 #pragma once
 #include "Disciplina.h"
+class Professor;
 
 class elDisciplina {
 private:
   Disciplina *dis;
   elDisciplina *prox, *ant;
+  Professor *prof;
 
 public:
   elDisciplina (Disciplina *D);
@@ -14,4 +16,6 @@ public:
   elDisciplina* getProx ();
   void setAnt (elDisciplina *D);
   elDisciplina* getAnt ();
+  void setProf (Professor *P);
+  Professor* getProf ();
 };

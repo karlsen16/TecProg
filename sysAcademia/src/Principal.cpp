@@ -85,7 +85,6 @@ void Principal::Init_Universidades () {
 void Principal::Executar () {
   calculaIdadeProfs();
   localTrabalho();
-  depTrabalho();
   imprimeDepDisS();
   // comp1_2019.removeAluno(&julius);
   // tec_2008.removeAluno(&fulano);
@@ -104,13 +103,6 @@ void Principal::localTrabalho () {
   Simao.imprimeTudo();
   Einstein.imprimeTudo();
   Newton.imprimeTudo();
-}
-
-void Principal::depTrabalho () {
-  Joana.printUni();
-  Simao.printUni();
-  Einstein.printUni();
-  Newton.printUni();
 }
 
 void Principal::imprimeDepDisS () {

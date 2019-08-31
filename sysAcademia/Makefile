@@ -7,7 +7,7 @@ SRC 			= ./src
 CFLAGS 		= -c -Wall -w
 LFLAGS 		= -Wall -w
 MAIN			= Main
-DEFN			= stdafx Principal Universidade Departamento \
+DEFN			= stdafx Principal Universidade elDepartamento Departamento \
 						elDisciplina Disciplina Pessoa Professor elAluno Aluno
 MODS			= $(MAIN) $(DEFN)
 EXEC			= $(BIN)/$(MAIN)

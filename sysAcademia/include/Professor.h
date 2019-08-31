@@ -16,6 +16,7 @@ public:
   ~Professor ();
   void setUni (Universidade *U);
   Universidade* getUni ();
+  void printProf ();
   void printUni ();
   void setDep (Departamento *D);
   Departamento* getDep ();

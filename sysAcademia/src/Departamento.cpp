@@ -48,7 +48,7 @@ Universidade* Departamento::getUni () {
 }
 
 void Departamento::imprimeDep () {
-  cout << "\tDepartamento " << getNome() << ".\n";
+  cout << "Departamento " << getNome();
 }
 
 void Departamento::incluirDis (Disciplina *dis) {

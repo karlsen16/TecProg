@@ -32,8 +32,13 @@ Universidade* Professor::getUni () {
   return uni;
 }
 
+void Professor::printProf () {
+  cout << "Professor " << getNome();
+}
+
 void Professor::printUni () {
-  cout << "Professor " << getNome() << " trabalha na ";
+  printProf();
+  cout << " trabalha na ";
   uni->imprimeUni();
 }
 
@@ -46,12 +51,16 @@ Departamento* Professor::getDep () {
 }
 
 void Professor::printDep () {
+  printProf();
+  cout << " leciona no ";
   dep->imprimeDep();
 }
 
 void Professor::imprimeTudo () {
   imprimeIdade();
-  printUni();
-  printDep();
   cout << "\n";
+  printUni();
+  cout << "\n";
+  printDep();
+  cout << "\n\n";
 }

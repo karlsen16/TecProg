@@ -30,6 +30,5 @@ public:
   void Executar ();
   void calculaIdadeProfs ();
   void localTrabalho ();
-  void depTrabalho ();
   void imprimeDepDisS ();
 };

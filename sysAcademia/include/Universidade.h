@@ -1,10 +1,10 @@
 #pragma once
-#include "Departamento.h"
+#include "elDepartamento.h"
 
 class Universidade {
 private:
   char nome[150];
-  vector<Departamento*> D;
+  elDepartamento *pDepIni, *pDepAtual;
 
 public:
   Universidade (char *S = "");
@@ -13,6 +13,7 @@ public:
   char* getNome ();
   void imprimeUni ();
   void incluirDep (Departamento *dep);
+  Departamento* getDepI (int i);
   void imprimeDep (int i);
   void imprimeDis (int i);
   void imprimeDepS ();
