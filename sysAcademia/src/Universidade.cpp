@@ -1,19 +1,16 @@
 #include "stdafx.h"
 #include "Universidade.h"
 
-Universidade::Universidade (char *S) {
-  pDepIni = pDepAtual = NULL;
+Universidade::Universidade (char *S, int n) {
+  listaDepartamentos = new lDepartamento();
   setNome(S);
+  listaDepartamentos->setNum(n);
 }
 
 Universidade::~Universidade () {
-  elDepartamento *peao = pDepIni;
-  while(peao) {
-    pDepIni = peao->getProx();
-    delete(peao);
-    peao = pDepIni;
-  }
-  pDepAtual = NULL;
+  if(listaDepartamentos)
+    delete(listaDepartamentos);
+  listaDepartamentos = NULL;
 }
 
 void Universidade::setNome (char *S) {
@@ -29,77 +26,29 @@ void Universidade::imprimeUni () {
 }
 
 void Universidade::incluirDep (Departamento *D) {
-  elDepartamento *novo = new elDepartamento(D);
-  if(!pDepIni)
-    pDepIni = pDepAtual = novo;
-  else {
-    pDepAtual->setProx(novo);
-    novo->setAnt(pDepAtual);
-    pDepAtual = novo;
-  }
+  listaDepartamentos->incluirDep(D);
 }
 
 void Universidade::removeDep (Departamento *D) {
-  if(D) {
-    elDepartamento *peao = pDepIni;
-    while(peao && strcmp(peao->getDep()->getNome(), D->getNome()) != 0)
-      peao = peao->getProx();
-    if(peao) {
-      peao->getAnt()->setProx(peao->getProx());
-      peao->getProx()->setAnt(peao->getAnt());
-      delete(peao);
-    }
-    else
-      cout << "\nO ";
-      D->imprimeDep();
-      cout << " nao pertence a " << getNome() << ".\n";
-  }
+  listaDepartamentos->removeDep(D);
 }
 
 Departamento* Universidade::getDepI (int i) {
-  if(i >= 0) {
-    int cont = 0;
-    elDepartamento *peao = pDepIni;
-    while(peao) {
-      if(cont == i)
-        return peao->getDep();
-      peao = peao->getProx();
-      cont++;
-    }
-  }
-  return NULL;
+  listaDepartamentos->getDepI(i);
 }
 
 void Universidade::imprimeDep (int i) {
-  getDepI(i)->imprimeDep();
+  listaDepartamentos->imprimeDep(i);
 }
 
 void Universidade::imprimeDis (int i) {
-  getDepI(i)->imprimeDis();
+  listaDepartamentos->imprimeDis(i);
 }
 
 void Universidade::imprimeDepS () {
-  cout << "\nDepartamentos da ";
-  imprimeUni();
-  cout << ":\n";
-  elDepartamento *peao = pDepIni;
-  while(peao) {
-    cout << "\t";
-    peao->getDep()->imprimeDep();
-    peao = peao->getProx();
-  }
+  listaDepartamentos->imprimeDepS();
 }
 
 void Universidade::imprimeTudo () {
-  cout << "\nDepartamentos da ";
-  imprimeUni();
-  cout << ":\n";
-  elDepartamento *peao = pDepIni;
-  while(peao) {
-    cout << "\t";
-    peao->getDep()->imprimeDep();
-    cout << "\n";
-    peao->getDep()->imprimeDis();
-    peao = peao->getProx();
-  }
+  listaDepartamentos->imprimeTudo();
 }

@@ -33,3 +33,15 @@ Disciplina *I4) {
   if(I4)
     I4->addAluno(this);
 }
+
+void Aluno::rmMatricula (Disciplina *I1, Disciplina *I2, Disciplina *I3,
+Disciplina *I4) {
+  if(I1)
+    I1->removeAluno(this);
+  if(I2)
+    I2->removeAluno(this);
+  if(I3)
+    I3->removeAluno(this);
+  if(I4)
+    I4->removeAluno(this);
+}

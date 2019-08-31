@@ -3,35 +3,29 @@
 #include "Departamento.h"
 
 Disciplina::Disciplina () {
-  pAluIni = pAluAtual = NULL;
-  contAlunos = 0;
-  nAlunos = 45;
+  listaAlunos = new lAluno();
   inicializa();
 }
 
-Disciplina::Disciplina (char *S, char *A, Departamento *D, int id) {
-  pAluIni = pAluAtual = NULL;
-  contAlunos = 0;
-  nAlunos = 45;
-  inicializa(S, A, D, id);
+Disciplina::Disciplina (char *S, char *A, Departamento *D, int id, int n) {
+  listaAlunos = new lAluno();
+  inicializa(S, A, D, id, n);
 }
 
-void Disciplina::inicializa (char *S, char *A, Departamento *D, int id) {
+void Disciplina::inicializa (char *S, char *A, Departamento *D, int id, int n) {
   setNome(S);
   setArea(A);
   setDep(D);
   setID(id);
+  listaAlunos->setNome(S);
+  listaAlunos->setNum(n);
 }
 
 Disciplina::~Disciplina () {
-  elAluno *peao = pAluIni;
-  while(peao) {
-    pAluIni = peao->getProx();
-    delete (peao);
-    peao = pAluIni;
-  }
   dep = NULL;
-  pAluAtual = NULL;
+  if(listaAlunos)
+    delete(listaAlunos);
+  listaAlunos = NULL;
 }
 
 void Disciplina::setNome (char *S) {
@@ -73,71 +67,17 @@ int Disciplina::getID () {
 }
 
 void Disciplina::addAluno (Aluno *L) {
-  if(contAlunos < nAlunos) {
-    elAluno *novo = new elAluno(L);
-    if(!pAluIni)
-      pAluAtual = pAluIni = novo;
-    else {
-      elAluno *peao = pAluIni, *aux = NULL;
-      while(peao && strcmp(peao->getAluno()->getNome(), L->getNome()) < 0) {
-        aux = peao;
-        peao = peao->getProx();
-      }
-      novo->setProx(peao);
-      novo->setAnt(aux);
-      if(peao)
-        peao->setAnt(novo);
-      if(aux)
-        aux->setProx(novo);
-      if(!novo->getProx())
-        pAluAtual = novo;
-      if(!novo->getAnt())
-        pAluIni = novo;
-    }
-    contAlunos++;
-  }
-  else
-    cout << "\nTurma cheia! Tente novamente no proximo semestre..\n";
+  listaAlunos->addAluno(L);
 }
 
 void Disciplina::removeAluno (Aluno *L) {
-  if(contAlunos > 0) {
-    elAluno *peao = pAluIni;
-    while(peao && strcmp(peao->getAluno()->getNome(), L->getNome()) != 0)
-      peao = peao->getProx();
-    if(peao) {
-      peao->getAnt()->setProx(peao->getProx());
-      peao->getProx()->setAnt(peao->getAnt());
-      delete(peao);
-      contAlunos--;
-    }
-    else
-      cout << "\nO aluno " << L->getNome() << " nao pertence a " << getNome() << ".\n";
-  }
-  else
-    cout << "\nTurma de " << getNome() << " vazia!\n";
+  listaAlunos->removeAluno(L);
 }
 
 void Disciplina::imprimeAlu () {
-  elAluno *peao = pAluIni;
-  int cont = 1;
-  if(contAlunos > 0) {
-    cout << "\t\t\tLista de Alunos:\n";
-    while(peao) {
-      cout << "\t\t\t" << cont << "# " << peao->getAluno()->getNome() << "\n";
-      cont++;
-      peao = peao->getProx();
-    }
-  }
+  listaAlunos->imprimeAlu();
 }
 
 void Disciplina::imprimeAlu2 () {
-  elAluno *peao = pAluAtual;
-  int cont = 1;
-  cout << "\t\t\tLista de Alunos:\n";
-  while(peao) {
-    cout << "\t\t\t" << cont << "# " << peao->getAluno()->getNome() << "\n";
-    cont++;
-    peao = peao->getAnt();
-  }
+  listaAlunos->imprimeAlu2();
 }

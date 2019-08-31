@@ -1,28 +1,28 @@
 #pragma once
-#include "elDisciplina.h"
+#include "lDisciplina.h"
 class Universidade;
 
 class Departamento {
 private:
   char nome[150];
   Universidade *uni;
-  elDisciplina *pDisIni, *pDisAtual;
   int ID;
+  lDisciplina *listaDisciplinas;
 
 public:
   Departamento ();
-  Departamento (char *S, Universidade *U, int id);
-  void inicializa (char *S = "", Universidade *U = NULL, int id = 0);
+  Departamento (char *S, Universidade *U, int id, int n);
+  void inicializa (char *S = "", Universidade *U = NULL, int id = 0, int n = 1000);
   ~Departamento ();
   void setNome (char *S);
   char* getNome ();
   void setUni (Universidade *U);
   Universidade* getUni ();
   void imprimeDep ();
+  void setID (int id);
+  int getID ();
   void incluirDis (Disciplina *D);
   void removeDis (Disciplina *D);
   void imprimeDis ();
   void imprimeDis2 ();
-  void setID (int id);
-  int getID ();
 };

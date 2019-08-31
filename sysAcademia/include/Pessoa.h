@@ -3,11 +3,7 @@
 class Pessoa {
 protected:
   char nome[30];
-  int dia;
-  int mes;
-  int ano;
-  int idade;
-  int ID;
+  int dia, mes, ano, idade, ID;
 
 public:
   Pessoa ();

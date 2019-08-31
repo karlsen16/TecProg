@@ -1,17 +1,18 @@
 #pragma once
-#include "lDepartamento.h"
+#include "elDepartamento.h"
 
-class Universidade {
+class lDepartamento {
 private:
   char nome[150];
-  lDepartamento *listaDepartamentos;
+  int nDepartamentos, contDepartamentos;
+  elDepartamento *pDepIni, *pDepAtual;
 
 public:
-  Universidade (char *S = "", int n = 1000);
-  ~Universidade ();
+  lDepartamento ();
+  ~lDepartamento ();
   void setNome (char *S);
   char* getNome ();
-  void imprimeUni ();
+  void setNum (int n);
   void incluirDep (Departamento *D);
   void removeDep (Departamento *D);
   Departamento* getDepI (int i);

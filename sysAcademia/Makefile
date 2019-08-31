@@ -7,8 +7,10 @@ SRC 			= ./src
 CFLAGS 		= -c -Wall -w
 LFLAGS 		= -Wall -w
 MAIN			= Main
-DEFN			= stdafx Principal Universidade elDepartamento Departamento \
-						elDisciplina Disciplina Pessoa Professor elAluno Aluno
+DEFN			= stdafx Principal Universidade \
+						lDepartamento elDepartamento Departamento \
+						lDisciplina elDisciplina Disciplina Professor \
+						lAluno elAluno Aluno Pessoa
 MODS			= $(MAIN) $(DEFN)
 EXEC			= $(BIN)/$(MAIN)
 SRCS			= $(addsuffix .cpp, $(addprefix $(SRC)/,$(MODS)))

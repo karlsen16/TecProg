@@ -3,30 +3,28 @@
 #include "Universidade.h"
 
 Departamento::Departamento () {
-  pDisIni = pDisAtual = NULL;
+  listaDisciplinas = new lDisciplina();
   inicializa();
 }
 
-Departamento::Departamento (char *S, Universidade *U, int id) {
-  pDisIni = pDisAtual = NULL;
-  inicializa(S, U, id);
+Departamento::Departamento (char *S, Universidade *U, int id, int n) {
+  listaDisciplinas = new lDisciplina();
+  inicializa(S, U, id, n);
 }
 
-void Departamento::inicializa (char *S, Universidade *U, int id) {
+void Departamento::inicializa (char *S, Universidade *U, int id, int n) {
   setNome(S);
   setUni(U);
   setID(id);
+  listaDisciplinas->setNome(S);
+  listaDisciplinas->setNum(n);
 }
 
 Departamento::~Departamento () {
-  elDisciplina *peao = pDisIni;
-  while(peao) {
-    pDisIni = peao->getProx();
-    delete (peao);
-    peao = pDisIni;
-  }
   uni = NULL;
-  pDisAtual = NULL;
+  if(listaDisciplinas)
+    delete(listaDisciplinas);
+  listaDisciplinas = NULL;
 }
 
 void Departamento::setNome (char *S) {
@@ -51,60 +49,26 @@ void Departamento::imprimeDep () {
   cout << "Departamento " << getNome();
 }
 
-void Departamento::incluirDis (Disciplina *D) {
-  elDisciplina *novo = new elDisciplina(D);
-  if(!pDisIni)
-    pDisIni = pDisAtual = novo;
-  else {
-    pDisAtual->setProx(novo);
-    novo->setAnt(pDisAtual);
-    pDisAtual = novo;
-  }
-}
-
-void Departamento::removeDis (Disciplina *D) {
-  if(D) {
-    elDisciplina *peao = pDisIni;
-    while(peao && strcmp(peao->getDis()->getNome(), D->getNome()) != 0)
-      peao = peao->getProx();
-    if(peao) {
-      peao->getAnt()->setProx(peao->getProx());
-      peao->getProx()->setAnt(peao->getAnt());
-      delete(peao);
-    }
-    else
-      cout << "\nA ";
-      D->imprimeDis();
-      cout << " nao pertence a " << getNome() << ".\n";
-  }
-}
-
-void Departamento::imprimeDis () {
-  elDisciplina *peao = pDisIni;
-  while(peao) {
-    cout << "\t\tA Disciplina " << peao->getDis()->getNome()
-    << " da area " << peao->getDis()->getArea()
-    << " pertence ao Departamento " << getNome() << "\n";
-    peao->getDis()->imprimeAlu();
-    peao = peao->getProx();
-  }
-}
-
-void Departamento::imprimeDis2 () {
-  elDisciplina *peao = pDisAtual;
-  while(peao) {
-    cout << "\t\tA Disciplina " << peao->getDis()->getNome()
-    << " da area " << peao->getDis()->getArea()
-    << " pertence ao Departamento " << getNome() << "\n";
-    peao->getDis()->imprimeAlu2();
-    peao = peao->getAnt();
-  }
-}
-
 void Departamento::setID (int id) {
   ID = id;
 }
 
 int Departamento::getID () {
   return ID;
+}
+
+void Departamento::incluirDis (Disciplina *D) {
+  listaDisciplinas->incluirDis(D);
+}
+
+void Departamento::removeDis (Disciplina *D) {
+  listaDisciplinas->removeDis(D);
+}
+
+void Departamento::imprimeDis () {
+  listaDisciplinas->imprimeDis();
+}
+
+void Departamento::imprimeDis2 () {
+  listaDisciplinas->imprimeDis2();
 }

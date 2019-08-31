@@ -1,5 +1,5 @@
 #pragma once
-#include "elAluno.h"
+#include "lAluno.h"
 class Departamento;
 
 class Disciplina {
@@ -7,14 +7,14 @@ private:
   char nome[150];
   char area[150];
   Departamento *dep;
-  int ID, nAlunos, contAlunos;
-  elAluno *pAluIni, *pAluAtual;
+  int ID;
+  lAluno *listaAlunos;
 
 public:
   Disciplina ();
-  Disciplina (char *S, char *A, Departamento *D, int id);
+  Disciplina (char *S, char *A, Departamento *D, int id, int n);
   ~Disciplina ();
-  void inicializa (char *S = "", char *A = "", Departamento *D = NULL, int id = 0);
+  void inicializa (char *S = "", char *A = "", Departamento *D = NULL, int id = 0, int n = 45);
   void setNome (char *S);
   char* getNome ();
   void setArea (char *A);

@@ -14,4 +14,6 @@ public:
   int getRA ();
   void matricula (Disciplina *I1 = NULL, Disciplina *I2 = NULL,
   Disciplina *I3 = NULL, Disciplina *I4 = NULL);
+  void rmMatricula (Disciplina *I1 = NULL, Disciplina *I2 = NULL,
+  Disciplina *I3 = NULL, Disciplina *I4 = NULL);
 };
