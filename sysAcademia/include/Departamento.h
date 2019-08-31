@@ -19,7 +19,8 @@ public:
   void setUni (Universidade *U);
   Universidade* getUni ();
   void imprimeDep ();
-  void incluirDis (Disciplina *dis);
+  void incluirDis (Disciplina *D);
+  void removeDis (Disciplina *D);
   void imprimeDis ();
   void imprimeDis2 ();
   void setID (int id);

@@ -28,14 +28,31 @@ void Universidade::imprimeUni () {
   cout << "Universidade " << getNome();
 }
 
-void Universidade::incluirDep (Departamento *dep) {
-  elDepartamento *novo = new elDepartamento(dep);
+void Universidade::incluirDep (Departamento *D) {
+  elDepartamento *novo = new elDepartamento(D);
   if(!pDepIni)
     pDepIni = pDepAtual = novo;
   else {
     pDepAtual->setProx(novo);
     novo->setAnt(pDepAtual);
     pDepAtual = novo;
+  }
+}
+
+void Universidade::removeDep (Departamento *D) {
+  if(D) {
+    elDepartamento *peao = pDepIni;
+    while(peao && strcmp(peao->getDep()->getNome(), D->getNome()) != 0)
+      peao = peao->getProx();
+    if(peao) {
+      peao->getAnt()->setProx(peao->getProx());
+      peao->getProx()->setAnt(peao->getAnt());
+      delete(peao);
+    }
+    else
+      cout << "\nO ";
+      D->imprimeDep();
+      cout << " nao pertence a " << getNome() << ".\n";
   }
 }
 

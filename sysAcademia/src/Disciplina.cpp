@@ -61,7 +61,7 @@ Departamento* Disciplina::getDep () {
 }
 
 void Disciplina::imprimeDis () {
-  cout << "Disciplina: " << getNome() << ".\n";
+  cout << "Disciplina " << getNome() << ".\n";
 }
 
 void Disciplina::setID (int id) {
@@ -108,6 +108,7 @@ void Disciplina::removeAluno (Aluno *L) {
     if(peao) {
       peao->getAnt()->setProx(peao->getProx());
       peao->getProx()->setAnt(peao->getAnt());
+      delete(peao);
       contAlunos--;
     }
     else

@@ -51,14 +51,31 @@ void Departamento::imprimeDep () {
   cout << "Departamento " << getNome();
 }
 
-void Departamento::incluirDis (Disciplina *dis) {
-  elDisciplina *novo = new elDisciplina(dis);
+void Departamento::incluirDis (Disciplina *D) {
+  elDisciplina *novo = new elDisciplina(D);
   if(!pDisIni)
     pDisIni = pDisAtual = novo;
   else {
     pDisAtual->setProx(novo);
     novo->setAnt(pDisAtual);
     pDisAtual = novo;
+  }
+}
+
+void Departamento::removeDis (Disciplina *D) {
+  if(D) {
+    elDisciplina *peao = pDisIni;
+    while(peao && strcmp(peao->getDis()->getNome(), D->getNome()) != 0)
+      peao = peao->getProx();
+    if(peao) {
+      peao->getAnt()->setProx(peao->getProx());
+      peao->getProx()->setAnt(peao->getAnt());
+      delete(peao);
+    }
+    else
+      cout << "\nA ";
+      D->imprimeDis();
+      cout << " nao pertence a " << getNome() << ".\n";
   }
 }
 

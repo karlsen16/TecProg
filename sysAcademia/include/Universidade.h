@@ -12,7 +12,8 @@ public:
   void setNome (char *S);
   char* getNome ();
   void imprimeUni ();
-  void incluirDep (Departamento *dep);
+  void incluirDep (Departamento *D);
+  void removeDep (Departamento *D);
   Departamento* getDepI (int i);
   void imprimeDep (int i);
   void imprimeDis (int i);
