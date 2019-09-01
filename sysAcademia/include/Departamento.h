@@ -6,21 +6,21 @@ class Departamento {
 private:
   char nome[150];
   Universidade *uni;
-  int ID;
   lDisciplina *listaDisciplinas;
+  int ID;
 
 public:
   Departamento ();
-  Departamento (char *S, Universidade *U, int id, int n);
-  void inicializa (char *S = "", Universidade *U = NULL, int id = 0, int n = 1000);
+  Departamento (char *S, Universidade *U, int n, int id);
+  void inicializa (char *S = "", Universidade *U = NULL, int n = 1000, int id = 0);
   ~Departamento ();
   void setNome (char *S);
   char* getNome ();
+  void setID (int id);
+  int getID ();
   void setUni (Universidade *U);
   Universidade* getUni ();
   void imprimeDep ();
-  void setID (int id);
-  int getID ();
   void incluirDis (Disciplina *D);
   void removeDis (Disciplina *D);
   void imprimeDis ();

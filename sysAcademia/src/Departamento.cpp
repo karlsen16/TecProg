@@ -7,12 +7,12 @@ Departamento::Departamento () {
   inicializa();
 }
 
-Departamento::Departamento (char *S, Universidade *U, int id, int n) {
+Departamento::Departamento (char *S, Universidade *U, int n, int id) {
   listaDisciplinas = new lDisciplina();
   inicializa(S, U, id, n);
 }
 
-void Departamento::inicializa (char *S, Universidade *U, int id, int n) {
+void Departamento::inicializa (char *S, Universidade *U, int n, int id) {
   setNome(S);
   setUni(U);
   setID(id);
@@ -35,6 +35,14 @@ char* Departamento::getNome () {
   return nome;
 }
 
+void Departamento::setID (int id) {
+  ID = id;
+}
+
+int Departamento::getID () {
+  return ID;
+}
+
 void Departamento::setUni (Universidade *U) {
   uni = U;
   if(U)
@@ -47,14 +55,6 @@ Universidade* Departamento::getUni () {
 
 void Departamento::imprimeDep () {
   cout << "Departamento " << getNome();
-}
-
-void Departamento::setID (int id) {
-  ID = id;
-}
-
-int Departamento::getID () {
-  return ID;
 }
 
 void Departamento::incluirDis (Disciplina *D) {

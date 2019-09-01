@@ -1,9 +1,12 @@
 #include "stdafx.h"
 #include "lAluno.h"
 
-lAluno::lAluno () {
+lAluno::lAluno (char *S, int n, int id) {
+  setNome(S);
+  setID(id);
+  setNum(n);
+  contAlunos = 0;
   pAluIni = pAluAtual = NULL;
-  nAlunos = contAlunos = 0;
 }
 
 lAluno::~lAluno () {
@@ -22,6 +25,14 @@ void lAluno::setNome (char *S) {
 
 char* lAluno::getNome () {
   return nome;
+}
+
+void lAluno::setID (int id) {
+  ID = id;
+}
+
+int lAluno::getID () {
+  return ID;
 }
 
 void lAluno::setNum (int n) {
@@ -53,7 +64,7 @@ void lAluno::addAluno (Aluno *L) {
     contAlunos++;
   }
   else
-    cout << "\nTurma cheia! Tente novamente no proximo semestre..\n";
+    cout << "Nao e possivel fazer esta operacao. Erro (007).\n";
 }
 
 void lAluno::removeAluno (Aluno *L) {
@@ -72,7 +83,7 @@ void lAluno::removeAluno (Aluno *L) {
            << getNome() << ".\n";
   }
   else
-    cout << "\nTurma vazia!\n";
+    cout << "Nao e possivel fazer esta operacao. Erro (008).\n";
 }
 
 void lAluno::imprimeAlu () {

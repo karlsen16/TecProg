@@ -1,10 +1,10 @@
 #include "stdafx.h"
 #include "Universidade.h"
 
-Universidade::Universidade (char *S, int n) {
-  listaDepartamentos = new lDepartamento();
+Universidade::Universidade (char *S, int n, int id) {
   setNome(S);
-  listaDepartamentos->setNum(n);
+  listaDepartamentos = new lDepartamento(S, n);
+  setID(id);
 }
 
 Universidade::~Universidade () {
@@ -19,6 +19,14 @@ void Universidade::setNome (char *S) {
 
 char* Universidade::getNome () {
   return nome;
+}
+
+void Universidade::setID (int id) {
+  ID = id;
+}
+
+int Universidade::getID () {
+  return ID;
 }
 
 void Universidade::imprimeUni () {

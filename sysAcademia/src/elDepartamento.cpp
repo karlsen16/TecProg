@@ -1,9 +1,10 @@
 #include "stdafx.h"
 #include "elDepartamento.h"
 
-elDepartamento::elDepartamento (Departamento *D) {
+elDepartamento::elDepartamento (Departamento *D, int id) {
   dep = D;
   prox = ant = NULL;
+  setID(id);
 }
 
 elDepartamento::~elDepartamento () {
@@ -13,6 +14,14 @@ elDepartamento::~elDepartamento () {
 
 Departamento* elDepartamento::getDep () {
   return dep;
+}
+
+void elDepartamento::setID (int id) {
+  ID = id;
+}
+
+int elDepartamento::getID () {
+  return ID;
 }
 
 void elDepartamento::setProx (elDepartamento *D) {

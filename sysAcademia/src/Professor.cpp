@@ -20,8 +20,8 @@ void Professor::inicializa (int diaN, int mesN, int anoN, char *S,
 }
 
 Professor::~Professor () {
-  setUni(NULL);
-  setDep(NULL);
+  uni = NULL;
+  dep = NULL;
 }
 
 void Professor::setUni (Universidade *U) {

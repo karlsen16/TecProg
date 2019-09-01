@@ -7,7 +7,7 @@ SRC 			= ./src
 CFLAGS 		= -c -Wall -w
 LFLAGS 		= -Wall -w
 MAIN			= Main
-DEFN			= stdafx Principal Universidade \
+DEFN			= stdafx Principal lUniversidade elUniversidade Universidade \
 						lDepartamento elDepartamento Departamento \
 						lDisciplina elDisciplina Disciplina Professor \
 						lAluno elAluno Aluno Pessoa

@@ -7,12 +7,12 @@ Disciplina::Disciplina () {
   inicializa();
 }
 
-Disciplina::Disciplina (char *S, char *A, Departamento *D, int id, int n) {
+Disciplina::Disciplina (char *S, char *A, Departamento *D, int n, int id) {
   listaAlunos = new lAluno();
   inicializa(S, A, D, id, n);
 }
 
-void Disciplina::inicializa (char *S, char *A, Departamento *D, int id, int n) {
+void Disciplina::inicializa (char *S, char *A, Departamento *D, int n, int id) {
   setNome(S);
   setArea(A);
   setDep(D);
@@ -36,6 +36,14 @@ char* Disciplina::getNome () {
   return nome;
 }
 
+void Disciplina::setID (int id) {
+  ID = id;
+}
+
+int Disciplina::getID () {
+  return ID;
+}
+
 void Disciplina::setArea (char *A) {
   strcpy(area, A);
 }
@@ -56,14 +64,6 @@ Departamento* Disciplina::getDep () {
 
 void Disciplina::imprimeDis () {
   cout << "Disciplina " << getNome() << ".\n";
-}
-
-void Disciplina::setID (int id) {
-  ID = id;
-}
-
-int Disciplina::getID () {
-  return ID;
 }
 
 void Disciplina::addAluno (Aluno *L) {

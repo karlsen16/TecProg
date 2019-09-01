@@ -6,12 +6,14 @@ private:
   Aluno *alu;
   elAluno *prox, *ant;
   float P1, P2, F;
-  int faltas;
+  int ID, faltas;
 
 public:
-  elAluno (Aluno *L);
+  elAluno (Aluno *L, int id = 0);
   ~elAluno ();
   Aluno* getAluno ();
+  void setID (int id);
+  int getID ();
   void setProx (elAluno *p);
   elAluno* getProx ();
   void setAnt (elAluno *p);
