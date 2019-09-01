@@ -27,11 +27,19 @@ char* lDisciplina::getNome () {
   return nome;
 }
 
+void lDisciplina::setID (int id) {
+  ID = id;
+}
+
+int lDisciplina::getID () {
+  return ID;
+}
+
 void lDisciplina::setNum (int n) {
   nDisciplinas = n;
 }
 
-void lDisciplina::incluirDis (Disciplina *D) {
+void lDisciplina::addDis (Disciplina *D) {
   if(contDisciplinas < nDisciplinas) {
     elDisciplina *novo = new elDisciplina(D);
     if(!pDisIni)

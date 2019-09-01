@@ -15,7 +15,7 @@ public:
   void setID (int id);
   int getID ();
   void setNum (int n);
-  void incluirDis (Disciplina *D);
+  void addDis (Disciplina *D);
   void removeDis (Disciplina *D);
   void imprimeDis ();
   void imprimeDis2 ();

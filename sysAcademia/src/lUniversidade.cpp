@@ -39,7 +39,7 @@ void lUniversidade::setNum (int n) {
   nUniversidades = n;
 }
 
-void lUniversidade::incluirUni (Universidade *U) {
+void lUniversidade::addUni (Universidade *U) {
   if(contUniversidades < nUniversidades) {
     elUniversidade *novo = new elUniversidade(U);
     if(!pUniIni)

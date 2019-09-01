@@ -4,20 +4,24 @@
 
 Departamento::Departamento () {
   listaDisciplinas = new lDisciplina();
+  listaProfessores = new lProfessor();
   inicializa();
 }
 
-Departamento::Departamento (char *S, Universidade *U, int n, int id) {
+Departamento::Departamento (char *S, Universidade *U, int n, int np, int id) {
   listaDisciplinas = new lDisciplina();
-  inicializa(S, U, id, n);
+  listaProfessores = new lProfessor();
+  inicializa(S, U, n, np, id);
 }
 
-void Departamento::inicializa (char *S, Universidade *U, int n, int id) {
+void Departamento::inicializa (char *S, Universidade *U, int n, int np, int id) {
   setNome(S);
   setUni(U);
   setID(id);
   listaDisciplinas->setNome(S);
   listaDisciplinas->setNum(n);
+  listaProfessores->setNome(S);
+  listaProfessores->setNum(np);
 }
 
 Departamento::~Departamento () {
@@ -25,6 +29,9 @@ Departamento::~Departamento () {
   if(listaDisciplinas)
     delete(listaDisciplinas);
   listaDisciplinas = NULL;
+  if(listaProfessores)
+    delete(listaProfessores);
+  listaProfessores = NULL;
 }
 
 void Departamento::setNome (char *S) {
@@ -46,7 +53,7 @@ int Departamento::getID () {
 void Departamento::setUni (Universidade *U) {
   uni = U;
   if(U)
-    U->incluirDep(this);
+    U->addDep(this);
 }
 
 Universidade* Departamento::getUni () {
@@ -57,8 +64,8 @@ void Departamento::imprimeDep () {
   cout << "Departamento " << getNome();
 }
 
-void Departamento::incluirDis (Disciplina *D) {
-  listaDisciplinas->incluirDis(D);
+void Departamento::addDis (Disciplina *D) {
+  listaDisciplinas->addDis(D);
 }
 
 void Departamento::removeDis (Disciplina *D) {
@@ -71,4 +78,20 @@ void Departamento::imprimeDis () {
 
 void Departamento::imprimeDis2 () {
   listaDisciplinas->imprimeDis2();
+}
+
+void Departamento::addProfessor (Professor *P) {
+  listaProfessores->addProfessor(P);
+}
+
+void Departamento::removeProfessor (Professor *P) {
+  listaProfessores->removeProfessor(P);
+}
+
+void Departamento::imprimeProfs () {
+  listaProfessores->imprimeProfs();
+}
+
+void Departamento::imprimeProfs2 () {
+  listaProfessores->imprimeProfs2();
 }

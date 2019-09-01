@@ -20,7 +20,7 @@ void elUniversidade::setID (int id) {
   ID = id;
 }
 
-char* elUniversidade::getID () {
+int elUniversidade::getID () {
   return ID;
 }
 

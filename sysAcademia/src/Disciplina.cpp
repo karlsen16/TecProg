@@ -9,7 +9,7 @@ Disciplina::Disciplina () {
 
 Disciplina::Disciplina (char *S, char *A, Departamento *D, int n, int id) {
   listaAlunos = new lAluno();
-  inicializa(S, A, D, id, n);
+  inicializa(S, A, D, n, id);
 }
 
 void Disciplina::inicializa (char *S, char *A, Departamento *D, int n, int id) {
@@ -55,7 +55,7 @@ char* Disciplina::getArea () {
 void Disciplina::setDep (Departamento *D) {
   dep = D;
   if(D)
-    D->incluirDis(this);
+    D->addDis(this);
 }
 
 Departamento* Disciplina::getDep () {

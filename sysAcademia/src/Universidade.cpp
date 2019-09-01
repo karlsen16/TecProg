@@ -33,8 +33,8 @@ void Universidade::imprimeUni () {
   cout << "Universidade " << getNome();
 }
 
-void Universidade::incluirDep (Departamento *D) {
-  listaDepartamentos->incluirDep(D);
+void Universidade::addDep (Departamento *D) {
+  listaDepartamentos->addDep(D);
 }
 
 void Universidade::removeDep (Departamento *D) {

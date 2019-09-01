@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "elDisciplina.h"
 
-elDisciplina::elDisciplina (Disciplina *D) {
+elDisciplina::elDisciplina (Disciplina *D, int id) {
   dis = D;
   prox = ant = NULL;
   prof = NULL;

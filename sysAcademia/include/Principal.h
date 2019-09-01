@@ -1,6 +1,5 @@
 #pragma once
-#include "Professor.h"
-#include "Aluno.h"
+#include "lUniversidade.h"
 
 class Principal {
 private:

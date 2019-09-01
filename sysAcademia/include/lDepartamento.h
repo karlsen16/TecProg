@@ -15,7 +15,7 @@ public:
   void setID (int id);
   int getID ();
   void setNum (int n);
-  void incluirDep (Departamento *D);
+  void addDep (Departamento *D);
   void removeDep (Departamento *D);
   Departamento* getDepI (int i);
   void imprimeDep (int i);

@@ -39,7 +39,7 @@ void lDepartamento::setNum (int n) {
   nDepartamentos = n;
 }
 
-void lDepartamento::incluirDep (Departamento *D) {
+void lDepartamento::addDep (Departamento *D) {
   if(contDepartamentos < nDepartamentos) {
     elDepartamento *novo = new elDepartamento(D);
     if(!pDepIni)

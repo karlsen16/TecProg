@@ -1,5 +1,7 @@
 #include "stdafx.h"
 #include "Professor.h"
+#include "Universidade.h"
+#include "Departamento.h"
 
 Professor::Professor (): Pessoa() {
   inicializa(0, 0, 0, "");

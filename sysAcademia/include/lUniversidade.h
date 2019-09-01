@@ -15,7 +15,7 @@ public:
   void setID (int id);
   int getID ();
   void setNum (int n);
-  void incluirUni (Universidade *U);
+  void addUni (Universidade *U);
   void removeUni (Universidade *U);
   Universidade* getUniI (int i);
 };
