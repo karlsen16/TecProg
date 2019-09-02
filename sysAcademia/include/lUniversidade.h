@@ -18,4 +18,9 @@ public:
   void addUni (Universidade *U);
   void removeUni (Universidade *U);
   Universidade* getUniI (int i);
+  void listarUni ();
+  void listarDep ();
+  void listarDis ();
+  void listarPrf ();
+  void listarAlu ();
 };

@@ -10,7 +10,7 @@ public:
   Pessoa (int diaN, int mesN, int anoN, char *S);
   void inicializa (int diaN, int mesN, int anoN, char *S = "");
   ~Pessoa ();
-  void calculaIdade (int diaParam, int mesParam, int anoParam);
+  void calculaIdade ();
   int getIdade ();
   void setID (int id);
   int getID ();

@@ -3,6 +3,41 @@
 
 class Principal {
 private:
+  lUniversidade listaUniversidades;
+
+public:
+  Principal ();
+  ~Principal ();
+
+  void voltar ();
+  void esperar ();
+  void Menu ();
+  void MenuCad ();
+  void MenuExe ();
+
+  void CadUniversidade ();
+  void CadDepartamento ();
+  void CadProfessor ();
+  void CadDisciplina ();
+  void CadAluno ();
+
+
+  // void Init ();
+  // void Init_Alunos ();
+  // void Matriculas ();
+  // void Init_Professores ();
+  // void Init_Disciplinas ();
+  // void Init_Departamentos ();
+  // void Init_Universidades ();
+  //
+  // void Executar ();
+  // void calculaIdadeProfs ();
+  // void localTrabalho ();
+  // void imprimeDepDisS ();
+};
+
+/*class Principal {
+private:
   Professor Joana, Simao, Einstein, Newton;
   Universidade UTFPR, Princeton, Cambrigde;
   Departamento DAINF, DADIN, DAFIS, DAMAT, FisicaP, MatematicaP, FisicaC, MatematicaC;
@@ -30,4 +65,4 @@ public:
   void calculaIdadeProfs ();
   void localTrabalho ();
   void imprimeDepDisS ();
-};
+};*/

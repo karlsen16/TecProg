@@ -16,7 +16,8 @@ public:
   int getID ();
   void setNum (int n);
   void addAluno (Aluno *L);
-  void removeAluno (Aluno *L);
+  Aluno* getAluno (char *S);
+  void removeAluno (char *S);
   void imprimeAlu ();
   void imprimeAlu2 ();
 };

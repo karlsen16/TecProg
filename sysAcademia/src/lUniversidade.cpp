@@ -75,16 +75,42 @@ void lUniversidade::removeUni (Universidade *U) {
     cout << "Nao e possivel fazer esta operacao. Erro (002).\n";
 }
 
-Universidade* lUniversidade::getUniI (int i) {
-  if(i >= 0) {
-    int cont = 0;
+Universidade* lUniversidade::getUni (char *S) {
+  if(S) {
     elUniversidade *peao = pUniIni;
-    while(peao && cont <= contUniversidades) {
-      if(cont == i)
-        return peao->getUni();
+    while(peao && strcmp(S, peao->getUni()->getNome()) != 0) {
       peao = peao->getProx();
-      cont++;
     }
+    if(peao)
+      return peao->getUni();
   }
   return NULL;
+}
+
+void lUniversidade::listarUni () {
+  elUniversidade *peao = pUniIni;
+  while(peao) {
+    peao->getUni()->imprimeTudo();
+    peao = peao->getProx();
+  }
+}
+
+void lUniversidade::listarDep () {
+  elUniversidade *peao = pUniIni;
+  while(peao) {
+    peao->getUni()->imprimeDepS();
+    peao = peao->getProx();
+  }
+}
+
+void lUniversidade::listarDis () {
+  cout << "\nListando dics..\n";
+}
+
+void lUniversidade::listarPrf () {
+  cout << "\nListando profs..\n";
+}
+
+void lUniversidade::listarAlu () {
+  cout << "\nListando alus..\n";
 }

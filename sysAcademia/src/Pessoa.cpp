@@ -14,14 +14,20 @@ void Pessoa::inicializa (int diaN, int mesN, int anoN, char *S) {
   dia = diaN;
   mes = mesN;
   ano = anoN;
-  idade = 0;
+  calculaIdade();
   ID = 0;
 }
 
 Pessoa::~Pessoa () {
 }
 
-void Pessoa::calculaIdade (int diaParam, int mesParam, int anoParam) {
+void Pessoa::calculaIdade () {
+  int diaParam, mesParam, anoParam;
+  time_t T = time(NULL);
+  struct tm tm = *localtime(&T);
+  diaParam = tm.tm_mday;
+  mesParam = tm.tm_mon+1;
+  anoParam = tm.tm_year+1900;
   idade = anoParam - ano;
   if(mesParam < mes || (mesParam == mes && diaParam < dia))
     idade--;
