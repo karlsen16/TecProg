@@ -11,10 +11,10 @@ class Principal
 {
  private:
 
-  // A T E N Ç Ã O !!!
-  // A ORDEM DA DECLARAÇÃO DOS OBJETOS/VARIÁVEIS (AGREGADOS) NUMA CLASSE AFETA 
-  // A ORDEM DA CHAMADA(OU DA EXECUÇÃO) DE SEUS CONTRUTORES A PARTIR DO CONSTRUTOR
-  // DESTA CLASSE AGREGADORA. NESTE CASO, A CLASSE QUE OS AGREGA É A PRINCIPAL!
+  // A T E N C A O !!!
+  // A ORDEM DA DECLARACAO DOS OBJETOS/VARIAVEIS (AGREGADOS) NUMA CLASSE AFETA
+  // A ORDEM DA CHAMADA(OU DA EXECUCAO) DE SEUS CONTRUTORES A PARTIR DO CONSTRUTOR
+  // DESTA CLASSE AGREGADORA. NESTE CASO, A CLASSE QUE OS AGREGA E A PRINCIPAL!
 
     // Contadores para identificadores;
 	int cont_idDisc;
@@ -46,8 +46,8 @@ class Principal
     Disciplina	Computacao1_2006;
     Disciplina	Introd_Alg_2007;
     Disciplina	Computacao2_2007;
-    Disciplina	Metodos2_2007;    
-	
+    Disciplina	Metodos2_2007;
+
 	// Alunos
     Aluno		AAA;
     Aluno		BBB;
@@ -68,7 +68,7 @@ class Principal
 
     Principal (  );
 
-    // Inicializações...
+    // Inicializacoes...
     void Inicializa();
     void InicializaUnivesidades();
     void InicializaDepartamentos();
@@ -77,7 +77,7 @@ class Principal
     void InicializaDisciplinas();
 
     void Executar();
-    
+
     void CalcIdadeProfs();
     void UnivOndeProfsTrabalham();
     void DepOndeProfsTrabalham();

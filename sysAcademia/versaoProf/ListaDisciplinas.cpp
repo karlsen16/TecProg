@@ -4,18 +4,18 @@
 ListaDisciplinas::ListaDisciplinas(int nd, char* n)
 {
 	numero_disc		= nd;
-	cont_disc		= 0;           
+	cont_disc		= 0;
 
 	pElDisciplinaPrim  = NULL;
 	pElDisciplinaAtual = NULL;
 
-	strcpy (nome, n ); 
+	strcpy (nome, n );
 }
 
 ListaDisciplinas::~ListaDisciplinas()
 {
    ElDisciplina *paux1, *paux2;
-   
+
    paux1 = pElDisciplinaPrim;
    paux2 = paux1;
 
@@ -23,7 +23,7 @@ ListaDisciplinas::~ListaDisciplinas()
    {
 	     paux2 = paux1->pProx;
 	     delete (paux1);
-         paux1 = paux2;		 
+         paux1 = paux2;
    }
 
    pElDisciplinaPrim  = NULL;
@@ -38,23 +38,23 @@ void ListaDisciplinas::setNome(char* n)
 
 void ListaDisciplinas::incluaDisciplina ( Disciplina* pd )
 {
-    // Aqui é criado um ponteiro para LAluno
+    // Aqui e criado um ponteiro para LAluno
     ElDisciplina* paux;
-    // Aqui é criado um objeto LAluno, sendo seu endereço armazenado em aux
+    // Aqui e criado um objeto LAluno, sendo seu endereco armazenado em aux
     paux = new ElDisciplina ( );
 
-    // Aqui recebe uma cópia do objeto interm.
+    // Aqui recebe uma copia do objeto interm.
     paux->setDisciplina ( pd );
 
     //aux->prox = NULL;
     //aux->ante = NULL;
 
-    if ( 
+    if (
 		  ( ( cont_disc < numero_disc ) && ( pd != NULL) ) ||
 		  ( ( numero_disc == -1 )		&& ( pd != NULL) )
 	   )
     {
-    
+
       if ( pElDisciplinaPrim == NULL )
       {
          pElDisciplinaPrim   = paux;
@@ -71,8 +71,8 @@ void ListaDisciplinas::incluaDisciplina ( Disciplina* pd )
     }
     else
     {
-       //printf ("Aluno não incluído. Turma já lotada em %i alunos \n", numero_alunos );
-	   cout << "Disciplina não incluída. Quantia de disc. já lotada em " << numero_disc << " disciplinas." << endl;
+       //printf ("Aluno nao incluido. Turma ja lotada em %i alunos \n", numero_alunos );
+	   cout << "Disciplina nao incluida. Quantia de disc. ja lotada em " << numero_disc << " disciplinas." << endl;
     }
 }
 

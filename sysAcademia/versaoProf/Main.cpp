@@ -7,9 +7,8 @@
 int main()
 {
 
-  // declaração do Objeto Principal
+  // declaracao do Objeto Principal
   Principal ObjetoPrincipal;
-  // Execução do Objeto Principal
+  // Execucao do Objeto Principal
 	return 0;
 }
-

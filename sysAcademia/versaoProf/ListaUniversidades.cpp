@@ -4,18 +4,18 @@
 ListaUniversidades::ListaUniversidades(int nu, char* n)
 {
 	numero_univ = nu;
-	cont_univ	  = 0;           
+	cont_univ	  = 0;
 
 	pElUniversidadePrim  = NULL;
 	pElUniversidadeAtual = NULL;
 
-	strcpy (nome, n ); 
+	strcpy (nome, n );
 }
 
 ListaUniversidades::~ListaUniversidades()
 {
    ElUniversidade *paux1, *paux2;
-   
+
    paux1 = pElUniversidadePrim;
    paux2 = paux1;
 
@@ -23,7 +23,7 @@ ListaUniversidades::~ListaUniversidades()
    {
 	     paux2 = paux1->pProx;
 	     delete (paux1);
-         paux1 = paux2;		 
+         paux1 = paux2;
    }
 
    pElUniversidadePrim  = NULL;
@@ -32,23 +32,23 @@ ListaUniversidades::~ListaUniversidades()
 
 void ListaUniversidades::incluaUniversidade ( Universidade* pu )
 {
-    // Aqui é criado um ponteiro para LAluno
+    // Aqui e criado um ponteiro para LAluno
     ElUniversidade* paux;
-    // Aqui é criado um objeto LAluno, sendo seu endereço armazenado em aux
+    // Aqui e criado um objeto LAluno, sendo seu endereco armazenado em aux
     paux = new ElUniversidade ( );
 
-    // Aqui recebe uma cópia do objeto interm.
+    // Aqui recebe uma copia do objeto interm.
     paux->setUniversidade ( pu );
 
     paux->pProx = NULL;
     paux->pAnte = NULL;
 
-    if ( 
+    if (
 		  ( ( cont_univ < numero_univ ) && ( pu != NULL) ) ||
 		  ( ( numero_univ == -1 )		&& ( pu != NULL) )
 	   )
     {
-    
+
       if ( pElUniversidadePrim == NULL )
       {
          pElUniversidadePrim   = paux;
@@ -65,8 +65,8 @@ void ListaUniversidades::incluaUniversidade ( Universidade* pu )
     }
     else
     {
-       //printf ("Aluno não incluído. Turma já lotada em %i alunos \n", numero_alunos );
-	   cout << "Universidade não incluída. Sistema já lotado em " << numero_univ << " universidades." << endl;
+       //printf ("Aluno nao incluido. Turma ja lotada em %i alunos \n", numero_alunos );
+	   cout << "Universidade nao incluida. Sistema ja lotado em " << numero_univ << " universidades." << endl;
     }
 
 }

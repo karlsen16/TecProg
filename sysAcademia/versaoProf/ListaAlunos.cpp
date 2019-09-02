@@ -4,12 +4,12 @@
 ListaAlunos::ListaAlunos(int na, char* n)
 {
 	numero_alunos = na;
-	cont_alunos	  = 0;           
+	cont_alunos	  = 0;
 
 	pElAlunoPrim  = NULL;
 	pElAlunoAtual = NULL;
 
-	strcpy (nome, n ); 
+	strcpy (nome, n );
 }
 
 ListaAlunos::~ListaAlunos()
@@ -19,12 +19,12 @@ ListaAlunos::~ListaAlunos()
 
 void ListaAlunos::incluaAluno ( Aluno* pa )
 {
-    // Aqui é criado um ponteiro para LAluno
+    // Aqui e criado um ponteiro para LAluno
     ElAluno* paux;
-    // Aqui é criado um objeto LAluno, sendo seu endereço armazenado em aux
+    // Aqui e criado um objeto LAluno, sendo seu endereco armazenado em aux
     paux = new ElAluno ( );
 
-    // Aqui recebe uma cópia do objeto interm.
+    // Aqui recebe uma copia do objeto interm.
     paux->setAluno ( pa );
 
     //paux->pProx = NULL;
@@ -32,7 +32,7 @@ void ListaAlunos::incluaAluno ( Aluno* pa )
 
     if ( ( cont_alunos < numero_alunos ) && ( pa != NULL) )
     {
-    
+
       if ( pElAlunoPrim == NULL )
       {
          pElAlunoPrim   = paux;
@@ -49,8 +49,8 @@ void ListaAlunos::incluaAluno ( Aluno* pa )
     }
     else
     {
-       //printf ("Aluno não incluído. Turma já lotada em %i alunos \n", numero_alunos );
-	   cout << "Aluno não incluído. Turma já lotada em " << numero_alunos << " alunos." << endl;
+       //printf ("Aluno nao incluido. Turma ja lotada em %i alunos \n", numero_alunos );
+	   cout << "Aluno nao incluido. Turma ja lotada em " << numero_alunos << " alunos." << endl;
     }
 
 }
@@ -88,7 +88,7 @@ void ListaAlunos::graveAlunos()
 
 	if (!GravacaoAlunos)
 	{
-		cerr << "Arquivo não pode ser aberto" << endl;
+		cerr << "Arquivo nao pode ser aberto" << endl;
 		fflush(stdin);
 		getchar();
 	}
@@ -99,15 +99,15 @@ void ListaAlunos::graveAlunos()
     while (pauxElAluno != NULL)
     {
 		 Aluno * pauxAluno;
-         
+
 		 pauxAluno = pauxElAluno->getAluno();
 
-		 GravacaoAlunos << pauxAluno->getId() << ' ' 
-						<< pauxAluno->getRA() << ' ' 
-						<< pauxAluno->getNome() 
+		 GravacaoAlunos << pauxAluno->getId() << ' '
+						<< pauxAluno->getRA() << ' '
+						<< pauxAluno->getNome()
 						<< endl;
          pauxElAluno = pauxElAluno->pProx;
-    } 
+    }
 
 	GravacaoAlunos.close();
 }
@@ -118,7 +118,7 @@ void ListaAlunos::recupereAlunos()
 
 	if (!RecuperacaoAlunos)
 	{
-		cerr << "Arquivo não pode ser aberto" << endl;
+		cerr << "Arquivo nao pode ser aberto" << endl;
 		fflush(stdin);
 		getchar();
 	}
@@ -128,7 +128,7 @@ void ListaAlunos::recupereAlunos()
 	while (!RecuperacaoAlunos.eof())
     {
 		Aluno * pauxAluno;
-         
+
 		pauxAluno = new Aluno(-1);
 
 		int				id;
@@ -142,10 +142,10 @@ void ListaAlunos::recupereAlunos()
 			pauxAluno->setId(id);
 			pauxAluno->setRA(RA);
 			pauxAluno->setNome(nome);
-		
-			incluaAluno (pauxAluno);  
+
+			incluaAluno (pauxAluno);
 		}
-    } 
+    }
 
 	RecuperacaoAlunos.close();
 }
@@ -153,7 +153,7 @@ void ListaAlunos::recupereAlunos()
 void ListaAlunos::limpaLista()
 {
    ElAluno *paux1, *paux2;
-   
+
    paux1 = pElAlunoPrim;
    paux2 = paux1;
 
@@ -161,7 +161,7 @@ void ListaAlunos::limpaLista()
    {
 		paux2 = paux1->pProx;
 	    delete (paux1);
-        paux1 = paux2;		 
+        paux1 = paux2;
    }
 
    pElAlunoPrim  = NULL;

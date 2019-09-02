@@ -3,46 +3,46 @@
 
 Disciplina::Disciplina(int na, char* ac):
 ObjLAlunos(na, ac)
-{ 
-    pDeptoAssociado		= NULL;  
-    pProx				= NULL;   
+{
+    pDeptoAssociado		= NULL;
+    pProx				= NULL;
     pAnte				= NULL;
-  
-    strcpy (area_conhecimento, ac ); 
+
+    strcpy (area_conhecimento, ac );
 }
 
 Disciplina::~Disciplina()
-{ 
+{
    pDeptoAssociado  = NULL;
-   pProx            = NULL;  
+   pProx            = NULL;
    pAnte            = NULL;
 }
 
 
-void  Disciplina::setId ( int i ) 		
-{ 
-	id = i; 	
+void  Disciplina::setId ( int i )
+{
+	id = i;
 }
 
-int   Disciplina::getId ( )  		
-{  
-	return id;  	
+int   Disciplina::getId ( )
+{
+	return id;
 }
 
-void  Disciplina::setNome(char* n)  	
-{  
-	strcpy(nome, n);  
+void  Disciplina::setNome(char* n)
+{
+	strcpy(nome, n);
 }
 
 char* Disciplina::getNome()
-{  
-	return nome;  
+{
+	return nome;
 }
 
 void Disciplina::setDepartamento(Departamento* pd)
 {
-  // Cada vez que um Departamento é associado a uma Disciplina,
-  // esta Disciplina passa a fazer parte da lista de disciplina 
+  // Cada vez que um Departamento e associado a uma Disciplina,
+  // esta Disciplina passa a fazer parte da lista de disciplina
   // do Departamento, por meio do comando abaixo.
   pDeptoAssociado = pd;
   pDeptoAssociado->incluaDisciplina ( this );

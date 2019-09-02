@@ -1,6 +1,5 @@
 #include "stdafx.h"
 #include "Principal.h"
-//#include "Windows.h"
 
 // A T E N c a O
 // A ordem de chamada dos construtores dos objetos (agredados) nesta classe
@@ -24,23 +23,23 @@ CCC					(cont_idAluno++),
 DDD					(cont_idAluno++),
 EEE					(cont_idAluno++),
 //Contrutores dos Objetos da Classe Departamento
-EletronicaUTFPR		(cont_idDepart++),	
+EletronicaUTFPR		(cont_idDepart++),
 MatematicaUTFPR		(cont_idDepart++),
 FisicaUTFPR			(cont_idDepart++),
 MatematicaPrinceton	(cont_idDepart++),
 FisicaPrinceton		(cont_idDepart++),
 MatematicaCambridge	(cont_idDepart++),
 FisicaCambridge		(cont_idDepart++)
-{   
+{
     diaAtual = 2;
 	mesAtual = 9;
 	anoAtual = 2019;
-    Inicializa ( ); 
+    Inicializa ( );
 	Executar();
 }
 
 void Principal::Inicializa ( )
-{   
+{
 	InicializaAlunos ( );
     InicializaUnivesidades ( );
     InicializaDepartamentos ( );
@@ -49,7 +48,7 @@ void Principal::Inicializa ( )
 }
 
 void Principal::InicializaAlunos()
-{ 
+{
 	AAA.setNome	("AAA");
 	LAlunos.incluaAluno(&AAA);
 
@@ -67,7 +66,7 @@ void Principal::InicializaAlunos()
 }
 
 void Principal::InicializaUnivesidades ( )
-{  
+{
     // Registro do(s) nome(s) da(s) universidade(s)
     UTFPR.setNome     ( "UTFPR"		);
 	LUniversidades.incluaUniversidade( &UTFPR );
@@ -80,7 +79,7 @@ void Principal::InicializaUnivesidades ( )
 }
 
 void Principal::InicializaDepartamentos ( )
-{ 
+{
     // Registro do(s) nome(s) do(s) departamento(s)
     EletronicaUTFPR.setNome		( "Eletronica UTFPR" );
 	MatematicaUTFPR.setNome		( "Matematica UTFPR" );
@@ -88,7 +87,7 @@ void Principal::InicializaDepartamentos ( )
     MatematicaPrinceton.setNome ( "Matematica Princeton" );
     FisicaPrinceton.setNome		( "Fisica Pirnceton" );
     MatematicaCambridge.setNome ( "Matematica Cambridge" );
-    FisicaCambridge.setNome		( "Fisica Cambridge" );   
+    FisicaCambridge.setNome		( "Fisica Cambridge" );
 
 	LDepartamentos.incluaDepartamento(&EletronicaUTFPR);
 	LDepartamentos.incluaDepartamento(&MatematicaUTFPR);
@@ -97,7 +96,7 @@ void Principal::InicializaDepartamentos ( )
 	LDepartamentos.incluaDepartamento(&FisicaPrinceton);
 	LDepartamentos.incluaDepartamento(&MatematicaCambridge);
 	LDepartamentos.incluaDepartamento(&FisicaCambridge);
-     
+
     // "Agregacao" do(s) Departamento(s) a(s) Universidade(s).
     UTFPR.incluaDepartamento		( &EletronicaUTFPR );
     UTFPR.incluaDepartamento		( &MatematicaUTFPR );
@@ -110,7 +109,7 @@ void Principal::InicializaDepartamentos ( )
 }
 
 void Principal::InicializaProfessores ( )
-{   
+{
 
     // Inicializacao do(s) ojeto(s) da classe Professor
     Simao.Inicializa	( 3, 10, 1976, "Jean Simao" );
@@ -176,7 +175,7 @@ void Principal::UnivOndeProfsTrabalham ( )
     Simao.OndeTrabalho ( );
     Einstein.OndeTrabalho ( );
     Newton.OndeTrabalho ( );
-    
+
 	cout << endl;
 }
 
@@ -201,7 +200,7 @@ void Principal::ListeAlunosDisc()
     Metodos2_2007.listeAlunos();
     cout << endl;
 
-    Computacao2_2007.listeAlunos();  
+    Computacao2_2007.listeAlunos();
     cout << endl;
 
 	//Metodos2_2007.listeAlunos2();
@@ -234,7 +233,7 @@ void Principal::CadDepartamento()
 	cin  >> nomeUniversidade;
 
 	univ = LUniversidades.localizar(nomeUniversidade);
-	
+
 	if ( univ != NULL )
 	{
 		cout << "Qual o nome do departamento" << endl;
@@ -366,7 +365,7 @@ void Principal::MenuCad()
             case 5:	{ cout << " FIM " << endl; }
                 break;
 
-            default:{                      
+            default:{
 					  cout << "opcao Invalida - Pressione uma tecla." << endl;
 					  getchar();
 				    }
@@ -377,7 +376,7 @@ void Principal::MenuCad()
 void Principal::MenuExe()
 {
     int op = -1;
-    
+
     while (op != 5)
     {
 		system("clear");
@@ -391,38 +390,38 @@ void Principal::MenuExe()
 
         switch (op)
         {
-			case 1:  { 
+			case 1:  {
 					   LDisciplinas.listeDisciplinas();
 					   fflush(stdin);
-					   getchar(); 	
+					   getchar();
 					 }
                 break;
-			case 2:  { 
+			case 2:  {
 				       LDepartamentos.listeDepartamentos();
 					   fflush(stdin);
-					   getchar(); 
+					   getchar();
 					 }
 				break;
-			case 3:  { 
-				       LUniversidades.listeUniversidades(); 
+			case 3:  {
+				       LUniversidades.listeUniversidades();
 				       fflush(stdin);
 					   getchar();
 					 }
 				break;
-			case 4:  { 
+			case 4:  {
 					   //cout << "coucou 1" << endl;
-					   LAlunos.listeAlunos(); 
+					   LAlunos.listeAlunos();
 					   //cout << "coucou 2" << endl;
 
 				       fflush(stdin);
-					   getchar(); 
+					   getchar();
 					 }
                 break;
             case 5:  { cout << " FIM " << endl; }
                 break;
-            default: { 
+            default: {
 					   cout << "opcao Invalida - Pressione uma tecla." << endl;
-					   getchar(); 
+					   getchar();
 					 }
         }
     }
@@ -430,7 +429,7 @@ void Principal::MenuExe()
 
 void Principal::MenuGravar()
 {
-	int op = -1; 
+	int op = -1;
     while (op != 6)
     {
 		system("clear");
@@ -463,13 +462,13 @@ void Principal::MenuGravar()
             default: { cout << "opcao Invalida - Pressione uma tecla." << endl;
 					   getchar(); }
         }
-    }	
+    }
 }
 
 void Principal::MenuRecuperar()
 {
 	int op = -1;
-    
+
     while (op != 6)
     {
 		system("clear");
@@ -503,14 +502,14 @@ void Principal::MenuRecuperar()
             default: { cout << "opcao Invalida - Pressione uma tecla." << endl;
 					   getchar(); }
         }
-    }	
+    }
 }
 
 
 void Principal::Menu()
 {
 	int op = -1;
-    
+
     while (op != 5)
     {
 		system("clear");
@@ -537,5 +536,5 @@ void Principal::Menu()
             default: { cout << "opcao Invalida - Pressione uma tecla." << endl;
 					   getchar(); }
         }
-    }	
+    }
 }

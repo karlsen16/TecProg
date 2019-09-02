@@ -4,18 +4,18 @@
 ListaDepartamentos::ListaDepartamentos(int nd, char* n)
 {
 	numero_dep			= nd;
-	cont_dep			= 0;           
+	cont_dep			= 0;
 
 	pElDepartamentoPrim  = NULL;
 	pElDepartamentoAtual = NULL;
 
-	strcpy (nome, n ); 
+	strcpy (nome, n );
 }
 
 ListaDepartamentos::~ListaDepartamentos()
 {
    ElDepartamento *paux1, *paux2;
-   
+
    paux1 = pElDepartamentoPrim;
    paux2 = paux1;
 
@@ -23,7 +23,7 @@ ListaDepartamentos::~ListaDepartamentos()
    {
 	     paux2 = paux1->pProx;
 	     delete (paux1);
-         paux1 = paux2;		 
+         paux1 = paux2;
    }
 
    pElDepartamentoPrim  = NULL;
@@ -37,23 +37,23 @@ void ListaDepartamentos::setNome (char* n)
 
 void ListaDepartamentos::incluaDepartamento ( Departamento* pd )
 {
-    // Aqui é criado um ponteiro para LAluno
+    // Aqui e criado um ponteiro para LAluno
     ElDepartamento* paux;
-    // Aqui é criado um objeto LAluno, sendo seu endereço armazenado em aux
+    // Aqui e criado um objeto LAluno, sendo seu endereco armazenado em aux
     paux = new ElDepartamento ( );
 
-    // Aqui recebe uma cópia do objeto interm.
+    // Aqui recebe uma copia do objeto interm.
     paux->setDepartamento ( pd );
 
     paux->pProx = NULL;
     paux->pAnte = NULL;
 
-    if ( 
+    if (
 		 ( ( cont_dep < numero_dep ) && ( pd != NULL) ) ||
-		 ( ( numero_dep == -1 )		 && ( pd != NULL) ) 
+		 ( ( numero_dep == -1 )		 && ( pd != NULL) )
 	   )
     {
-    
+
       if ( pElDepartamentoPrim == NULL )
       {
          pElDepartamentoPrim   = paux;
@@ -70,8 +70,8 @@ void ListaDepartamentos::incluaDepartamento ( Departamento* pd )
     }
     else
     {
-       //printf ("Aluno não incluído. Turma já lotada em %i alunos \n", numero_alunos );
-	   cout << "Departamento não incluído. Quantia de deps já lotada em " << numero_dep << " departamentos." << endl;
+       //printf ("Aluno nao incluido. Turma ja lotada em %i alunos \n", numero_alunos );
+	   cout << "Departamento nao incluido. Quantia de deps ja lotada em " << numero_dep << " departamentos." << endl;
     }
 }
 

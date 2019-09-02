@@ -8,7 +8,7 @@
 class Universidade;
 class Disciplina;
 class ListaDisciplinas;
-      
+
 class Departamento
 {
   private:
@@ -16,9 +16,9 @@ class Departamento
 
 	 int id;
 
-     // Associação para com uma Universidade.
+     // Associacao para com uma Universidade.
      Universidade* pUniv;
-     // Associação para com várias Disciplinas.
+     // Associacao para com varias Disciplinas.
      ListaDisciplinas* pObjLDisciplinas;
 
   public:
