@@ -4,19 +4,19 @@
 class lDisciplina {
 private:
   char nome[150];
-  int ID, nDisciplinas, contDisciplinas;
+  int nDisciplinas, contDisciplinas;
   elDisciplina *pDisIni, *pDisAtual;
 
 public:
-  lDisciplina (char *S = "", int n = 1000, int id = 0);
+  lDisciplina (char *S = "", int n = 1000);
   ~lDisciplina ();
   void setNome (char *S);
   char* getNome ();
-  void setID (int id);
-  int getID ();
   void setNum (int n);
   void addDis (Disciplina *D);
-  void removeDis (Disciplina *D);
+  Disciplina* getDis (char *S);
+  elDisciplina* getelDis (char *S);
+  void removeDis (char *S);
   void imprimeDis ();
   void imprimeDis2 ();
 };

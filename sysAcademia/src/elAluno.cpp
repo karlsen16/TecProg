@@ -1,11 +1,10 @@
 #include "stdafx.h"
 #include "elAluno.h"
 
-elAluno::elAluno (Aluno *L, int id) {
+elAluno::elAluno (Aluno *L) {
   alu = L;
   prox = ant = NULL;
   P1 = P2 = F = 0;
-  setID(id);
   faltas = 0;
 }
 
@@ -16,14 +15,6 @@ elAluno::~elAluno () {
 
 Aluno* elAluno::getAluno () {
   return alu;
-}
-
-void elAluno::setID (int id) {
-  ID = id;
-}
-
-int elAluno::getID () {
-  return ID;
 }
 
 void elAluno::setProx (elAluno *p) {

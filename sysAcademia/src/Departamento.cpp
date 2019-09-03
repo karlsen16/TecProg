@@ -68,8 +68,16 @@ void Departamento::addDis (Disciplina *D) {
   listaDisciplinas->addDis(D);
 }
 
-void Departamento::removeDis (Disciplina *D) {
-  listaDisciplinas->removeDis(D);
+Disciplina* Departamento::getDis (char *S) {
+  return listaDisciplinas->getDis(S);
+}
+
+Disciplina* Departamento::getelDis (char *S) {
+  return listaDisciplinas->getelDis(S);
+}
+
+void Departamento::removeDis (char *S) {
+  listaDisciplinas->removeDis(S);
 }
 
 void Departamento::imprimeDis () {
@@ -84,8 +92,12 @@ void Departamento::addProfessor (Professor *P) {
   listaProfessores->addProfessor(P);
 }
 
-void Departamento::removeProfessor (Professor *P) {
-  listaProfessores->removeProfessor(P);
+Professor* Departamento::getPrf (char *S) {
+  return listaProfessores->getPrf(S);
+}
+
+void Departamento::removeProfessor (char *S) {
+  listaProfessores->removeProfessor(S);
 }
 
 void Departamento::imprimeProfs () {

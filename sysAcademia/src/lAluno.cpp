@@ -1,9 +1,8 @@
 #include "stdafx.h"
 #include "lAluno.h"
 
-lAluno::lAluno (char *S, int n, int id) {
+lAluno::lAluno (char *S, int n) {
   setNome(S);
-  setID(id);
   setNum(n);
   contAlunos = 0;
   pAluIni = pAluAtual = NULL;
@@ -27,43 +26,8 @@ char* lAluno::getNome () {
   return nome;
 }
 
-void lAluno::setID (int id) {
-  ID = id;
-}
-
-int lAluno::getID () {
-  return ID;
-}
-
 void lAluno::setNum (int n) {
   nAlunos = n;
-}
-
-void lAluno::findAluno (elAluno *peao, elAluno *aux, char *S, int op) {
-  peao = pAluIni;
-  aux = NULL;
-  switch(op) {
-    case 0: {
-      while(peao && strcmp(peao->getAluno()->getNome(), S) < 0) {
-        aux = peao;
-        peao = peao->getProx();
-      }
-      break;
-    }
-    case 1: {
-      while(peao && strcmp(peao->getAluno()->getNome(), S) > 0) {
-        aux = peao;
-        peao = peao->getProx();
-      }
-      break;
-    }
-    default: {
-      while(peao && strcmp(peao->getAluno()->getNome(), S) != 0) {
-        aux = peao;
-        peao = peao->getProx();
-      }
-    }
-  }
 }
 
 void lAluno::addAluno (Aluno *L) {
@@ -72,8 +36,11 @@ void lAluno::addAluno (Aluno *L) {
     if(!pAluIni)
       pAluAtual = pAluIni = novo;
     else {
-      elAluno *peao, *aux;
-      findAluno(peao, aux, L->getNome(), 0);
+      elAluno *peao = pAluIni, *aux = NULL;
+      while(peao && strcmp(peao->getAluno()->getNome(), L->getNome()) < 0) {
+        aux = peao;
+        peao = peao->getProx();
+      }
       novo->setProx(peao);
       novo->setAnt(aux);
       if(peao)
@@ -99,11 +66,27 @@ Aluno* lAluno::getAluno (char *S) {
     if(peao)
       return peao->getAluno();
     else
-      cout << "\nO aluno " << S << " nao pertence a Disciplina"
+      cout << "\nO Aluno " << S << " nao pertence a Disciplina"
            << getNome() << ".\n";
   }
   else
     cout << "\nNao e possivel fazer esta operacao. Erro:(12).\n";
+  return NULL;
+}
+
+elAluno* lAluno::getelAluno (char *S) {
+  if(S && contAlunos > 0) {
+    elAluno *peao = pAluIni;
+    while(peao && strcmp(peao->getAluno()->getNome(), S) != 0)
+      peao = peao->getProx();
+    if(peao)
+      return peao;
+    else
+      cout << "\nO el.Aluno " << S << " nao pertence a Disciplina"
+           << getNome() << ".\n";
+  }
+  else
+    cout << "\nNao e possivel fazer esta operacao. Erro:(13).\n";
   return NULL;
 }
 
@@ -123,7 +106,7 @@ void lAluno::removeAluno (char *S) {
            << getNome() << ".\n";
   }
   else
-    cout << "\nNao e possivel fazer esta operacao. Erro:(13).\n";
+    cout << "\nNao e possivel fazer esta operacao. Erro:(14).\n";
 }
 
 void lAluno::imprimeAlu () {

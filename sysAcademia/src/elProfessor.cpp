@@ -1,10 +1,9 @@
 #include "stdafx.h"
 #include "elProfessor.h"
 
-elProfessor::elProfessor (Professor *P, int id) {
+elProfessor::elProfessor (Professor *P) {
   prof = P;
   prox = ant = NULL;
-  setID(id);
 }
 
 elProfessor::~elProfessor () {
@@ -12,16 +11,8 @@ elProfessor::~elProfessor () {
   prox = ant = NULL;
 }
 
-Professor* elProfessor::getProfessor () {
+Professor* elProfessor::getPrf () {
   return prof;
-}
-
-void elProfessor::setID (int id) {
-  ID = id;
-}
-
-int elProfessor::getID () {
-  return ID;
 }
 
 void elProfessor::setProx (elProfessor *p) {

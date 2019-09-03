@@ -70,8 +70,16 @@ void Disciplina::addAluno (Aluno *L) {
   listaAlunos->addAluno(L);
 }
 
-void Disciplina::removeAluno (Aluno *L) {
-  listaAlunos->removeAluno(L);
+Aluno* Disciplina::getAluno (char *S) {
+  return listaAlunos->getAluno(S);
+}
+
+elAluno* Disciplina::getelAluno (char *S) {
+  return listaAlunos->getelAluno(S);
+}
+
+void Disciplina::removeAluno (char *S) {
+  listaAlunos->removeAluno(S);
 }
 
 void Disciplina::imprimeAlu () {

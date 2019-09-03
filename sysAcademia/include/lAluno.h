@@ -8,15 +8,14 @@ private:
   elAluno *pAluIni, *pAluAtual;
 
 public:
-  lAluno (char *S = "", int n = 45, int id = 0);
+  lAluno (char *S = "", int n = 45);
   ~lAluno ();
   void setNome (char *S);
   char* getNome ();
-  void setID (int id);
-  int getID ();
   void setNum (int n);
   void addAluno (Aluno *L);
   Aluno* getAluno (char *S);
+  elAluno* getelAluno (char *S);
   void removeAluno (char *S);
   void imprimeAlu ();
   void imprimeAlu2 ();

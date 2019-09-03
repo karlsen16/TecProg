@@ -23,12 +23,17 @@ public:
   void setUni (Universidade *U);
   Universidade* getUni ();
   void imprimeDep ();
+
   void addDis (Disciplina *D);
-  void removeDis (Disciplina *D);
+  Disciplina* getDis (char *S);
+  elDisciplina* getelDis (char *S);
+  void removeDis (char *S);
   void imprimeDis ();
   void imprimeDis2 ();
+
   void addProfessor (Professor *P);
-  void removeProfessor (Professor *P);
+  Professor* getPrf (char *S);
+  void removeProfessor (char *S);
   void imprimeProfs ();
   void imprimeProfs2 ();
 };

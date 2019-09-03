@@ -1,9 +1,8 @@
 #include "stdafx.h"
 #include "lProfessor.h"
 
-lProfessor::lProfessor (char *S, int n, int id) {
+lProfessor::lProfessor (char *S, int n) {
   setNome(S);
-  setID(id);
   setNum(n);
   contProfessores = 0;
   pPrfIni = pPrfAtual = NULL;
@@ -27,26 +26,18 @@ char* lProfessor::getNome () {
   return nome;
 }
 
-void lProfessor::setID (int id) {
-  ID = id;
-}
-
-int lProfessor::getID () {
-  return ID;
-}
-
 void lProfessor::setNum (int n) {
   nProfessores = n;
 }
 
 void lProfessor::addProfessor (Professor *P) {
-  if(contProfessores < nProfessores) {
+  if(P && contProfessores < nProfessores) {
     elProfessor *novo = new elProfessor(P);
     if(!pPrfIni)
       pPrfAtual = pPrfIni = novo;
     else {
       elProfessor *peao = pPrfIni, *aux = NULL;
-      while(peao && strcmp(peao->getProfessor()->getNome(), P->getNome()) < 0) {
+      while(peao && strcmp(peao->getPrf()->getNome(), P->getNome()) < 0) {
         aux = peao;
         peao = peao->getProx();
       }
@@ -64,13 +55,29 @@ void lProfessor::addProfessor (Professor *P) {
     contProfessores++;
   }
   else
-    cout << "Nao e possivel fazer esta operacao. Erro (009).\n";
+    cout << "Nao e possivel fazer esta operacao. Erro (21).\n";
 }
 
-void lProfessor::removeProfessor (Professor *P) {
-  if(contProfessores > 0) {
+Professor* lProfessor::getPrf (char *S) {
+  if(S && contProfessores > 0) {
     elProfessor *peao = pPrfIni;
-    while(peao && strcmp(peao->getProfessor()->getNome(), P->getNome()) != 0)
+    while(peao && strcmp(peao->getPrf()->getNome(), S) != 0)
+      peao = peao->getProx();
+    if(peao)
+      return peao->getPrf();
+    else
+      cout << "\nO Professor " << S << " nao pertence ao Departamento "
+           << getNome() << ".\n";
+  }
+  else
+    cout << "\nNao e possivel fazer esta operacao. Erro:(22).\n";
+  return NULL;
+}
+
+void lProfessor::removeProfessor (char *S) {
+  if(S && contProfessores > 0) {
+    elProfessor *peao = pPrfIni;
+    while(peao && strcmp(peao->getPrf()->getNome(), S) != 0)
       peao = peao->getProx();
     if(peao) {
       peao->getAnt()->setProx(peao->getProx());
@@ -79,11 +86,11 @@ void lProfessor::removeProfessor (Professor *P) {
       contProfessores--;
     }
     else
-      cout << "\nO aluno " << P->getNome() << " nao pertence a Disciplina"
+      cout << "\nO Professor " << S << " nao pertence ao Departamento "
            << getNome() << ".\n";
   }
   else
-    cout << "Nao e possivel fazer esta operacao. Erro (010).\n";
+    cout << "Nao e possivel fazer esta operacao. Erro (23).\n";
 }
 
 void lProfessor::imprimeProfs () {
@@ -92,7 +99,7 @@ void lProfessor::imprimeProfs () {
   if(contProfessores > 0) {
     cout << "\t\t\tLista de Professores:\n";
     while(peao) {
-      cout << "\t\t\t" << cont << "# " << peao->getProfessor()->getNome() << "\n";
+      cout << "\t\t\t" << cont << "# " << peao->getPrf()->getNome() << "\n";
       cont++;
       peao = peao->getProx();
     }
@@ -104,7 +111,7 @@ void lProfessor::imprimeProfs2 () {
   int cont = 1;
   cout << "\t\t\tLista de Professores:\n";
   while(peao) {
-    cout << "\t\t\t" << cont << "# " << peao->getProfessor()->getNome() << "\n";
+    cout << "\t\t\t" << cont << "# " << peao->getPrf()->getNome() << "\n";
     cont++;
     peao = peao->getAnt();
   }

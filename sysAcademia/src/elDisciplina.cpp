@@ -1,11 +1,10 @@
 #include "stdafx.h"
 #include "elDisciplina.h"
 
-elDisciplina::elDisciplina (Disciplina *D, int id) {
+elDisciplina::elDisciplina (Disciplina *D) {
   dis = D;
   prox = ant = NULL;
   prof = NULL;
-  setID(id);
 }
 
 elDisciplina::~elDisciplina () {
@@ -16,14 +15,6 @@ elDisciplina::~elDisciplina () {
 
 Disciplina* elDisciplina::getDis () {
   return dis;
-}
-
-void elDisciplina::setID (int id) {
-  ID = id;
-}
-
-int elDisciplina::getID () {
-  return ID;
 }
 
 void elDisciplina::setProx (elDisciplina *D) {

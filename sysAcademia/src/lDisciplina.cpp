@@ -1,9 +1,8 @@
 #include "stdafx.h"
 #include "lDisciplina.h"
 
-lDisciplina::lDisciplina (char *S, int n, int id) {
+lDisciplina::lDisciplina (char *S, int n) {
   setNome(S);
-  setID(id);
   setNum(n);
   contDisciplinas = 0;
   pDisIni = pDisAtual = NULL;
@@ -27,38 +26,74 @@ char* lDisciplina::getNome () {
   return nome;
 }
 
-void lDisciplina::setID (int id) {
-  ID = id;
-}
-
-int lDisciplina::getID () {
-  return ID;
-}
-
 void lDisciplina::setNum (int n) {
   nDisciplinas = n;
 }
 
 void lDisciplina::addDis (Disciplina *D) {
-  if(contDisciplinas < nDisciplinas) {
+  if(D && contDisciplinas < nDisciplinas) {
     elDisciplina *novo = new elDisciplina(D);
     if(!pDisIni)
       pDisIni = pDisAtual = novo;
     else {
-      pDisAtual->setProx(novo);
-      novo->setAnt(pDisAtual);
-      pDisAtual = novo;
+      elDisciplina *peao = pDisIni, *aux = NULL;
+      while(peao && strcmp(peao->getDis()->getNome(), D->getNome()) < 0) {
+        aux = peao;
+        peao = peao->getProx();
+      }
+      novo->setProx(peao);
+      novo->setAnt(aux);
+      if(peao)
+        peao->setAnt(novo);
+      if(aux)
+        aux->setProx(novo);
+      if(!novo->getProx())
+        pDisAtual = novo;
+      if(!novo->getAnt())
+        pDisIni = novo;
     }
     contDisciplinas++;
   }
   else
-    cout << "Nao e possivel fazer esta operacao. Erro (005).\n";
+    cout << "Nao e possivel fazer esta operacao. Erro (31).\n";
 }
 
-void lDisciplina::removeDis (Disciplina *D) {
-  if(D && contDisciplinas > 0) {
+Disciplina* lDisciplina::getDis (char *S) {
+  if(S && contDisciplinas > 0) {
     elDisciplina *peao = pDisIni;
-    while(peao && strcmp(peao->getDis()->getNome(), D->getNome()) != 0)
+    while(peao && strcmp(peao->getDis()->getNome(), S) != 0)
+      peao = peao->getProx();
+    if(peao)
+      return peao->getDis();
+    else
+      cout << "\nA Disciplina " << S << " nao pertence ao Departamento "
+           << getNome() << ".\n";
+  }
+  else
+    cout << "\nNao e possivel fazer esta operacao. Erro:(32).\n";
+  return NULL;
+}
+
+elDisciplina* lDisciplina::getelDis (char *S) {
+  if(S && contDisciplinas > 0) {
+    elDisciplina *peao = pDisIni;
+    while(peao && strcmp(peao->getDis()->getNome(), S) != 0)
+      peao = peao->getProx();
+    if(peao)
+      return peao;
+    else
+      cout << "\nA el.Disciplina " << S << " nao pertence ao Departamento "
+           << getNome() << ".\n";
+  }
+  else
+    cout << "\nNao e possivel fazer esta operacao. Erro:(33).\n";
+  return NULL;
+}
+
+void lDisciplina::removeDis (char *S) {
+  if(S && contDisciplinas > 0) {
+    elDisciplina *peao = pDisIni;
+    while(peao && strcmp(peao->getDis()->getNome(), S) != 0)
       peao = peao->getProx();
     if(peao) {
       peao->getAnt()->setProx(peao->getProx());
@@ -67,12 +102,11 @@ void lDisciplina::removeDis (Disciplina *D) {
       contDisciplinas--;
     }
     else
-      cout << "\nA ";
-      D->imprimeDis();
-      cout << " nao pertence ao Departamento " << getNome() << ".\n";
+      cout << "\nA Disciplina " << S << " nao pertence ao Departamento "
+           << getNome() << ".\n";
   }
   else
-    cout << "Nao e possivel fazer esta operacao. Erro (006).\n";
+    cout << "Nao e possivel fazer esta operacao. Erro (34).\n";
 }
 
 void lDisciplina::imprimeDis () {

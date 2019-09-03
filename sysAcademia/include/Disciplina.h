@@ -25,7 +25,9 @@ public:
   Departamento* getDep ();
   void imprimeDis ();
   void addAluno (Aluno *L);
-  void removeAluno (Aluno *L);
+  Aluno* getAluno (char *S);
+  elAluno* getelAluno (char *S);
+  void removeAluno (char *S);
   void imprimeAlu ();
   void imprimeAlu2 ();
 };

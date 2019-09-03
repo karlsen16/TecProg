@@ -4,19 +4,18 @@
 class lProfessor {
 private:
   char nome[150];
-  int ID, nProfessores, contProfessores;
+  int nProfessores, contProfessores;
   elProfessor *pPrfIni, *pPrfAtual;
 
 public:
-  lProfessor (char *S = "", int n = 1000, int id = 0);
+  lProfessor (char *S = "", int n = 1000);
   ~lProfessor ();
   void setNome (char *S);
   char* getNome ();
-  void setID (int id);
-  int getID ();
   void setNum (int n);
   void addProfessor (Professor *P);
-  void removeProfessor (Professor *P);
+  Professor* getPrf (char *S);
+  void removeProfessor (char *S);
   void imprimeProfs ();
   void imprimeProfs2 ();
 };
