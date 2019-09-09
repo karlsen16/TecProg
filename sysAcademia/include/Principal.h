@@ -10,7 +10,7 @@ public:
   ~Principal ();
 
   void Menu ();
-  void voltar ();
+  void transicao (char *S);
   void esperar ();
 
   void MenuCad ();
@@ -26,6 +26,9 @@ public:
   void ExeDisciplina ();
   void ExeProfessor ();
   void ExeAluno ();
+
+  void Carregar ();
+  void Gravar ();
 
 
 

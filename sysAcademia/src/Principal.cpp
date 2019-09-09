@@ -4,9 +4,8 @@
 
 Principal::Principal ():
 listaUniversidades("Universidades registradas no sistema", 3) {
+  Carregar();
   Menu();
-  // Init();
-  // Executar();
 }
 
 Principal::~Principal () {
@@ -14,31 +13,33 @@ Principal::~Principal () {
 
 void Principal::Menu () {
   int op = -1;
-  while(op != 3) {
+  while(op != 4) {
     system("clear");
     cout << "\n\n    ....................\n";
     cout << "<--{ Informe sua opcao: }-->\n";
     cout << "<--{--------------------}-->\n";
     cout << "<--{  1 : Cadastrar     }-->\n";
     cout << "<--{  2 : Executar      }-->\n";
-    cout << "<--{  3 : Sair          }-->\n";
+    cout << "<--{  3 : Gravar        }-->\n";
+    cout << "<--{  4 : Sair          }-->\n";
     cout << "    ''''´´´´´´``````''''\n\n";
     cin >> op;
 
     switch(op) {
       case 1: MenuCad(); break;
       case 2: MenuExe(); break;
-      case 3: cout << "\n\n<--{------  FIM  -------}-->\n"; break;
+      case 3: Gravar(); break;
+      case 4: cout << "\n\n<--{------  FIM  -------}-->\n"; break;
       default: cout << "Opcao invalida.\n"; usleep(1000000);
     }
   }
 }
 
-void Principal::voltar () {
+void Principal::transicao (char *S) {
   system("clear");
   int i = 0, cont = 0;
   while(i < TE) {
-    cout << "     Voltando";
+    cout << "     " << S;
     int j;
     for(j = 0; j < cont;j++) {cout << ".";}
     cout << "\n";
@@ -77,7 +78,7 @@ void Principal::MenuCad () {
       case 3: CadDisciplina(); break;
       case 4: CadProfessor(); break;
       case 5: CadAluno(); break;
-      case 6: voltar(); break;
+      case 6: transicao((char*)"Voltando"); break;
       default: cout << "Opcao invalida.\n"; usleep(1000000);
     }
   }
@@ -185,38 +186,38 @@ void Principal::MenuExe () {
         system("clear");
         ExeUniversidade();
         esperar();
-        voltar();
+        transicao((char*)"Voltando");
         break;
       }
       case 2: {
         system("clear");
         ExeDepartamento();
         esperar();
-        voltar();
+        transicao((char*)"Voltando");
         break;
       }
       case 3: {
         system("clear");
         ExeDisciplina();
         esperar();
-        voltar();
+        transicao((char*)"Voltando");
         break;
       }
       case 4: {
         system("clear");
         ExeProfessor();
         esperar();
-        voltar();
+        transicao((char*)"Voltando");
         break;
       }
       case 5: {
         system("clear");
         ExeAluno();
         esperar();
-        voltar();
+        transicao((char*)"Voltando");
         break;
       }
-      case 6: voltar(); break;
+      case 6: transicao((char*)"Voltando"); break;
       default: cout << "Opcao invalida.\n"; usleep(1000000);
     }
   }
@@ -262,7 +263,19 @@ void Principal::ExeAluno () {
   listaUniversidades.getUni(S)->getDep(D)->getDis(I)->imprimeAlus();
 }
 
+void Principal::Carregar () {
+  transicao((char*)"Carregando");
+  system("clear");
+  cout << "     Carregado!\n";
+  usleep(1000000);
+}
 
+void Principal::Gravar () {
+  transicao((char*)"Gravando");
+  system("clear");
+  cout << "     Gravado!\n";
+  usleep(1000000);
+}
 
 
 /*void Principal::Init () {
