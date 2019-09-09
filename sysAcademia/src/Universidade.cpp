@@ -29,10 +29,6 @@ int Universidade::getID () {
   return ID;
 }
 
-void Universidade::imprimeUni () {
-  cout << "Universidade " << getNome();
-}
-
 void Universidade::addDep (Departamento *D) {
   listaDepartamentos->addDep(D);
 }
@@ -45,14 +41,6 @@ void Universidade::removeDep (char *S) {
   listaDepartamentos->removeDep(S);
 }
 
-void Universidade::imprimeDep (char *S) {
-  listaDepartamentos->imprimeDep(S);
-}
-
-void Universidade::imprimeDepS () {
-  listaDepartamentos->imprimeDepS();
-}
-
-void Universidade::imprimeTudo () {
-  listaDepartamentos->imprimeTudo();
+void Universidade::imprimeDeps () {
+  listaDepartamentos->imprimeDeps();
 }

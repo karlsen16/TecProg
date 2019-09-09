@@ -17,6 +17,5 @@ public:
   Disciplina* getDis (char *S);
   void removeDis (char *S);
   elDisciplina* getelDis (char *S);
-  void imprimeDis ();
-  void imprimeDis2 ();
+  void imprimeDiss ();
 };

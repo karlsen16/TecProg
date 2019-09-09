@@ -22,17 +22,15 @@ public:
   int getID ();
   void setUni (Universidade *U);
   Universidade* getUni ();
-  void imprimeDep ();
 
   void addDis (Disciplina *D);
   Disciplina* getDis (char *S);
   void removeDis (char *S);
-  void imprimeDis ();
-  void imprimeDis2 ();
+  elDisciplina* getelDis (char *S);
+  void imprimeDiss ();
 
-  void addProfessor (Professor *P);
+  void addPrf (Professor *P);
   Professor* getPrf (char *S);
-  void removeProfessor (char *S);
-  void imprimeProfs ();
-  void imprimeProfs2 ();
+  void removePrf (char *S);
+  void imprimePrfs ();
 };

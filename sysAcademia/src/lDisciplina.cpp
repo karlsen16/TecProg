@@ -109,24 +109,17 @@ elDisciplina* lDisciplina::getelDis (char *S) {
   return NULL;
 }
 
-void lDisciplina::imprimeDis () {
-  elDisciplina *peao = pDisIni;
-  while(peao) {
-    cout << "\t\tA Disciplina " << peao->getDis()->getNome()
-    << " da area " << peao->getDis()->getArea()
-    << " pertence ao Departamento " << getNome() << "\n";
-    peao->getDis()->imprimeAlu();
-    peao = peao->getProx();
+void lDisciplina::imprimeDiss () {
+  if(contDisciplinas > 0) {
+    cout << "Lista de Disciplinas:\n";
+    elDisciplina *peao = pDisIni;
+    int cont = 1;
+    while(peao) {
+      cout << "\t" << cont << "# " << peao->getDis()->getNome() << "\n";
+      cont++;
+      peao = peao->getProx();
+    }
   }
-}
-
-void lDisciplina::imprimeDis2 () {
-  elDisciplina *peao = pDisAtual;
-  while(peao) {
-    cout << "\t\tA Disciplina " << peao->getDis()->getNome()
-    << " da area " << peao->getDis()->getArea()
-    << " pertence ao Departamento " << getNome() << "\n";
-    peao->getDis()->imprimeAlu2();
-    peao = peao->getAnt();
-  }
+  else
+    cout << "Nao e possivel fazer esta operacao. Erro (39).\n";
 }

@@ -16,5 +16,5 @@ public:
   void addUni (Universidade *U);
   Universidade* getUni (char *S);
   void removeUni (char *S);
-  void imprimeUni (char *S);
+  void imprimeUnis ();
 };

@@ -62,10 +62,6 @@ Departamento* Disciplina::getDep () {
   return dep;
 }
 
-void Disciplina::imprimeDis () {
-  cout << "Disciplina " << getNome() << ".\n";
-}
-
 void Disciplina::addAluno (Aluno *L) {
   listaAlunos->addAluno(L);
 }
@@ -82,10 +78,6 @@ elAluno* Disciplina::getelAluno (char *S) {
   return listaAlunos->getelAluno(S);
 }
 
-void Disciplina::imprimeAlu () {
-  listaAlunos->imprimeAlu();
-}
-
-void Disciplina::imprimeAlu2 () {
-  listaAlunos->imprimeAlu2();
+void Disciplina::imprimeAlus () {
+  listaAlunos->imprimeAlus();
 }

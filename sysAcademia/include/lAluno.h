@@ -17,7 +17,6 @@ public:
   Aluno* getAluno (char *S);
   void removeAluno (char *S);
   elAluno* getelAluno (char *S);
-  void imprimeAlu ();
-  void imprimeAlu2 ();
+  void imprimeAlus ();
   void faltou (char *S);
 };

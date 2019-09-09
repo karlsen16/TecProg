@@ -5,7 +5,7 @@ Aluno::Aluno (): Pessoa() {
   setRA(0);
 }
 
-Aluno::Aluno (int diaN, int mesN, int anoN, char *S, int id, int ra):
+Aluno::Aluno (int diaN, int mesN, int anoN, char *S, int ra, int id):
   Pessoa(diaN, mesN, anoN, S, id) {
   setRA(ra);
 }

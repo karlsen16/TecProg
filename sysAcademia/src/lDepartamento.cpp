@@ -93,28 +93,17 @@ void lDepartamento::removeDep (char *S) {
     cout << "Nao e possivel fazer esta operacao. Erro (43).\n";
 }
 
-void lDepartamento::imprimeDep (char *S) {
-  getDep(S)->imprimeDep();
-}
-
-void lDepartamento::imprimeDepS () {
-  cout << "\nDepartamentos da Universidade " << getNome() << ":\n";
-  elDepartamento *peao = pDepIni;
-  while(peao) {
-    cout << "\t";
-    peao->getDep()->imprimeDep();
-    peao = peao->getProx();
+void lDepartamento::imprimeDeps () {
+  if(contDepartamentos > 0) {
+    cout << "Lista de Departamentos:\n";
+    elDepartamento *peao = pDepIni;
+    int cont = 1;
+    while(peao) {
+      cout << "\t" << cont << "# " << peao->getDep()->getNome() << "\n";
+      cont++;
+      peao = peao->getProx();
+    }
   }
-}
-
-void lDepartamento::imprimeTudo () {
-  cout << "\nDepartamentos da Universidade " << getNome() << ":\n";
-  elDepartamento *peao = pDepIni;
-  while(peao) {
-    cout << "\t";
-    peao->getDep()->imprimeDep();
-    cout << "\n";
-    peao->getDep()->imprimeDis();
-    peao = peao->getProx();
-  }
+  else
+    cout << "Nao e possivel fazer esta operacao. Erro (49).\n";
 }

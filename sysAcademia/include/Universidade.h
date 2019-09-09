@@ -14,12 +14,9 @@ public:
   char* getNome ();
   void setID (int id);
   int getID ();
-  void imprimeUni ();
 
   void addDep (Departamento *D);
   Departamento* getDep (char *S);
   void removeDep (char *S);
-  void imprimeDep (char *S);
-  void imprimeDepS ();
-  void imprimeTudo ();
+  void imprimeDeps ();
 };

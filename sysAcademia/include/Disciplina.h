@@ -23,11 +23,9 @@ public:
   char* getArea ();
   void setDep (Departamento *D);
   Departamento* getDep ();
-  void imprimeDis ();
   void addAluno (Aluno *L);
   Aluno* getAluno (char *S);
   void removeAluno (char *S);
   elAluno* getelAluno (char *S);
-  void imprimeAlu ();
-  void imprimeAlu2 ();
+  void imprimeAlus ();
 };

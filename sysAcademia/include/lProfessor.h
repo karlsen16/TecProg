@@ -13,9 +13,8 @@ public:
   void setNome (char *S);
   char* getNome ();
   void setNum (int n);
-  void addProfessor (Professor *P);
+  void addPrf (Professor *P);
   Professor* getPrf (char *S);
-  void removeProfessor (char *S);
-  void imprimeProfs ();
-  void imprimeProfs2 ();
+  void removePrf (char *S);
+  void imprimePrfs ();
 };

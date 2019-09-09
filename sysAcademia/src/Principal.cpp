@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "Principal.h"
+#define TE 6
 
 Principal::Principal ():
 listaUniversidades("Universidades registradas no sistema", 3) {
@@ -9,27 +10,6 @@ listaUniversidades("Universidades registradas no sistema", 3) {
 }
 
 Principal::~Principal () {
-}
-
-void Principal::voltar () {
-  system("clear");
-  int i = 0, cont = 0;
-  while(i < 6) {
-    cout << "     Voltando";
-    int j;
-    for(j = 0; j < cont;j++) {cout << ".";}
-    cout << "\n";
-    cont = (cont+1)%6;
-    usleep(50000);
-    system("clear");
-    i++;
-  }
-}
-
-void Principal::esperar () {
-  char c = 'n';
-  cout << "\n\n Informe quando quiser voltar digitando 'y'.\n";
-  do {cin >> c;} while(c != 'y');
 }
 
 void Principal::Menu () {
@@ -52,6 +32,27 @@ void Principal::Menu () {
       default: cout << "Opcao invalida.\n"; usleep(1000000);
     }
   }
+}
+
+void Principal::voltar () {
+  system("clear");
+  int i = 0, cont = 0;
+  while(i < TE) {
+    cout << "     Voltando";
+    int j;
+    for(j = 0; j < cont;j++) {cout << ".";}
+    cout << "\n";
+    cont = (cont+1)%6;
+    usleep(50000);
+    system("clear");
+    i++;
+  }
+}
+
+void Principal::esperar () {
+  char c = 'n';
+  cout << "\n\n Informe quando quiser voltar digitando 'y'.\n";
+  do {cin >> c;} while(c != 'y');
 }
 
 void Principal::MenuCad () {
@@ -82,6 +83,87 @@ void Principal::MenuCad () {
   }
 }
 
+void Principal::CadUniversidade () {
+  char S[150];
+  int qnt;
+  Universidade *uni = NULL;
+  cout << "Qual o nome da Universidade?\n";
+  cin >> S;
+  cout << "Quantos Departamentos ela tem?\n";
+  cin >> qnt;
+  uni = new Universidade((char*)S, qnt, 0);
+  listaUniversidades.addUni(uni);
+}
+
+void Principal::CadDepartamento () {
+  char S[150], D[150];
+  int qnt, qntp;
+  Departamento *dep = NULL;
+  cout << "Qual o nome da Universidade?\n";
+  cin >> S;
+  cout << "Qual o nome do Departamento?\n";
+  cin >> D;
+  cout << "Quantas Disciplinas ele tem?\n";
+  cin >> qnt;
+  cout << "Quantos Professores ele tem?\n";
+  cin >> qntp;
+  dep = new Departamento((char*)D, listaUniversidades.getUni(S), qnt, qntp, 0);
+}
+
+void Principal::CadDisciplina () {
+  char S[150], D[150], I[150], A[150];
+  int qnt, qnta;
+  Disciplina *dis = NULL;
+  cout << "Qual o nome da Universidade?\n";
+  cin >> S;
+  cout << "Qual o nome do Departamento?\n";
+  cin >> D;
+  cout << "Qual o nome da Disciplina?\n";
+  cin >> I;
+  cout << "Qual o nome da Area?\n";
+  cin >> A;
+  cout << "Quantos Alunos ela tem?\n";
+  cin >> qnta;
+  dis = new Disciplina((char*)I, (char*)A, listaUniversidades.getUni(S)->getDep(D), qnta, 0);
+}
+
+void Principal::CadProfessor () {
+  char S[150], D[150], P[50];
+  int dia, mes, ano;
+  Professor *prf = NULL;
+  cout << "Qual o nome da Universidade?\n";
+  cin >> S;
+  cout << "Qual o nome do Departamento?\n";
+  cin >> D;
+  cout << "Qual o nome do Professor?\n";
+  cin >> P;
+  cout << "Qual a data de nascimento?\n";
+  cin >> dia >> mes >> ano;
+  prf = new Professor(dia, mes, ano, (char*)P, listaUniversidades.getUni(S),
+      listaUniversidades.getUni(S)->getDep(D), 0);
+
+}
+
+void Principal::CadAluno () {
+  char S[150], D[150], I[150], A[150];
+  int dia, mes, ano, ra;
+  Aluno *alu = NULL;
+  cout << "Qual o nome da Universidade?\n";
+  cin >> S;
+  cout << "Qual o nome do Departamento?\n";
+  cin >> D;
+  cout << "Qual o nome da Disciplina?\n";
+  cin >> I;
+  cout << "Qual o nome do Aluno?\n";
+  cin >> A;
+  cout << "Qual a data de nascimento?\n";
+  cin >> dia >> mes >> ano;
+  cout << "Qual o RA?\n";
+  cin >> ra;
+  alu = new Aluno(dia, mes, ano, (char*)A, ra, 0);
+  listaUniversidades.getUni(S)->getDep(D)->getDis(I)->addAluno(alu);
+}
+
 void Principal::MenuExe () {
   int op = -1;
   while(op != 6) {
@@ -101,35 +183,35 @@ void Principal::MenuExe () {
     switch(op) {
       case 1: {
         system("clear");
-        // listaUniversidades.listarUni();
+        ExeUniversidade();
         esperar();
         voltar();
         break;
       }
       case 2: {
         system("clear");
-        // listaUniversidades.listarDep();
+        ExeDepartamento();
         esperar();
         voltar();
         break;
       }
       case 3: {
         system("clear");
-        // listaUniversidades.listarDis();
+        ExeDisciplina();
         esperar();
         voltar();
         break;
       }
       case 4: {
         system("clear");
-        // listaUniversidades.listarPrf();
+        ExeProfessor();
         esperar();
         voltar();
         break;
       }
       case 5: {
         system("clear");
-        // listaUniversidades.listarAlu();
+        ExeAluno();
         esperar();
         voltar();
         break;
@@ -140,35 +222,48 @@ void Principal::MenuExe () {
   }
 }
 
-void Principal::CadUniversidade () {
-  char nomeUniversidade[150];
-  Universidade *U = NULL;
+void Principal::ExeUniversidade () {
+  listaUniversidades.imprimeUnis();
+}
+
+void Principal::ExeDepartamento () {
+  char S[150];
   cout << "Qual o nome da Universidade?\n";
-  cin >> nomeUniversidade;
-  U = new Universidade((char*)nomeUniversidade);
-  listaUniversidades.addUni(U);
+  cin >> S;
+  listaUniversidades.getUni(S)->imprimeDeps();
 }
 
-void Principal::CadDepartamento () {
-  // char *nomeDepartamento;
-  // Departamento *D = NULL;
-  // cout << "Qual o nome do Departamento?\n";
-  // cin >> nomeDepartamento;
-  // D = new Departamento(nomeDepartamento);
-  // listaUniversidades.addDep(D);
+void Principal::ExeDisciplina () {
+  char S[150], D[150];
+  cout << "Qual o nome da Universidade?\n";
+  cin >> S;
+  cout << "Qual o nome do Departamento?\n";
+  cin >> D;
+  listaUniversidades.getUni(S)->getDep(D)->imprimeDiss();
 }
 
-void Principal::CadProfessor () {
-
+void Principal::ExeProfessor () {
+  char S[150], D[150];
+  cout << "Qual o nome da Universidade?\n";
+  cin >> S;
+  cout << "Qual o nome do Departamento?\n";
+  cin >> D;
+  listaUniversidades.getUni(S)->getDep(D)->imprimePrfs();
 }
 
-void Principal::CadDisciplina () {
-
+void Principal::ExeAluno () {
+  char S[150], D[150], I[150];
+  cout << "Qual o nome da Universidade?\n";
+  cin >> S;
+  cout << "Qual o nome do Departamento?\n";
+  cin >> D;
+  cout << "Qual o nome da Disciplina?\n";
+  cin >> I;
+  listaUniversidades.getUni(S)->getDep(D)->getDis(I)->imprimeAlus();
 }
 
-void Principal::CadAluno () {
 
-}
+
 
 /*void Principal::Init () {
   Init_Alunos();

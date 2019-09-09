@@ -60,10 +60,6 @@ Universidade* Departamento::getUni () {
   return uni;
 }
 
-void Departamento::imprimeDep () {
-  cout << "Departamento " << getNome();
-}
-
 void Departamento::addDis (Disciplina *D) {
   listaDisciplinas->addDis(D);
 }
@@ -76,30 +72,26 @@ void Departamento::removeDis (char *S) {
   listaDisciplinas->removeDis(S);
 }
 
-void Departamento::imprimeDis () {
-  listaDisciplinas->imprimeDis();
+elDisciplina* Departamento::getelDis (char *S) {
+  return listaDisciplinas->getelDis(S);
 }
 
-void Departamento::imprimeDis2 () {
-  listaDisciplinas->imprimeDis2();
+void Departamento::imprimeDiss () {
+  listaDisciplinas->imprimeDiss();
 }
 
-void Departamento::addProfessor (Professor *P) {
-  listaProfessores->addProfessor(P);
+void Departamento::addPrf (Professor *P) {
+  listaProfessores->addPrf(P);
 }
 
 Professor* Departamento::getPrf (char *S) {
   return listaProfessores->getPrf(S);
 }
 
-void Departamento::removeProfessor (char *S) {
-  listaProfessores->removeProfessor(S);
+void Departamento::removePrf (char *S) {
+  listaProfessores->removePrf(S);
 }
 
-void Departamento::imprimeProfs () {
-  listaProfessores->imprimeProfs();
-}
-
-void Departamento::imprimeProfs2 () {
-  listaProfessores->imprimeProfs2();
+void Departamento::imprimePrfs () {
+  listaProfessores->imprimePrfs();
 }

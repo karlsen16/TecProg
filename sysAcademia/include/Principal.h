@@ -9,17 +9,25 @@ public:
   Principal ();
   ~Principal ();
 
+  void Menu ();
   void voltar ();
   void esperar ();
-  void Menu ();
-  void MenuCad ();
-  void MenuExe ();
 
+  void MenuCad ();
   void CadUniversidade ();
   void CadDepartamento ();
-  void CadProfessor ();
   void CadDisciplina ();
+  void CadProfessor ();
   void CadAluno ();
+
+  void MenuExe ();
+  void ExeUniversidade ();
+  void ExeDepartamento ();
+  void ExeDisciplina ();
+  void ExeProfessor ();
+  void ExeAluno ();
+
+
 
 
   // void Init ();

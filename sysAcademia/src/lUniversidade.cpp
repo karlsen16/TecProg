@@ -94,6 +94,17 @@ void lUniversidade::removeUni (char *S) {
     cout << "Nao e possivel fazer esta operacao. Erro (53).\n";
 }
 
-void lUniversidade::imprimeUni (char *S) {
-  getUni(S)->imprimeUni();
+void lUniversidade::imprimeUnis () {
+  if(contUniversidades > 0) {
+    cout << "Lista de Universidades:\n";
+    elUniversidade *peao = pUniIni;
+    int cont = 1;
+    while(peao) {
+      cout << "\t" << cont << "# " << peao->getUni()->getNome() << "\n";
+      cont++;
+      peao = peao->getProx();
+    }
+  }
+  else
+    cout << "Nao e possivel fazer esta operacao. Erro (59).\n";
 }

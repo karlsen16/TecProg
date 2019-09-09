@@ -109,28 +109,19 @@ elAluno* lAluno::getelAluno (char *S) {
   return NULL;
 }
 
-void lAluno::imprimeAlu () {
-  elAluno *peao = pAluIni;
-  int cont = 1;
+void lAluno::imprimeAlus () {
   if(contAlunos > 0) {
-    cout << "\t\t\tLista de Alunos:\n";
+    cout << "Lista de Alunos:\n";
+    elAluno *peao = pAluIni;
+    int cont = 1;
     while(peao) {
-      cout << "\t\t\t" << cont << "# " << peao->getAluno()->getNome() << "\n";
+      cout << "\t" << cont << "# " << peao->getAluno()->getNome() << "\n";
       cont++;
       peao = peao->getProx();
     }
   }
-}
-
-void lAluno::imprimeAlu2 () {
-  elAluno *peao = pAluAtual;
-  int cont = 1;
-  cout << "\t\t\tLista de Alunos:\n";
-  while(peao) {
-    cout << "\t\t\t" << cont << "# " << peao->getAluno()->getNome() << "\n";
-    cont++;
-    peao = peao->getAnt();
-  }
+  else
+    cout << "Nao e possivel fazer esta operacao. Erro (19).\n";
 }
 
 void lAluno::faltou (char *S) {
