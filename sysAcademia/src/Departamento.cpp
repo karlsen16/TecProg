@@ -72,10 +72,6 @@ Disciplina* Departamento::getDis (char *S) {
   return listaDisciplinas->getDis(S);
 }
 
-Disciplina* Departamento::getelDis (char *S) {
-  return listaDisciplinas->getelDis(S);
-}
-
 void Departamento::removeDis (char *S) {
   listaDisciplinas->removeDis(S);
 }

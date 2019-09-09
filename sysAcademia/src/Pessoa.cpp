@@ -5,17 +5,17 @@ Pessoa::Pessoa () {
   inicializa(0, 0, 0);
 }
 
-Pessoa::Pessoa (int diaN, int mesN, int anoN, char *S) {
-  inicializa(diaN, mesN, anoN, S);
+Pessoa::Pessoa (int diaN, int mesN, int anoN, char *S, int id) {
+  inicializa(diaN, mesN, anoN, S, id);
 }
 
-void Pessoa::inicializa (int diaN, int mesN, int anoN, char *S) {
+void Pessoa::inicializa (int diaN, int mesN, int anoN, char *S, int id) {
   setNome(S);
   dia = diaN;
   mes = mesN;
   ano = anoN;
   calculaIdade();
-  ID = 0;
+  setID(id);
 }
 
 Pessoa::~Pessoa () {

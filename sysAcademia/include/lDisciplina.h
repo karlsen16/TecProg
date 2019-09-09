@@ -15,8 +15,8 @@ public:
   void setNum (int n);
   void addDis (Disciplina *D);
   Disciplina* getDis (char *S);
-  elDisciplina* getelDis (char *S);
   void removeDis (char *S);
+  elDisciplina* getelDis (char *S);
   void imprimeDis ();
   void imprimeDis2 ();
 };

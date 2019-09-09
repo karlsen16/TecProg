@@ -2,7 +2,7 @@
 #include "Principal.h"
 
 Principal::Principal ():
-listaUniversidades("Universidades registradas no sistema", 3, 7) {
+listaUniversidades("Universidades registradas no sistema", 3) {
   Menu();
   // Init();
   // Executar();
@@ -101,35 +101,35 @@ void Principal::MenuExe () {
     switch(op) {
       case 1: {
         system("clear");
-        listaUniversidades.listarUni();
+        // listaUniversidades.listarUni();
         esperar();
         voltar();
         break;
       }
       case 2: {
         system("clear");
-        listaUniversidades.listarDep();
+        // listaUniversidades.listarDep();
         esperar();
         voltar();
         break;
       }
       case 3: {
         system("clear");
-        listaUniversidades.listarDis();
+        // listaUniversidades.listarDis();
         esperar();
         voltar();
         break;
       }
       case 4: {
         system("clear");
-        listaUniversidades.listarPrf();
+        // listaUniversidades.listarPrf();
         esperar();
         voltar();
         break;
       }
       case 5: {
         system("clear");
-        listaUniversidades.listarAlu();
+        // listaUniversidades.listarAlu();
         esperar();
         voltar();
         break;

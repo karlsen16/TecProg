@@ -1,9 +1,8 @@
 #include "stdafx.h"
 #include "lDepartamento.h"
 
-lDepartamento::lDepartamento (char *S, int n, int id) {
+lDepartamento::lDepartamento (char *S, int n) {
   setNome(S);
-  setID(id);
   setNum(n);
   contDepartamentos = 0;
   pDepIni = pDepAtual = NULL;
@@ -27,38 +26,58 @@ char* lDepartamento::getNome () {
   return nome;
 }
 
-void lDepartamento::setID (int id) {
-  ID = id;
-}
-
-int lDepartamento::getID () {
-  return ID;
-}
-
 void lDepartamento::setNum (int n) {
   nDepartamentos = n;
 }
 
 void lDepartamento::addDep (Departamento *D) {
-  if(contDepartamentos < nDepartamentos) {
+  if(D && contDepartamentos < nDepartamentos) {
     elDepartamento *novo = new elDepartamento(D);
     if(!pDepIni)
       pDepIni = pDepAtual = novo;
     else {
-      pDepAtual->setProx(novo);
-      novo->setAnt(pDepAtual);
-      pDepAtual = novo;
+      elDepartamento *peao = pDepIni, *aux = NULL;
+      while(peao && strcmp(peao->getDep()->getNome(), D->getNome()) < 0) {
+        aux = peao;
+        peao = peao->getProx();
+      }
+      novo->setProx(peao);
+      novo->setAnt(aux);
+      if(peao)
+        peao->setAnt(novo);
+      if(aux)
+        aux->setProx(novo);
+      if(!novo->getProx())
+        pDepAtual = novo;
+      if(!novo->getAnt())
+        pDepIni = novo;
     }
     contDepartamentos++;
   }
   else
-    cout << "Nao e possivel fazer esta operacao. Erro (003).\n";
+    cout << "Nao e possivel fazer esta operacao. Erro (41).\n";
 }
 
-void lDepartamento::removeDep (Departamento *D) {
-  if(D && contDepartamentos > 0) {
+Departamento* lDepartamento::getDep (char *S) {
+  if(S && contDepartamentos > 0) {
     elDepartamento *peao = pDepIni;
-    while(peao && strcmp(peao->getDep()->getNome(), D->getNome()) != 0)
+    while(peao && strcmp(peao->getDep()->getNome(), S) != 0)
+      peao = peao->getProx();
+    if(peao)
+      return peao->getDep();
+    else
+      cout << "\nO Departamento " << S << " nao pertence a Universidade"
+           << getNome() << ".\n";
+  }
+  else
+    cout << "\nNao e possivel fazer esta operacao. Erro:(42).\n";
+  return NULL;
+}
+
+void lDepartamento::removeDep (char *S) {
+  if(S && contDepartamentos > 0) {
+    elDepartamento *peao = pDepIni;
+    while(peao && strcmp(peao->getDep()->getNome(), S) != 0)
       peao = peao->getProx();
     if(peao) {
       peao->getAnt()->setProx(peao->getProx());
@@ -67,34 +86,15 @@ void lDepartamento::removeDep (Departamento *D) {
       contDepartamentos--;
     }
     else
-      cout << "\nO ";
-      D->imprimeDep();
-      cout << " nao pertence a " << getNome() << ".\n";
+      cout << "\nO " << S << " nao pertence a Universidade"
+           << getNome() << ".\n";
   }
   else
-    cout << "Nao e possivel fazer esta operacao. Erro (004).\n";
+    cout << "Nao e possivel fazer esta operacao. Erro (43).\n";
 }
 
-Departamento* lDepartamento::getDepI (int i) {
-  if(i >= 0) {
-    int cont = 0;
-    elDepartamento *peao = pDepIni;
-    while(peao) {
-      if(cont == i)
-        return peao->getDep();
-      peao = peao->getProx();
-      cont++;
-    }
-  }
-  return NULL;
-}
-
-void lDepartamento::imprimeDep (int i) {
-  getDepI(i)->imprimeDep();
-}
-
-void lDepartamento::imprimeDis (int i) {
-  getDepI(i)->imprimeDis();
+void lDepartamento::imprimeDep (char *S) {
+  getDep(S)->imprimeDep();
 }
 
 void lDepartamento::imprimeDepS () {

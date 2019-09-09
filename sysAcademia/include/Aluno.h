@@ -7,9 +7,8 @@ private:
 
 public:
   Aluno ();
-  Aluno (int diaN, int mesN, int anoN, char *S, int ra = 0);
+  Aluno (int diaN, int mesN, int anoN, char *S, int id, int ra = 0);
   ~Aluno ();
   void setRA (int ra);
   int getRA ();
 };
-//teste

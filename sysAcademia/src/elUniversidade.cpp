@@ -1,10 +1,9 @@
 #include "stdafx.h"
 #include "elUniversidade.h"
 
-elUniversidade::elUniversidade (Universidade *U, int id) {
+elUniversidade::elUniversidade (Universidade *U) {
   uni = U;
   prox = ant = NULL;
-  setID(id);
 }
 
 elUniversidade::~elUniversidade () {
@@ -14,14 +13,6 @@ elUniversidade::~elUniversidade () {
 
 Universidade* elUniversidade::getUni () {
   return uni;
-}
-
-void elUniversidade::setID (int id) {
-  ID = id;
-}
-
-int elUniversidade::getID () {
-  return ID;
 }
 
 void elUniversidade::setProx (elUniversidade *U) {

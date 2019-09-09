@@ -37,20 +37,16 @@ void Universidade::addDep (Departamento *D) {
   listaDepartamentos->addDep(D);
 }
 
-void Universidade::removeDep (Departamento *D) {
-  listaDepartamentos->removeDep(D);
+Departamento* Universidade::getDep (char *S) {
+  listaDepartamentos->getDep(S);
 }
 
-Departamento* Universidade::getDepI (int i) {
-  listaDepartamentos->getDepI(i);
+void Universidade::removeDep (char *S) {
+  listaDepartamentos->removeDep(S);
 }
 
-void Universidade::imprimeDep (int i) {
-  listaDepartamentos->imprimeDep(i);
-}
-
-void Universidade::imprimeDis (int i) {
-  listaDepartamentos->imprimeDis(i);
+void Universidade::imprimeDep (char *S) {
+  listaDepartamentos->imprimeDep(S);
 }
 
 void Universidade::imprimeDepS () {

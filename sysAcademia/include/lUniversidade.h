@@ -4,23 +4,17 @@
 class lUniversidade {
 private:
   char nome[150];
-  int ID, nUniversidades, contUniversidades;
+  int nUniversidades, contUniversidades;
   elUniversidade *pUniIni, *pUniAtual;
 
 public:
-  lUniversidade (char *S = "", int n = 100, int id = 0);
+  lUniversidade (char *S = "", int n = 100);
   ~lUniversidade ();
   void setNome (char *S);
   char* getNome ();
-  void setID (int id);
-  int getID ();
   void setNum (int n);
   void addUni (Universidade *U);
-  void removeUni (Universidade *U);
-  Universidade* getUniI (int i);
-  void listarUni ();
-  void listarDep ();
-  void listarDis ();
-  void listarPrf ();
-  void listarAlu ();
+  Universidade* getUni (char *S);
+  void removeUni (char *S);
+  void imprimeUni (char *S);
 };

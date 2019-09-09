@@ -8,14 +8,13 @@ Professor::Professor (): Pessoa() {
 }
 
 Professor::Professor (int diaN, int mesN, int anoN, char *S,
-                Universidade *U, Departamento *D):
-  Pessoa(diaN, mesN, anoN, S) {
+                Universidade *U, Departamento *D, int id):
+  Pessoa(diaN, mesN, anoN, S, id) {
   inicializa(diaN, mesN, anoN, S, U, D);
 }
 
 void Professor::inicializa (int diaN, int mesN, int anoN, char *S,
                 Universidade *U, Departamento *D) {
-  setData(diaN, mesN, anoN);
   setNome(S);
   setUni(U);
   setDep(D);

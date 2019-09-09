@@ -2,13 +2,13 @@
 
 class Pessoa {
 protected:
-  char nome[30];
+  char nome[50];
   int dia, mes, ano, idade, ID;
 
 public:
   Pessoa ();
-  Pessoa (int diaN, int mesN, int anoN, char *S);
-  void inicializa (int diaN, int mesN, int anoN, char *S = "");
+  Pessoa (int diaN, int mesN, int anoN, char *S, int id);
+  void inicializa (int diaN, int mesN, int anoN, char *S = "", int id = 0);
   ~Pessoa ();
   void calculaIdade ();
   int getIdade ();

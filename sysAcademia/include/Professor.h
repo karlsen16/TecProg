@@ -11,7 +11,7 @@ private:
 public:
   Professor ();
   Professor (int diaN, int mesN, int anoN, char *S,
-             Universidade *U, Departamento *D);
+             Universidade *U, Departamento *D, int id);
   void inicializa (int diaN, int mesN, int anoN, char *S,
              Universidade *U = NULL, Departamento *D = NULL);
   ~Professor ();

@@ -74,22 +74,6 @@ Disciplina* lDisciplina::getDis (char *S) {
   return NULL;
 }
 
-elDisciplina* lDisciplina::getelDis (char *S) {
-  if(S && contDisciplinas > 0) {
-    elDisciplina *peao = pDisIni;
-    while(peao && strcmp(peao->getDis()->getNome(), S) != 0)
-      peao = peao->getProx();
-    if(peao)
-      return peao;
-    else
-      cout << "\nA el.Disciplina " << S << " nao pertence ao Departamento "
-           << getNome() << ".\n";
-  }
-  else
-    cout << "\nNao e possivel fazer esta operacao. Erro:(33).\n";
-  return NULL;
-}
-
 void lDisciplina::removeDis (char *S) {
   if(S && contDisciplinas > 0) {
     elDisciplina *peao = pDisIni;
@@ -106,7 +90,23 @@ void lDisciplina::removeDis (char *S) {
            << getNome() << ".\n";
   }
   else
-    cout << "Nao e possivel fazer esta operacao. Erro (34).\n";
+    cout << "Nao e possivel fazer esta operacao. Erro (33).\n";
+}
+
+elDisciplina* lDisciplina::getelDis (char *S) {
+  if(S && contDisciplinas > 0) {
+    elDisciplina *peao = pDisIni;
+    while(peao && strcmp(peao->getDis()->getNome(), S) != 0)
+      peao = peao->getProx();
+    if(peao)
+      return peao;
+    else
+      cout << "\nO el.Disciplina " << S << " nao pertence ao Departamento"
+           << getNome() << ".\n";
+  }
+  else
+    cout << "\nNao e possivel fazer esta operacao. Erro:(34).\n";
+  return NULL;
 }
 
 void lDisciplina::imprimeDis () {

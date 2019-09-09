@@ -74,22 +74,6 @@ Aluno* lAluno::getAluno (char *S) {
   return NULL;
 }
 
-elAluno* lAluno::getelAluno (char *S) {
-  if(S && contAlunos > 0) {
-    elAluno *peao = pAluIni;
-    while(peao && strcmp(peao->getAluno()->getNome(), S) != 0)
-      peao = peao->getProx();
-    if(peao)
-      return peao;
-    else
-      cout << "\nO el.Aluno " << S << " nao pertence a Disciplina"
-           << getNome() << ".\n";
-  }
-  else
-    cout << "\nNao e possivel fazer esta operacao. Erro:(13).\n";
-  return NULL;
-}
-
 void lAluno::removeAluno (char *S) {
   if(S && contAlunos > 0) {
     elAluno *peao = pAluIni;
@@ -106,7 +90,23 @@ void lAluno::removeAluno (char *S) {
            << getNome() << ".\n";
   }
   else
+    cout << "\nNao e possivel fazer esta operacao. Erro:(13).\n";
+}
+
+elAluno* lAluno::getelAluno (char *S) {
+  if(S && contAlunos > 0) {
+    elAluno *peao = pAluIni;
+    while(peao && strcmp(peao->getAluno()->getNome(), S) != 0)
+      peao = peao->getProx();
+    if(peao)
+      return peao;
+    else
+      cout << "\nO el.Aluno " << S << " nao pertence a Disciplina"
+           << getNome() << ".\n";
+  }
+  else
     cout << "\nNao e possivel fazer esta operacao. Erro:(14).\n";
+  return NULL;
 }
 
 void lAluno::imprimeAlu () {
@@ -134,5 +134,5 @@ void lAluno::imprimeAlu2 () {
 }
 
 void lAluno::faltou (char *S) {
-  getAluno(S)->faltou();
+  getelAluno(S)->faltou();
 }

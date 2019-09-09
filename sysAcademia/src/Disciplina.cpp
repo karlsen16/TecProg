@@ -74,12 +74,12 @@ Aluno* Disciplina::getAluno (char *S) {
   return listaAlunos->getAluno(S);
 }
 
-elAluno* Disciplina::getelAluno (char *S) {
-  return listaAlunos->getelAluno(S);
-}
-
 void Disciplina::removeAluno (char *S) {
   listaAlunos->removeAluno(S);
+}
+
+elAluno* Disciplina::getelAluno (char *S) {
+  return listaAlunos->getelAluno(S);
 }
 
 void Disciplina::imprimeAlu () {

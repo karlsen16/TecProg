@@ -4,7 +4,7 @@
 class lAluno {
 private:
   char nome[150];
-  int ID, nAlunos, contAlunos;
+  int nAlunos, contAlunos;
   elAluno *pAluIni, *pAluAtual;
 
 public:
@@ -15,8 +15,9 @@ public:
   void setNum (int n);
   void addAluno (Aluno *L);
   Aluno* getAluno (char *S);
-  elAluno* getelAluno (char *S);
   void removeAluno (char *S);
+  elAluno* getelAluno (char *S);
   void imprimeAlu ();
   void imprimeAlu2 ();
+  void faltou (char *S);
 };

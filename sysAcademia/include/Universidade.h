@@ -15,11 +15,11 @@ public:
   void setID (int id);
   int getID ();
   void imprimeUni ();
+
   void addDep (Departamento *D);
-  void removeDep (Departamento *D);
-  Departamento* getDepI (int i);
-  void imprimeDep (int i);
-  void imprimeDis (int i);
+  Departamento* getDep (char *S);
+  void removeDep (char *S);
+  void imprimeDep (char *S);
   void imprimeDepS ();
   void imprimeTudo ();
 };
