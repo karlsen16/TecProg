@@ -115,7 +115,8 @@ void lAluno::imprimeAlus () {
     elAluno *peao = pAluIni;
     int cont = 1;
     while(peao) {
-      cout << "\t" << cont << "# " << peao->getAluno()->getNome() << "\n";
+      cout << "\t" << cont << "# " << peao->getAluno()->getNome() << "  -ID: "
+           << peao->getAluno()->getID() << "\n";
       cont++;
       peao = peao->getProx();
     }

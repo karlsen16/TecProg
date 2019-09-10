@@ -115,7 +115,8 @@ void lDisciplina::imprimeDiss () {
     elDisciplina *peao = pDisIni;
     int cont = 1;
     while(peao) {
-      cout << "\t" << cont << "# " << peao->getDis()->getNome() << "\n";
+      cout << "\t" << cont << "# " << peao->getDis()->getNome() << "  -ID: "
+           << peao->getDis()->getID() << "\n";
       cont++;
       peao = peao->getProx();
     }

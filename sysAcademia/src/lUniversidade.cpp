@@ -67,7 +67,7 @@ Universidade* lUniversidade::getUni (char *S) {
     if(peao)
       return peao->getUni();
     else
-      cout << "\nA Universidade " << S << " nao pertence a "
+      cout << "\nA Universidade " << S << " nao pertence as "
            << getNome() << ".\n";
   }
   else
@@ -100,7 +100,8 @@ void lUniversidade::imprimeUnis () {
     elUniversidade *peao = pUniIni;
     int cont = 1;
     while(peao) {
-      cout << "\t" << cont << "# " << peao->getUni()->getNome() << "\n";
+      cout << "\t" << cont << "# " << peao->getUni()->getNome() << "  -ID: "
+           << peao->getUni()->getID() << "\n";
       cont++;
       peao = peao->getProx();
     }

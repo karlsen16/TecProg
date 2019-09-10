@@ -3,7 +3,8 @@
 #define TE 6
 
 Principal::Principal ():
-listaUniversidades("Universidades registradas no sistema", 3) {
+listaUniversidades("Universidades registradas no sistema", 3),
+contIDAlu(1000), contIDPrf(1000), contIDDis(1000), contIDDep(10), contIDUni(1) {
   Carregar();
   Menu();
 }
@@ -29,8 +30,8 @@ void Principal::Menu () {
       case 1: MenuCad(); break;
       case 2: MenuExe(); break;
       case 3: Gravar(); break;
-      case 4: cout << "\n\n<--{------  FIM  -------}-->\n"; break;
-      default: cout << "Opcao invalida.\n"; usleep(1000000);
+      case 4: Finalizar(); break;
+      default: Invalido(1);
     }
   }
 }
@@ -79,7 +80,7 @@ void Principal::MenuCad () {
       case 4: CadProfessor(); break;
       case 5: CadAluno(); break;
       case 6: transicao((char*)"Voltando"); break;
-      default: cout << "Opcao invalida.\n"; usleep(1000000);
+      default: Invalido(1);
     }
   }
 }
@@ -92,7 +93,8 @@ void Principal::CadUniversidade () {
   cin >> S;
   cout << "Quantos Departamentos ela tem?\n";
   cin >> qnt;
-  uni = new Universidade((char*)S, qnt, 0);
+  uni = new Universidade((char*)S, qnt, contIDUni);
+  contIDUni++;
   listaUniversidades.addUni(uni);
 }
 
@@ -108,7 +110,9 @@ void Principal::CadDepartamento () {
   cin >> qnt;
   cout << "Quantos Professores ele tem?\n";
   cin >> qntp;
-  dep = new Departamento((char*)D, listaUniversidades.getUni(S), qnt, qntp, 0);
+  dep = new Departamento((char*)D, listaUniversidades.getUni(S), qnt, qntp,
+    listaUniversidades.getUni(S)->getID()+contIDDep);
+  contIDDep++;
 }
 
 void Principal::CadDisciplina () {
@@ -125,7 +129,9 @@ void Principal::CadDisciplina () {
   cin >> A;
   cout << "Quantos Alunos ela tem?\n";
   cin >> qnta;
-  dis = new Disciplina((char*)I, (char*)A, listaUniversidades.getUni(S)->getDep(D), qnta, 0);
+  dis = new Disciplina((char*)I, (char*)A, listaUniversidades.getUni(S)->getDep(D), qnta,
+    listaUniversidades.getUni(S)->getID()+listaUniversidades.getUni(S)->getDep(D)->getID()+contIDDis);
+  contIDDis++;
 }
 
 void Principal::CadProfessor () {
@@ -141,8 +147,9 @@ void Principal::CadProfessor () {
   cout << "Qual a data de nascimento?\n";
   cin >> dia >> mes >> ano;
   prf = new Professor(dia, mes, ano, (char*)P, listaUniversidades.getUni(S),
-      listaUniversidades.getUni(S)->getDep(D), 0);
-
+      listaUniversidades.getUni(S)->getDep(D),
+      listaUniversidades.getUni(S)->getID()+listaUniversidades.getUni(S)->getDep(D)->getID()+contIDPrf);
+  contIDPrf++;
 }
 
 void Principal::CadAluno () {
@@ -161,7 +168,9 @@ void Principal::CadAluno () {
   cin >> dia >> mes >> ano;
   cout << "Qual o RA?\n";
   cin >> ra;
-  alu = new Aluno(dia, mes, ano, (char*)A, ra, 0);
+  alu = new Aluno(dia, mes, ano, (char*)A, ra,
+    listaUniversidades.getUni(S)->getID()+listaUniversidades.getUni(S)->getDep(D)->getID()+contIDAlu);
+  contIDAlu++;
   listaUniversidades.getUni(S)->getDep(D)->getDis(I)->addAluno(alu);
 }
 
@@ -218,7 +227,7 @@ void Principal::MenuExe () {
         break;
       }
       case 6: transicao((char*)"Voltando"); break;
-      default: cout << "Opcao invalida.\n"; usleep(1000000);
+      default: Invalido(1);
     }
   }
 }
@@ -231,7 +240,10 @@ void Principal::ExeDepartamento () {
   char S[150];
   cout << "Qual o nome da Universidade?\n";
   cin >> S;
-  listaUniversidades.getUni(S)->imprimeDeps();
+  if(listaUniversidades.getUni(S))
+    listaUniversidades.getUni(S)->imprimeDeps();
+  else
+    cout << "Nao e possivel fazer esta operacao. Erro (40).\n";
 }
 
 void Principal::ExeDisciplina () {
@@ -240,7 +252,10 @@ void Principal::ExeDisciplina () {
   cin >> S;
   cout << "Qual o nome do Departamento?\n";
   cin >> D;
-  listaUniversidades.getUni(S)->getDep(D)->imprimeDiss();
+  if(listaUniversidades.getUni(S) && listaUniversidades.getUni(S)->getDep(D))
+    listaUniversidades.getUni(S)->getDep(D)->imprimeDiss();
+  else
+    cout << "Nao e possivel fazer esta operacao. Erro (30).\n";
 }
 
 void Principal::ExeProfessor () {
@@ -249,7 +264,10 @@ void Principal::ExeProfessor () {
   cin >> S;
   cout << "Qual o nome do Departamento?\n";
   cin >> D;
-  listaUniversidades.getUni(S)->getDep(D)->imprimePrfs();
+  if(listaUniversidades.getUni(S) && listaUniversidades.getUni(S)->getDep(D))
+    listaUniversidades.getUni(S)->getDep(D)->imprimePrfs();
+  else
+    cout << "Nao e possivel fazer esta operacao. Erro (20).\n";
 }
 
 void Principal::ExeAluno () {
@@ -260,7 +278,26 @@ void Principal::ExeAluno () {
   cin >> D;
   cout << "Qual o nome da Disciplina?\n";
   cin >> I;
-  listaUniversidades.getUni(S)->getDep(D)->getDis(I)->imprimeAlus();
+  if(listaUniversidades.getUni(S) && listaUniversidades.getUni(S)->getDep(D)
+    && listaUniversidades.getUni(S)->getDep(D)->getDis(I))
+    listaUniversidades.getUni(S)->getDep(D)->getDis(I)->imprimeAlus();
+  else
+    cout << "Nao e possivel fazer esta operacao. Erro (10).\n";
+}
+
+void Principal::Invalido (int op) {
+  if(op)
+    cout << "Opcao invalida.\n";
+  else
+    cout << "Opcoes invalidas.\n";
+  usleep(1000000);
+}
+
+void Principal::Finalizar () {
+  transicao((char*)"Finalizando");
+  system("clear");
+  cout << "     Fim!\n";
+  usleep(1000000);
 }
 
 void Principal::Carregar () {

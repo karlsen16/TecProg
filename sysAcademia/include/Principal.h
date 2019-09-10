@@ -5,6 +5,8 @@ class Principal {
 private:
   lUniversidade listaUniversidades;
 
+  int contIDAlu, contIDPrf, contIDDis, contIDDep, contIDUni;
+
 public:
   Principal ();
   ~Principal ();
@@ -27,6 +29,8 @@ public:
   void ExeProfessor ();
   void ExeAluno ();
 
+  void Invalido (int op);
+  void Finalizar ();
   void Carregar ();
   void Gravar ();
 

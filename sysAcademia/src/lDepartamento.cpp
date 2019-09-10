@@ -99,7 +99,8 @@ void lDepartamento::imprimeDeps () {
     elDepartamento *peao = pDepIni;
     int cont = 1;
     while(peao) {
-      cout << "\t" << cont << "# " << peao->getDep()->getNome() << "\n";
+      cout << "\t" << cont << "# " << peao->getDep()->getNome() << "  -ID: "
+           << peao->getDep()->getID() << "\n";
       cont++;
       peao = peao->getProx();
     }

@@ -99,7 +99,8 @@ void lProfessor::imprimePrfs () {
     elProfessor *peao = pPrfIni;
     int cont = 1;
     while(peao) {
-      cout << "\t" << cont << "# " << peao->getPrf()->getNome() << "\n";
+      cout << "\t" << cont << "# " << peao->getPrf()->getNome() << "  -ID: "
+           << peao->getPrf()->getID() << "\n";
       cont++;
       peao = peao->getProx();
     }
