@@ -1,5 +1,5 @@
 #pragma once
-#include "Departamento.h";
+#include "Departamento.h"
 
 class Universidade: public Entidade {
 private:

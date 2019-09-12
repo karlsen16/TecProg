@@ -116,92 +116,150 @@ void Menu::Cad () {
 }
 
 void Menu::CadUniversidade () {
-  char S[150];
+  string S;
   int qnt;
-  Universidade *uni = NULL;
   cout << "Qual o nome da Universidade?\n";
   cin >> S;
   cout << "Quantos Departamentos ela tem?\n";
   cin >> qnt;
-  uni = new Universidade(S, qnt, contIDUni);
-  contIDUni++;
+  Universidade *uni = new Universidade(S, qnt, contIDUni++);
   pLU->addEnt(uni);
+  esperar();
 }
 
 void Menu::CadDepartamento () {
-  char S[150], D[150];
-  int qnt, qntp;
-  Departamento *dep = NULL;
+  string S;
   cout << "Qual o nome da Universidade?\n";
   cin >> S;
-  cout << "Qual o nome do Departamento?\n";
-  cin >> D;
-  cout << "Quantas Disciplinas ele tem?\n";
-  cin >> qnt;
-  cout << "Quantos Professores ele tem?\n";
-  cin >> qntp;
-  dep = new Departamento(D, pLU->getEnt(S), qnt, qntp,
-    pLU->getEnt(S)->getID()+contIDDep);
-  contIDDep++;
+  Universidade *uni = localizaUni(S);
+  if(uni) {
+    string D;
+    int qnt, qntp;
+    cout << "Qual o nome do Departamento?\n";
+    cin >> D;
+    cout << "Quantas Disciplinas ele tem?\n";
+    cin >> qnt;
+    cout << "Quantos Professores ele tem?\n";
+    cin >> qntp;
+    Departamento *dep = new Departamento(D, uni, qnt, qntp, uni->getID()+contIDDep++);
+    return;
+  }
+  else
+    cout << "A Universidade " << S << " nao esta cadastrada.\n";
+  cout << "Nao foi possivel fazer esta operacao. Erro (99).\n";
+  esperar();
 }
 
 void Menu::CadDisciplina () {
-  char S[150], D[150], I[150], A[150];
-  int qnt, qnta;
-  Disciplina *dis = NULL;
+  string S;
   cout << "Qual o nome da Universidade?\n";
   cin >> S;
-  cout << "Qual o nome do Departamento?\n";
-  cin >> D;
-  cout << "Qual o nome da Disciplina?\n";
-  cin >> I;
-  cout << "Qual o nome da Area?\n";
-  cin >> A;
-  cout << "Quantos Alunos ela tem?\n";
-  cin >> qnta;
-  dis = new Disciplina(I, A, pLU->getEnt(S)->getDep(D), qnta,
-    pLU->getEnt(S)->getID()+pLU->getEnt(S)->getDep(D)->getID()+contIDDis);
-  contIDDis++;
+  Universidade *uni = localizaUni(S);
+  if(uni) {
+    string D;
+    cout << "Qual o nome do Departamento?\n";
+    cin >> D;
+    Departamento *dep = localizaDep(S, D);
+    if(dep) {
+      string I, A;
+      int qnta;
+      cout << "Qual o nome da Disciplina?\n";
+      cin >> I;
+      cout << "Qual o nome da Area?\n";
+      cin >> A;
+      cout << "Quantos Alunos ela tem?\n";
+      cin >> qnta;
+      Disciplina *dis = new Disciplina(I, A, dep, qnta, uni->getID()+dep->getID()+contIDDis++);
+      return;
+    }
+    else
+      cout << "O Departamento " << D << " nao esta cadastrado.\n";
+  }
+  else
+    cout << "A Universidade " << S << " nao esta cadastrada.\n";
+  cout << "Nao foi possivel fazer esta operacao. Erro (99).\n";
+  esperar();
 }
 
 void Menu::CadProfessor () {
-  char S[150], D[150], P[50];
-  int dia, mes, ano;
-  Professor *prf = NULL;
+  string S;
   cout << "Qual o nome da Universidade?\n";
   cin >> S;
-  cout << "Qual o nome do Departamento?\n";
-  cin >> D;
-  cout << "Qual o nome do Professor?\n";
-  cin >> P;
-  cout << "Qual a data de nascimento?\n";
-  cin >> dia >> mes >> ano;
-  prf = new Professor(dia, mes, ano, P, pLU->getEnt(S),
-      pLU->getEnt(S)->getDep(D),
-      pLU->getEnt(S)->getID()+pLU->getEnt(S)->getDep(D)->getID()+contIDPrf);
-  contIDPrf++;
+  Universidade *uni = localizaUni(S);
+  if(uni) {
+    string D;
+    cout << "Qual o nome do Departamento?\n";
+    cin >> D;
+    Departamento *dep = localizaDep(S, D);
+    if(dep) {
+      string P;
+      int dia, mes, ano;
+      cout << "Qual o nome do Professor?\n";
+      cin >> P;
+      cout << "Qual a data de nascimento?\n";
+      cin >> dia >> mes >> ano;
+      Professor *prf = new Professor(dia, mes, ano, P, uni, dep, uni->getID()+dep->getID()+contIDPrf++);
+      return;
+    }
+    else
+      cout << "O Departamento " << D << " nao esta cadastrado.\n";
+  }
+  else
+    cout << "A Universidade " << S << " nao esta cadastrada.\n";
+  cout << "Nao foi possivel fazer esta operacao. Erro (99).\n";
+  esperar();
 }
 
 void Menu::CadAluno () {
-  char S[150], D[150], I[150], A[150];
-  int dia, mes, ano, ra;
-  Aluno *alu = NULL;
+  string S;
   cout << "Qual o nome da Universidade?\n";
   cin >> S;
-  cout << "Qual o nome do Departamento?\n";
-  cin >> D;
-  cout << "Qual o nome da Disciplina?\n";
-  cin >> I;
-  cout << "Qual o nome do Aluno?\n";
-  cin >> A;
-  cout << "Qual a data de nascimento?\n";
-  cin >> dia >> mes >> ano;
-  cout << "Qual o RA?\n";
-  cin >> ra;
-  alu = new Aluno(dia, mes, ano, A, ra,
-    pLU->getEnt(S)->getID()+pLU->getEnt(S)->getDep(D)->getID()+contIDAlu);
-  contIDAlu++;
-  pLU->getEnt(S)->getDep(D)->getDis(I)->addAluno(alu);
+  Universidade *uni = localizaUni(S);
+  if(uni) {
+    string D;
+    cout << "Qual o nome do Departamento?\n";
+    cin >> D;
+    Departamento *dep = localizaDep(S, D);
+    if(dep) {
+      string I;
+      cout << "Qual o nome da Disciplina?\n";
+      cin >> I;
+      Disciplina *dis = localizaDis(S, D, I);
+      if(dis) {
+        string A;
+        int dia, mes, ano, ra;
+        cout << "Qual o nome do Aluno?\n";
+        cin >> A;
+        cout << "Qual a data de nascimento?\n";
+        cin >> dia >> mes >> ano;
+        cout << "Qual o RA?\n";
+        cin >> ra;
+        Aluno *alu = new Aluno(dia, mes, ano, A, ra, uni->getID()+dep->getID()+contIDAlu++);
+        dis->addAluno(alu);
+        return;
+      }
+      else
+        cout << "A Disciplina " << I << " nao esta cadastrada.\n";
+    }
+    else
+      cout << "O Departamento " << D << " nao esta cadastrado.\n";
+  }
+  else
+    cout << "A Universidade " << S << " nao esta cadastrada.\n";
+  cout << "Nao foi possivel fazer esta operacao. Erro (99).\n";
+  esperar();
+}
+
+Universidade* Menu::localizaUni (string S) {
+  return pLU->getEnt(S);
+}
+
+Departamento* Menu::localizaDep (string S, string D) {
+  return pLU->getEnt(S)->getDep(D);
+}
+
+Disciplina* Menu::localizaDis (string S, string D, string I) {
+  return pLU->getEnt(S)->getDep(D)->getDis(I);
 }
 
 void Menu::Exe () {
@@ -269,52 +327,91 @@ void Menu::ExeUniversidade () {
 }
 
 void Menu::ExeDepartamento () {
-  char S[150];
+  string S;
   cout << "Qual o nome da Universidade?\n";
   cin >> S;
-  if(pLU->getEnt(S))
-    pLU->getEnt(S)->imprimeDeps();
+  Universidade *uni = localizaUni(S);
+  if(uni) {
+    uni->imprimeDeps();
+    return;
+  }
   else
-    cout << "Nao e possivel fazer esta operacao. Erro (40).\n";
+    cout << "A Universidade " << S << " nao esta cadastrada.\n";
+  cout << "Nao foi possivel fazer esta operacao. Erro (98).\n";
 }
 
 void Menu::ExeDisciplina () {
-  char S[150], D[150];
+  string S;
   cout << "Qual o nome da Universidade?\n";
   cin >> S;
-  cout << "Qual o nome do Departamento?\n";
-  cin >> D;
-  if(pLU->getEnt(S) && pLU->getEnt(S)->getDep(D))
-    pLU->getEnt(S)->getDep(D)->imprimeDiss();
+  Universidade *uni = localizaUni(S);
+  if(uni) {
+    string D;
+    cout << "Qual o nome do Departamento?\n";
+    cin >> D;
+    Departamento *dep = localizaDep(S, D);
+    if(dep) {
+      dep->imprimeDiss();
+      return;
+    }
+    else
+      cout << "O Departamento " << D << " nao esta cadastrado.\n";
+  }
   else
-    cout << "Nao e possivel fazer esta operacao. Erro (30).\n";
+    cout << "A Universidade " << S << " nao esta cadastrada.\n";
+  cout << "Nao foi possivel fazer esta operacao. Erro (98).\n";
 }
 
 void Menu::ExeProfessor () {
-  char S[150], D[150];
+  string S;
   cout << "Qual o nome da Universidade?\n";
   cin >> S;
-  cout << "Qual o nome do Departamento?\n";
-  cin >> D;
-  if(pLU->getEnt(S) && pLU->getEnt(S)->getDep(D))
-    pLU->getEnt(S)->getDep(D)->imprimePrfs();
+  Universidade *uni = localizaUni(S);
+  if(uni) {
+    string D;
+    cout << "Qual o nome do Departamento?\n";
+    cin >> D;
+    Departamento *dep = localizaDep(S, D);
+    if(dep) {
+      dep->imprimePrfs();
+      return;
+    }
+    else
+      cout << "O Departamento " << D << " nao esta cadastrado.\n";
+  }
   else
-    cout << "Nao e possivel fazer esta operacao. Erro (20).\n";
+    cout << "A Universidade " << S << " nao esta cadastrada.\n";
+  cout << "Nao foi possivel fazer esta operacao. Erro (98).\n";
 }
 
 void Menu::ExeAluno () {
-  char S[150], D[150], I[150];
+  string S;
   cout << "Qual o nome da Universidade?\n";
   cin >> S;
-  cout << "Qual o nome do Departamento?\n";
-  cin >> D;
-  cout << "Qual o nome da Disciplina?\n";
-  cin >> I;
-  if(pLU->getEnt(S) && pLU->getEnt(S)->getDep(D)
-    && pLU->getEnt(S)->getDep(D)->getDis(I))
-    pLU->getEnt(S)->getDep(D)->getDis(I)->imprimeAlus();
+  Universidade *uni = localizaUni(S);
+  if(uni) {
+    string D;
+    cout << "Qual o nome do Departamento?\n";
+    cin >> D;
+    Departamento *dep = localizaDep(S, D);
+    if(dep) {
+      string I;
+      cout << "Qual o nome da Disciplina?\n";
+      cin >> I;
+      Disciplina *dis = localizaDis(S, D, I);
+      if(dis) {
+        dis->imprimeAlus();
+        return;
+      }
+      else
+        cout << "A Disciplina " << I << " nao esta cadastrada.\n";
+    }
+    else
+      cout << "O Departamento " << D << " nao esta cadastrado.\n";
+  }
   else
-    cout << "Nao e possivel fazer esta operacao. Erro (10).\n";
+    cout << "A Universidade " << S << " nao esta cadastrada.\n";
+  cout << "Nao foi possivel fazer esta operacao. Erro (98).\n";
 }
 
 void Menu::Carregar () {

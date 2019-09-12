@@ -28,6 +28,10 @@ public:
   void CadProfessor ();
   void CadAluno ();
 
+  Universidade* localizaUni (string S);
+  Departamento* localizaDep (string S, string D);
+  Disciplina* localizaDis (string S, string D, string I);
+
   void Exe ();
   void ExeUniversidade ();
   void ExeDepartamento ();

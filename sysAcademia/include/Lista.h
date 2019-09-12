@@ -80,9 +80,11 @@ void Lista<TIPO>::addEnt (TIPO *p) {
         pEntIni = novo;
     }
     contEnt++;
+    cout << "Cadastro de "<< p->getNome() << " realizado com sucesso!\n";
   }
   else
-    cout << "Nao e possivel fazer esta operacao. Erro (01).\n";
+    cout << "Nao foi possivel fazer esta operacao. Erro (01).\n";
+  usleep(2000000);
 }
 
 template<class TIPO>
@@ -95,11 +97,10 @@ TIPO* Lista<TIPO>::getEnt (string S) {
     if(peao)
       return peao->getInfo();
     else
-      cout << "\n" << S << " nao pertence a "
-           << getNome() << ".\n";
+      cout << "\n" << S << " nao pertence a " << getNome() << ".\n";
   }
   else
-    cout << "\nNao e possivel fazer esta operacao. Erro:(02).\n";
+    cout << "\nNao foi possivel fazer esta operacao. Erro:(02).\n";
   return NULL;
 }
 
@@ -114,13 +115,14 @@ void Lista<TIPO>::removeEnt (string S) {
       peao->getProx()->setAnt(peao->getAnt());
       delete(peao);
       contEnt--;
+      cout << "Remocao de cadastro de "<< S << " realizado com sucesso!\n";
     }
     else
-      cout << "\n " << S << " nao pertence a "
-           << getNome() << ".\n";
+      cout << "\n " << S << " nao pertence a " << getNome() << ".\n";
   }
   else
-    cout << "Nao e possivel fazer esta operacao. Erro (03).\n";
+    cout << "Nao foi possivel fazer esta operacao. Erro (03).\n";
+  usleep(2000000);
 }
 
 template<class TIPO>
@@ -130,14 +132,14 @@ void Lista<TIPO>::imprimeEnts () {
     Elemento<TIPO> *peao = pEntIni;
     int cont = 1;
     while(peao) {
-      cout << "\t" << cont << "# " << peao->getInfo()->getNome() << "  -ID: "
+      cout << "\t" << cont << "# " << peao->getInfo()->getNome() << "\t\t-ID: "
            << peao->getInfo()->getID() << "\n";
       cont++;
       peao = peao->getProx();
     }
   }
   else
-    cout << "Nao e possivel fazer esta operacao. Erro (09).\n";
+    cout << "Nao foi possivel fazer esta operacao. Erro (09).\n";
 }
 
 template<class TIPO>
@@ -153,6 +155,6 @@ Elemento<TIPO>* Lista<TIPO>::getel (string S) {
            << getNome() << ".\n";
   }
   else
-    cout << "\nNao e possivel fazer esta operacao. Erro:(04).\n";
+    cout << "\nNao foi possivel fazer esta operacao. Erro:(04).\n";
   return NULL;
 }

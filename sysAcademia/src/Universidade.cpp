@@ -17,7 +17,7 @@ void Universidade::addDep (Departamento *D) {
 }
 
 Departamento* Universidade::getDep (string S) {
-  listaDepartamentos->getEnt(S);
+  return listaDepartamentos->getEnt(S);
 }
 
 void Universidade::removeDep (string S) {
