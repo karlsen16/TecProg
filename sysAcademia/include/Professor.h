@@ -1,7 +1,7 @@
 #pragma once
+#include "Pessoa.h"
 class Universidade;
 class Departamento;
-#include "Pessoa.h"
 
 class Professor: public Pessoa {
 private:
@@ -10,9 +10,9 @@ private:
 
 public:
   Professor ();
-  Professor (int diaN, int mesN, int anoN, char *S,
+  Professor (int diaN, int mesN, int anoN, string S,
              Universidade *U, Departamento *D, int id);
-  void inicializa (int diaN, int mesN, int anoN, char *S,
+  void inicializa (int diaN, int mesN, int anoN, string S,
              Universidade *U = NULL, Departamento *D = NULL);
   ~Professor ();
   void setUni (Universidade *U);

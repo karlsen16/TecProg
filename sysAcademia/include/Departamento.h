@@ -1,36 +1,29 @@
 #pragma once
-#include "lDisciplina.h"
-#include "lProfessor.h"
+#include "Lista.h"
 class Universidade;
 
-class Departamento {
+class Departamento: public Entidade {
 private:
-  char nome[150];
   Universidade *uni;
-  lDisciplina *listaDisciplinas;
-  lProfessor *listaProfessores;
-  int ID;
+  Lista<Disciplina> *listaDisciplinas;
+  Lista<Professor> *listaProfessores;
 
 public:
   Departamento ();
-  Departamento (char *S, Universidade *U, int n, int np, int id);
-  void inicializa (char *S = "", Universidade *U = NULL, int n = 1000, int np = 1000, int id = 0);
+  Departamento (string S, Universidade *U, int n, int np, int id);
+  void inicializa (string S = "", Universidade *U = NULL, int n = 1000, int np = 1000, int id = 0);
   ~Departamento ();
-  void setNome (char *S);
-  char* getNome ();
-  void setID (int id);
-  int getID ();
   void setUni (Universidade *U);
   Universidade* getUni ();
 
   void addDis (Disciplina *D);
-  Disciplina* getDis (char *S);
-  void removeDis (char *S);
-  elDisciplina* getelDis (char *S);
+  Disciplina* getDis (string S);
+  void removeDis (string S);
+  Elemento<Disciplina>* getelDis (string S);
   void imprimeDiss ();
 
   void addPrf (Professor *P);
-  Professor* getPrf (char *S);
-  void removePrf (char *S);
+  Professor* getPrf (string S);
+  void removePrf (string S);
   void imprimePrfs ();
 };

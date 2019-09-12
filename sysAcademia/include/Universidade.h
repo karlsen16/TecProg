@@ -1,22 +1,16 @@
 #pragma once
-#include "lDepartamento.h"
+#include "Departamento.h";
 
-class Universidade {
+class Universidade: public Entidade {
 private:
-  char nome[150];
-  lDepartamento *listaDepartamentos;
-  int ID;
+  Lista<Departamento> *listaDepartamentos;
 
 public:
-  Universidade (char *S = "", int n = 1000, int id = 0);
+  Universidade (string S = "", int n = 1000, int id = 0);
   ~Universidade ();
-  void setNome (char *S);
-  char* getNome ();
-  void setID (int id);
-  int getID ();
 
   void addDep (Departamento *D);
-  Departamento* getDep (char *S);
-  void removeDep (char *S);
+  Departamento* getDep (string S);
+  void removeDep (string S);
   void imprimeDeps ();
 };

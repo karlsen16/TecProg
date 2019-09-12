@@ -7,13 +7,13 @@ Professor::Professor (): Pessoa() {
   inicializa(0, 0, 0, "");
 }
 
-Professor::Professor (int diaN, int mesN, int anoN, char *S,
+Professor::Professor (int diaN, int mesN, int anoN, string S,
                 Universidade *U, Departamento *D, int id):
   Pessoa(diaN, mesN, anoN, S, id) {
   inicializa(diaN, mesN, anoN, S, U, D);
 }
 
-void Professor::inicializa (int diaN, int mesN, int anoN, char *S,
+void Professor::inicializa (int diaN, int mesN, int anoN, string S,
                 Universidade *U, Departamento *D) {
   setNome(S);
   setUni(U);

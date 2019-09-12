@@ -1,15 +1,17 @@
 #include "stdafx.h"
 #include "Pessoa.h"
 
-Pessoa::Pessoa () {
+Pessoa::Pessoa ():
+Entidade() {
   inicializa(0, 0, 0);
 }
 
-Pessoa::Pessoa (int diaN, int mesN, int anoN, char *S, int id) {
+Pessoa::Pessoa (int diaN, int mesN, int anoN, string S, int id):
+Entidade(S, id) {
   inicializa(diaN, mesN, anoN, S, id);
 }
 
-void Pessoa::inicializa (int diaN, int mesN, int anoN, char *S, int id) {
+void Pessoa::inicializa (int diaN, int mesN, int anoN, string S, int id) {
   setNome(S);
   dia = diaN;
   mes = mesN;
@@ -35,22 +37,6 @@ void Pessoa::calculaIdade () {
 
 int Pessoa::getIdade () {
   return idade;
-}
-
-void Pessoa::setID (int id) {
-  ID = id;
-}
-
-int Pessoa::getID () {
-  return ID;
-}
-
-void Pessoa::setNome (char *S) {
-  strcpy(nome, S);
-}
-
-char* Pessoa::getNome () {
-  return nome;
 }
 
 void Pessoa::setData (int d, int m, int a) {

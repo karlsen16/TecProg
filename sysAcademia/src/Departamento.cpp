@@ -2,19 +2,21 @@
 #include "Departamento.h"
 #include "Universidade.h"
 
-Departamento::Departamento () {
-  listaDisciplinas = new lDisciplina();
-  listaProfessores = new lProfessor();
+Departamento::Departamento ():
+Entidade() {
+  listaDisciplinas = new Lista<Disciplina>();
+  listaProfessores = new Lista<Professor>();
   inicializa();
 }
 
-Departamento::Departamento (char *S, Universidade *U, int n, int np, int id) {
-  listaDisciplinas = new lDisciplina();
-  listaProfessores = new lProfessor();
+Departamento::Departamento (string S, Universidade *U, int n, int np, int id):
+Entidade(S, id) {
+  listaDisciplinas = new Lista<Disciplina>();
+  listaProfessores = new Lista<Professor>();
   inicializa(S, U, n, np, id);
 }
 
-void Departamento::inicializa (char *S, Universidade *U, int n, int np, int id) {
+void Departamento::inicializa (string S, Universidade *U, int n, int np, int id) {
   setNome(S);
   setUni(U);
   setID(id);
@@ -34,22 +36,6 @@ Departamento::~Departamento () {
   listaProfessores = NULL;
 }
 
-void Departamento::setNome (char *S) {
-  strcpy(nome, S);
-}
-
-char* Departamento::getNome () {
-  return nome;
-}
-
-void Departamento::setID (int id) {
-  ID = id;
-}
-
-int Departamento::getID () {
-  return ID;
-}
-
 void Departamento::setUni (Universidade *U) {
   uni = U;
   if(U)
@@ -61,37 +47,37 @@ Universidade* Departamento::getUni () {
 }
 
 void Departamento::addDis (Disciplina *D) {
-  listaDisciplinas->addDis(D);
+  listaDisciplinas->addEnt(D);
 }
 
-Disciplina* Departamento::getDis (char *S) {
-  return listaDisciplinas->getDis(S);
+Disciplina* Departamento::getDis (string S) {
+  return listaDisciplinas->getEnt(S);
 }
 
-void Departamento::removeDis (char *S) {
-  listaDisciplinas->removeDis(S);
+void Departamento::removeDis (string S) {
+  listaDisciplinas->removeEnt(S);
 }
 
-elDisciplina* Departamento::getelDis (char *S) {
-  return listaDisciplinas->getelDis(S);
+Elemento<Disciplina>* Departamento::getelDis (string S) {
+  return listaDisciplinas->getel(S);
 }
 
 void Departamento::imprimeDiss () {
-  listaDisciplinas->imprimeDiss();
+  listaDisciplinas->imprimeEnts();
 }
 
 void Departamento::addPrf (Professor *P) {
-  listaProfessores->addPrf(P);
+  listaProfessores->addEnt(P);
 }
 
-Professor* Departamento::getPrf (char *S) {
-  return listaProfessores->getPrf(S);
+Professor* Departamento::getPrf (string S) {
+  return listaProfessores->getEnt(S);
 }
 
-void Departamento::removePrf (char *S) {
-  listaProfessores->removePrf(S);
+void Departamento::removePrf (string S) {
+  listaProfessores->removeEnt(S);
 }
 
 void Departamento::imprimePrfs () {
-  listaProfessores->imprimePrfs();
+  listaProfessores->imprimeEnts();
 }

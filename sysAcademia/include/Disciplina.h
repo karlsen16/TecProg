@@ -1,31 +1,28 @@
 #pragma once
-#include "lAluno.h"
+#include "Professor.h"
+#include "Aluno.h"
 class Departamento;
+template <class TIPO> class Lista;
+template <class TIPO> class Elemento;
 
-class Disciplina {
+class Disciplina: public Entidade {
 private:
-  char nome[150];
-  char area[150];
+  string area;
   Departamento *dep;
-  int ID;
-  lAluno *listaAlunos;
+  Lista<Aluno> *listaAlunos;
 
 public:
   Disciplina ();
-  Disciplina (char *S, char *A, Departamento *D, int n, int id);
+  Disciplina (string S, string A, Departamento *D, int n, int id);
   ~Disciplina ();
-  void inicializa (char *S = "", char *A = "", Departamento *D = NULL, int n = 45, int id = 0);
-  void setNome (char *S);
-  char* getNome ();
-  void setID (int id);
-  int getID ();
-  void setArea (char *A);
-  char* getArea ();
+  void inicializa (string S = "", string A = "", Departamento *D = NULL, int n = 45, int id = 0);
+  void setArea (string A);
+  string getArea ();
   void setDep (Departamento *D);
   Departamento* getDep ();
   void addAluno (Aluno *L);
-  Aluno* getAluno (char *S);
-  void removeAluno (char *S);
-  elAluno* getelAluno (char *S);
+  Aluno* getAluno (string S);
+  void removeAluno (string S);
+  Elemento<Aluno>* getelAluno (string S);
   void imprimeAlus ();
 };

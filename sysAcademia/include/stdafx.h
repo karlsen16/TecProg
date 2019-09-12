@@ -7,4 +7,6 @@
 #include <iostream>
 using std::cin;
 using std::cout;
+#include <string>
+using std::string;
 #include <unistd.h>

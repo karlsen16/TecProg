@@ -1,18 +1,21 @@
 #include "stdafx.h"
 #include "Disciplina.h"
 #include "Departamento.h"
+#include "Lista.h"
 
-Disciplina::Disciplina () {
-  listaAlunos = new lAluno();
+Disciplina::Disciplina ():
+Entidade() {
+  listaAlunos = new Lista<Aluno>();
   inicializa();
 }
 
-Disciplina::Disciplina (char *S, char *A, Departamento *D, int n, int id) {
-  listaAlunos = new lAluno();
+Disciplina::Disciplina (string S, string A, Departamento *D, int n, int id):
+Entidade(S, id) {
+  listaAlunos = new Lista<Aluno>();
   inicializa(S, A, D, n, id);
 }
 
-void Disciplina::inicializa (char *S, char *A, Departamento *D, int n, int id) {
+void Disciplina::inicializa (string S, string A, Departamento *D, int n, int id) {
   setNome(S);
   setArea(A);
   setDep(D);
@@ -28,27 +31,11 @@ Disciplina::~Disciplina () {
   listaAlunos = NULL;
 }
 
-void Disciplina::setNome (char *S) {
-  strcpy(nome, S);
+void Disciplina::setArea (string A) {
+  area = A;
 }
 
-char* Disciplina::getNome () {
-  return nome;
-}
-
-void Disciplina::setID (int id) {
-  ID = id;
-}
-
-int Disciplina::getID () {
-  return ID;
-}
-
-void Disciplina::setArea (char *A) {
-  strcpy(area, A);
-}
-
-char* Disciplina::getArea () {
+string Disciplina::getArea () {
   return area;
 }
 
@@ -63,21 +50,21 @@ Departamento* Disciplina::getDep () {
 }
 
 void Disciplina::addAluno (Aluno *L) {
-  listaAlunos->addAluno(L);
+  listaAlunos->addEnt(L);
 }
 
-Aluno* Disciplina::getAluno (char *S) {
-  return listaAlunos->getAluno(S);
+Aluno* Disciplina::getAluno (string S) {
+  return listaAlunos->getEnt(S);
 }
 
-void Disciplina::removeAluno (char *S) {
-  listaAlunos->removeAluno(S);
+void Disciplina::removeAluno (string S) {
+  listaAlunos->removeEnt(S);
 }
 
-elAluno* Disciplina::getelAluno (char *S) {
-  return listaAlunos->getelAluno(S);
+Elemento<Aluno>* Disciplina::getelAluno (string S) {
+  return listaAlunos->getel(S);
 }
 
 void Disciplina::imprimeAlus () {
-  listaAlunos->imprimeAlus();
+  listaAlunos->imprimeEnts();
 }

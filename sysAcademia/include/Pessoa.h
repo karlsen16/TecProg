@@ -1,21 +1,17 @@
 #pragma once
+#include "Entidade.h"
 
-class Pessoa {
+class Pessoa: public Entidade {
 protected:
-  char nome[50];
-  int dia, mes, ano, idade, ID;
+  int dia, mes, ano, idade;
 
 public:
   Pessoa ();
-  Pessoa (int diaN, int mesN, int anoN, char *S, int id);
-  void inicializa (int diaN, int mesN, int anoN, char *S = "", int id = 0);
+  Pessoa (int diaN, int mesN, int anoN, string S, int id);
+  void inicializa (int diaN, int mesN, int anoN, string S = "", int id = 0);
   ~Pessoa ();
   void calculaIdade ();
   int getIdade ();
-  void setID (int id);
-  int getID ();
-  void setNome (char *S);
-  char* getNome ();
   void setData (int d, int m, int a);
   void imprimeIdade ();
 };

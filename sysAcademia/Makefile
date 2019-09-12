@@ -7,17 +7,15 @@ SRC 			= ./src
 CFLAGS 		= -c -Wall -w
 LFLAGS 		= -Wall -w
 MAIN			= Main
-DEFN			= stdafx Principal  Pessoa \
-						lUniversidade elUniversidade Universidade \
-						lDepartamento elDepartamento Departamento \
-						lDisciplina elDisciplina Disciplina \
-						lProfessor elProfessor Professor \
-						lAluno elAluno Aluno
+DEFN			= stdafx Principal Menu Dados Entidade Pessoa \
+						Universidade Departamento Disciplina Professor Aluno
+HEAD			= Lista Elemento
 MODS			= $(MAIN) $(DEFN)
+ALLE 			= $(DEFN) $(HEAD)
 EXEC			= $(BIN)/$(MAIN)
 SRCS			= $(addsuffix .cpp, $(addprefix $(SRC)/,$(MODS)))
 OBJS			= $(addsuffix .o, $(addprefix $(OBJ)/,$(MODS)))
-HEAD			= $(addsuffix .h, $(addprefix $(INC)/,$(DEFN)))
+INCS			= $(addsuffix .h, $(addprefix $(INC)/,$(ALLE)))
 
 all: $(OBJS) $(EXEC)
 
@@ -25,7 +23,7 @@ new: clean all run
 
 neu: all run
 
-$(OBJ)/%.o:	$(SRC)/%.cpp $(HEAD)
+$(OBJ)/%.o:	$(SRC)/%.cpp $(INCS)
 	$(CC) $(CFLAGS) $< -I$(INC) -o $@
 
 $(EXEC): $(OBJS)

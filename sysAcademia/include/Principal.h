@@ -1,41 +1,16 @@
 #pragma once
-#include "lUniversidade.h"
+#include "Menu.h"
 
 class Principal {
 private:
-  lUniversidade listaUniversidades;
-
-  int contIDAlu, contIDPrf, contIDDis, contIDDep, contIDUni;
+  Lista<Universidade> listaUniversidades;
+  Dados arquivo;
+  Menu menu;
 
 public:
   Principal ();
   ~Principal ();
-
-  void Menu ();
-  void transicao (char *S);
-  void esperar ();
-
-  void MenuCad ();
-  void CadUniversidade ();
-  void CadDepartamento ();
-  void CadDisciplina ();
-  void CadProfessor ();
-  void CadAluno ();
-
-  void MenuExe ();
-  void ExeUniversidade ();
-  void ExeDepartamento ();
-  void ExeDisciplina ();
-  void ExeProfessor ();
-  void ExeAluno ();
-
-  void Invalido (int op);
-  void Finalizar ();
-  void Carregar ();
-  void Gravar ();
-
-
-
+  void Executar ();
 
   // void Init ();
   // void Init_Alunos ();
