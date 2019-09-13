@@ -49,6 +49,10 @@ Departamento* Disciplina::getDep () {
   return dep;
 }
 
+int Disciplina::getN(){
+  return listaAlunos->getN();
+}
+
 void Disciplina::addAluno (Aluno *L) {
   listaAlunos->addEnt(L);
 }
@@ -67,4 +71,8 @@ Elemento<Aluno>* Disciplina::getelAluno (string S) {
 
 void Disciplina::imprimeAlus () {
   listaAlunos->imprimeEnts();
+}
+
+Lista<Aluno>* Disciplina::getLista () {
+  return listaAlunos;
 }

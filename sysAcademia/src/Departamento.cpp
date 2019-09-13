@@ -46,6 +46,14 @@ Universidade* Departamento::getUni () {
   return uni;
 }
 
+int Departamento::getN(){
+  return listaDisciplinas->getN();
+}
+
+int Departamento::getNP(){
+  return listaProfessores->getN();
+}
+
 void Departamento::addDis (Disciplina *D) {
   listaDisciplinas->addEnt(D);
 }
@@ -66,6 +74,10 @@ void Departamento::imprimeDiss () {
   listaDisciplinas->imprimeEnts();
 }
 
+Lista<Disciplina>* Departamento::getLista () {
+  return listaDisciplinas;
+}
+
 void Departamento::addPrf (Professor *P) {
   listaProfessores->addEnt(P);
 }
@@ -80,4 +92,8 @@ void Departamento::removePrf (string S) {
 
 void Departamento::imprimePrfs () {
   listaProfessores->imprimeEnts();
+}
+
+Lista<Professor>* Departamento::getListaP () {
+  return listaProfessores;
 }

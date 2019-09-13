@@ -15,15 +15,20 @@ public:
   ~Departamento ();
   void setUni (Universidade *U);
   Universidade* getUni ();
+  int getN();
+  int getNP();
 
   void addDis (Disciplina *D);
   Disciplina* getDis (string S);
   void removeDis (string S);
   Elemento<Disciplina>* getelDis (string S);
   void imprimeDiss ();
+  Lista<Disciplina>* getLista ();
 
   void addPrf (Professor *P);
   Professor* getPrf (string S);
   void removePrf (string S);
   void imprimePrfs ();
+  Lista<Professor>* getListaP ();
+  
 };

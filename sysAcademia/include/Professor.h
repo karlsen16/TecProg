@@ -19,4 +19,5 @@ public:
   Universidade* getUni ();
   void setDep (Departamento *D);
   Departamento* getDep ();
+  
 };

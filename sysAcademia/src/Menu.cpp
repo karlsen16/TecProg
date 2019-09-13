@@ -2,10 +2,7 @@
 #include "Menu.h"
 #define TE 6
 
-Menu::Menu (Lista<Universidade> *plu, Dados* dat):
-contIDAlu(1000), contIDPrf(1000), contIDDis(1000),
-contIDDep(10), contIDUni(1),
-fim(false) {
+Menu::Menu (Lista<Universidade> *plu, Dados *dat): fim(false) {
   pLU = plu;
   pArq = dat;
 }
@@ -34,7 +31,7 @@ void Menu::Inicial () {
       case 2: Exe(); break;
       case 3: Gravar(); break;
       case 4: sair(); break;
-      default: invalido(1);
+      default: invalido(true); break;
     }
     if(fim)
       break;
@@ -81,6 +78,7 @@ void Menu::voltar () {
 }
 
 void Menu::sair () {
+  Gravar();
   transicao("Finalizando", false);
   fim = true;
 }
@@ -110,21 +108,20 @@ void Menu::Cad () {
       case 5: CadAluno(); break;
       case 6: voltar(); break;
       case 7: sair(); break;
-      default: invalido(true);
+      default: invalido(true); break;
     }
   }
 }
 
 void Menu::CadUniversidade () {
   string S;
-  int qnt;
+  int n;
   cout << "Qual o nome da Universidade?\n";
   cin >> S;
   cout << "Quantos Departamentos ela tem?\n";
-  cin >> qnt;
-  Universidade *uni = new Universidade(S, qnt, contIDUni++);
+  cin >> n;
+  Universidade *uni = new Universidade(S, n, pArq->IDUni());
   pLU->addEnt(uni);
-  esperar();
 }
 
 void Menu::CadDepartamento () {
@@ -134,14 +131,14 @@ void Menu::CadDepartamento () {
   Universidade *uni = localizaUni(S);
   if(uni) {
     string D;
-    int qnt, qntp;
+    int n, np;
     cout << "Qual o nome do Departamento?\n";
     cin >> D;
     cout << "Quantas Disciplinas ele tem?\n";
-    cin >> qnt;
+    cin >> n;
     cout << "Quantos Professores ele tem?\n";
-    cin >> qntp;
-    Departamento *dep = new Departamento(D, uni, qnt, qntp, uni->getID()+contIDDep++);
+    cin >> np;
+    Departamento *dep = new Departamento(D, uni, n, np, uni->getID()+pArq->IDDep());
     return;
   }
   else
@@ -162,14 +159,14 @@ void Menu::CadDisciplina () {
     Departamento *dep = localizaDep(S, D);
     if(dep) {
       string I, A;
-      int qnta;
+      int n;
       cout << "Qual o nome da Disciplina?\n";
       cin >> I;
       cout << "Qual o nome da Area?\n";
       cin >> A;
       cout << "Quantos Alunos ela tem?\n";
-      cin >> qnta;
-      Disciplina *dis = new Disciplina(I, A, dep, qnta, uni->getID()+dep->getID()+contIDDis++);
+      cin >> n;
+      Disciplina *dis = new Disciplina(I, A, dep, n, uni->getID()+dep->getID()+pArq->IDDis());
       return;
     }
     else
@@ -198,7 +195,7 @@ void Menu::CadProfessor () {
       cin >> P;
       cout << "Qual a data de nascimento?\n";
       cin >> dia >> mes >> ano;
-      Professor *prf = new Professor(dia, mes, ano, P, uni, dep, uni->getID()+dep->getID()+contIDPrf++);
+      Professor *prf = new Professor(dia, mes, ano, P, uni, dep, uni->getID()+dep->getID()+pArq->IDPrf());
       return;
     }
     else
@@ -234,7 +231,7 @@ void Menu::CadAluno () {
         cin >> dia >> mes >> ano;
         cout << "Qual o RA?\n";
         cin >> ra;
-        Aluno *alu = new Aluno(dia, mes, ano, A, ra, uni->getID()+dep->getID()+contIDAlu++);
+        Aluno *alu = new Aluno(dia, mes, ano, A, ra, uni->getID()+dep->getID()+pArq->IDAlu());
         dis->addAluno(alu);
         return;
       }
@@ -317,7 +314,7 @@ void Menu::Exe () {
       }
       case 6: voltar(); break;
       case 7: sair(); break;
-      default: invalido(true);
+      default: invalido(true); break;
     }
   }
 }
@@ -415,11 +412,11 @@ void Menu::ExeAluno () {
 }
 
 void Menu::Carregar () {
+  pArq->Carregar();
   transicao("Carregando", false);
-  // pArq->Carregar();
 }
 
 void Menu::Gravar () {
+  pArq->Gravar();
   transicao("Gravando", false);
-  // pArq->Gravar();
 }

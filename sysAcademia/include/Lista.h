@@ -14,6 +14,9 @@ public:
   void setNome (string S);
   string getNome ();
   void setNum (int n);
+  Elemento<TIPO>* getIni ();
+  Elemento<TIPO>* getAtual ();
+  int getN ();
   void addEnt (TIPO *p);
   TIPO* getEnt (string S);
   void removeEnt (string S);
@@ -54,6 +57,20 @@ string Lista<TIPO>::getNome () {
 template<class TIPO>
 void Lista<TIPO>::setNum (int n) {
   nEnt = n;
+}
+template<class TIPO>
+Elemento<TIPO>* Lista<TIPO>::getIni (){
+  return pEntIni;
+}
+
+template<class TIPO>
+Elemento<TIPO>* Lista<TIPO>::getAtual (){
+  return pEntAtual;
+}
+
+template<class TIPO>
+int Lista<TIPO>::getN (){
+  return nEnt;
 }
 
 template<class TIPO>

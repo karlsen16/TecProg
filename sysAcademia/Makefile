@@ -4,8 +4,8 @@ BIN 			= ./bin
 INC				= ./include
 OBJ 			= ./obj
 SRC 			= ./src
-CFLAGS 		= -c -Wall -w
-LFLAGS 		= -Wall -w
+CFLAGS 		= -c -Wall
+LFLAGS 		= -Wall
 MAIN			= Main
 DEFN			= stdafx Principal Menu Dados Entidade Pessoa \
 						Universidade Departamento Disciplina Professor Aluno

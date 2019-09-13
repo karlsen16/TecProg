@@ -7,6 +7,13 @@
 #include <iostream>
 using std::cin;
 using std::cout;
+using std::cerr;
+using std::ios;
+#include <fstream>
+using std::ifstream;
+using std::ofstream;
+#include <cstdlib>
+using std::exit;
 #include <string>
 using std::string;
 #include <unistd.h>

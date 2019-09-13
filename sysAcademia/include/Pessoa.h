@@ -12,6 +12,10 @@ public:
   ~Pessoa ();
   void calculaIdade ();
   int getIdade ();
+  int getDia ();
+  int getMes ();
+  int getAno ();
   void setData (int d, int m, int a);
   void imprimeIdade ();
+  
 };

@@ -1,17 +1,14 @@
 #pragma once
 #include "Dados.h"
-#include "Universidade.h"
 
 class Menu {
 private:
-  Lista<Universidade>* pLU;
-  Dados* pArq;
-  int contIDAlu, contIDPrf, contIDDis,
-      contIDDep, contIDUni;
+  Lista<Universidade> *pLU;
+  Dados *pArq;
   bool fim;
 
 public:
-  Menu (Lista<Universidade> *plu = NULL, Dados* dat = NULL);
+  Menu (Lista<Universidade> *plu = NULL, Dados *dat = NULL);
   ~Menu ();
 
   void Inicial ();

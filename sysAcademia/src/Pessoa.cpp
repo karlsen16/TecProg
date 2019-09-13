@@ -39,6 +39,18 @@ int Pessoa::getIdade () {
   return idade;
 }
 
+int Pessoa::getDia () {
+  return dia;
+}
+
+int Pessoa::getMes () {
+  return mes;
+}
+
+int Pessoa::getAno () {
+  return ano;
+}
+
 void Pessoa::setData (int d, int m, int a) {
   dia = d;
   mes = m;

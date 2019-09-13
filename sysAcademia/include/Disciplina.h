@@ -20,9 +20,13 @@ public:
   string getArea ();
   void setDep (Departamento *D);
   Departamento* getDep ();
+  int getN();
+
   void addAluno (Aluno *L);
   Aluno* getAluno (string S);
   void removeAluno (string S);
   Elemento<Aluno>* getelAluno (string S);
   void imprimeAlus ();
+  Lista<Aluno>* getLista ();
+
 };
