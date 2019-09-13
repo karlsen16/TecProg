@@ -253,7 +253,7 @@ void Dados::gv_Info () {
     gravaInfo << pLU->getNome() << ' ' << pLU->getN() << ' '
               << contIDUni  << ' ' << contIDDep  << ' '
               << contIDDis  << ' ' << contIDPrf  << ' '
-              << contIDAlu  << ' ' << "\n";
+              << contIDAlu  << ' ' << ents << "\n";
   }
   gravaInfo.close();
 }
