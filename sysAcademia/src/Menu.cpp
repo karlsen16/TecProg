@@ -122,6 +122,7 @@ void Menu::CadUniversidade () {
   cin >> n;
   Universidade *uni = new Universidade(S, n, pArq->IDUni());
   pLU->addEnt(uni);
+  pArq->s_E();
 }
 
 void Menu::CadDepartamento () {
@@ -139,6 +140,7 @@ void Menu::CadDepartamento () {
     cout << "Quantos Professores ele tem?\n";
     cin >> np;
     Departamento *dep = new Departamento(D, uni, n, np, uni->getID()+pArq->IDDep());
+    pArq->s_E();
     return;
   }
   else
@@ -167,6 +169,7 @@ void Menu::CadDisciplina () {
       cout << "Quantos Alunos ela tem?\n";
       cin >> n;
       Disciplina *dis = new Disciplina(I, A, dep, n, uni->getID()+dep->getID()+pArq->IDDis());
+      pArq->s_E();
       return;
     }
     else
@@ -196,6 +199,7 @@ void Menu::CadProfessor () {
       cout << "Qual a data de nascimento?\n";
       cin >> dia >> mes >> ano;
       Professor *prf = new Professor(dia, mes, ano, P, uni, dep, uni->getID()+dep->getID()+pArq->IDPrf());
+      pArq->s_E();
       return;
     }
     else
@@ -233,6 +237,7 @@ void Menu::CadAluno () {
         cin >> ra;
         Aluno *alu = new Aluno(dia, mes, ano, A, ra, uni->getID()+dep->getID()+pArq->IDAlu());
         dis->addAluno(alu);
+        pArq->s_E();
         return;
       }
       else
@@ -409,11 +414,6 @@ void Menu::ExeAluno () {
   else
     cout << "A Universidade " << S << " nao esta cadastrada.\n";
   cout << "Nao foi possivel fazer esta operacao. Erro (98).\n";
-}
-
-void Menu::Carregar () {
-  pArq->Carregar();
-  transicao("Carregando", false);
 }
 
 void Menu::Gravar () {

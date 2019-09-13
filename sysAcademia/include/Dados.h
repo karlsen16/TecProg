@@ -7,13 +7,15 @@ private:
   Lista<Universidade> *pLU;
   Menu *pMenu;
   int contIDUni, contIDDep, contIDDis,
-      contIDPrf, contIDAlu;
+      contIDPrf, contIDAlu, ents, ct;
 
 public:
   Dados (Lista<Universidade> *plu = NULL, Menu *menu = NULL);
   ~Dados ();
 
   void erro ();
+  void s_E ();
+  void carregando ();
 
   void Carregar ();
   bool cr_Info ();

@@ -36,7 +36,6 @@ public:
   void ExeProfessor ();
   void ExeAluno ();
 
-  void Carregar ();
   void Gravar ();
 
 };

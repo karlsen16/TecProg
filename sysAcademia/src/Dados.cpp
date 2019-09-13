@@ -5,6 +5,7 @@
 Dados::Dados (Lista<Universidade> *plu, Menu *menu) {
   pLU = plu;
   pMenu = menu;
+  ct = 0;
 }
 
 Dados::~Dados () {
@@ -15,6 +16,21 @@ Dados::~Dados () {
 void Dados::erro () {
   cerr << "Arquivo nao pode ser aberto.\n";
   exit(1);
+}
+
+void Dados::s_E () {
+  ents++;
+}
+
+void Dados::carregando () {
+  ct++;
+  system("clear");
+  int porc = static_cast<int>(ct*20/ents);
+  cout << "     " << "Carregando\n[";
+  int j;
+  for(j = 0; j < porc; j++) {cout << "#";}
+  for(; j < 20; j++) {cout << " ";}
+  cout << "]\n";
 }
 
 void Dados::Carregar () {
@@ -39,6 +55,7 @@ bool Dados::cr_Info () {
     contIDDis = 0;
     contIDPrf = 0;
     contIDAlu = 0;
+    ents = 0;
     cout << "E a primeira vez que voce inicia o sistema, informe para quantas Universidades:\n";
     cin >> n;
     cout << "\nInforme o nome do sistema:\n";
@@ -48,15 +65,17 @@ bool Dados::cr_Info () {
   }
   else {
     pv = false;
-    int idU, idD, idI, idP, idA;
-    carregInfo >> S >> n >> idU >> idD >> idI >> idP >> idA;
+    int idU, idD, idI, idP, idA, e;
+    carregInfo >> S >> n >> idU >> idD >> idI >> idP >> idA >> e;
     contIDUni = idU;
     contIDDep = idD;
     contIDDis = idI;
     contIDPrf = idP;
     contIDAlu = idA;
+    ents = e;
     pLU->setNum(n);
     pLU->setNome(S);
+    carregando();
   }
   carregInfo.close();
   return pv;
@@ -77,6 +96,7 @@ void Dados::cr_Uni (bool res) {
       if(S.compare("") != 0) {
         Universidade *uni = new Universidade(S, n, id);
         pLU->addEnt(uni);
+        carregando();
       }
     }
   }
@@ -98,6 +118,7 @@ void Dados::cr_Dep (bool res) {
       if(S.compare("") != 0) {
         Universidade *uni = pMenu->localizaUni(U);
         Departamento *dep = new Departamento(S, uni, n, np, id);
+        carregando();
       }
     }
   }
@@ -119,6 +140,7 @@ void Dados::cr_Dis (bool res) {
       if(S.compare("") != 0) {
         Departamento *dep = localizaDep(D);
         Disciplina *dis = new Disciplina(S, A, dep, n, id);
+        carregando();
       }
     }
   }
@@ -141,6 +163,7 @@ void Dados::cr_Prf (bool res) {
         Universidade *uni = pMenu->localizaUni(U);
         Departamento *dep = localizaDep(D);
         Professor *prf = new Professor(dia, mes, ano, S, uni, dep, id);
+        carregando();
       }
     }
   }
@@ -162,6 +185,7 @@ void Dados::cr_Mat (bool res) {
         Disciplina *dis = localizaDis(S);
         Aluno *alu = localizaAlu(A);
         dis->addAluno(alu);
+        carregando();
       }
     }
   }

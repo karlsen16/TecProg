@@ -113,8 +113,6 @@ TIPO* Lista<TIPO>::getEnt (string S) {
     }
     if(peao)
       return peao->getInfo();
-    else
-      cout << "\n" << S << " nao pertence a " << getNome() << ".\n";
   }
   else
     cout << "\nNao foi possivel fazer esta operacao. Erro:(02).\n";
@@ -167,9 +165,6 @@ Elemento<TIPO>* Lista<TIPO>::getel (string S) {
       peao = peao->getProx();
     if(peao)
       return peao;
-    else
-      cout << "\n " << S << " nao pertence a "
-           << getNome() << ".\n";
   }
   else
     cout << "\nNao foi possivel fazer esta operacao. Erro:(04).\n";

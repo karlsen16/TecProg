@@ -12,6 +12,6 @@ Principal::~Principal () {
 }
 
 void Principal::Executar () {
-  menu.Carregar();
+  arquivo.Carregar();
   menu.Inicial();
 }
