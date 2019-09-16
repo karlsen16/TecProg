@@ -1,12 +1,16 @@
 #include "stdafx.h"
 #include "Entidade.h"
 
+int Entidade::cont = 0;
+
 Entidade::Entidade (string S, int id) {
   setNome(S);
   setID(id);
+  cont++;
 }
 
 Entidade::~Entidade () {
+  cont--;
 }
 
 void Entidade::setNome (string S) {
@@ -23,4 +27,8 @@ void Entidade::setID (int id) {
 
 int Entidade::getID () {
   return ID;
+}
+
+static int Entidade::getCont () {
+  return cont;
 }

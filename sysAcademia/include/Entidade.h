@@ -2,6 +2,7 @@
 
 class Entidade {
 protected:
+  static int cont;
   string nome;
   int ID;
 
@@ -12,5 +13,6 @@ public:
   string getNome ();
   void setID (int id);
   int getID ();
+  static int getCont ();
 
 };

@@ -3,6 +3,7 @@
 
 class Pessoa: public Entidade {
 protected:
+  static int contP;
   int dia, mes, ano, idade;
 
 public:
@@ -17,5 +18,6 @@ public:
   int getAno ();
   void setData (int d, int m, int a);
   void imprimeIdade ();
-  
+  static int getContP ();
+
 };

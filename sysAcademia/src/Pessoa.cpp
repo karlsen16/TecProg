@@ -1,14 +1,18 @@
 #include "stdafx.h"
 #include "Pessoa.h"
 
+int Pessoa::contP = 0;
+
 Pessoa::Pessoa ():
 Entidade() {
   inicializa(0, 0, 0);
+  contP++;
 }
 
 Pessoa::Pessoa (int diaN, int mesN, int anoN, string S, int id):
 Entidade(S, id) {
   inicializa(diaN, mesN, anoN, S, id);
+  contP++;
 }
 
 void Pessoa::inicializa (int diaN, int mesN, int anoN, string S, int id) {
@@ -21,6 +25,7 @@ void Pessoa::inicializa (int diaN, int mesN, int anoN, string S, int id) {
 }
 
 Pessoa::~Pessoa () {
+  contP--;
 }
 
 void Pessoa::calculaIdade () {

@@ -1,6 +1,5 @@
 
 CC				= g++
-BIN 			= ./bin
 INC				= ./include
 OBJ 			= ./obj
 SRC 			= ./src
@@ -12,12 +11,11 @@ DEFN			= stdafx Principal Menu Dados Entidade Pessoa \
 HEAD			= Lista Elemento
 MODS			= $(MAIN) $(DEFN)
 ALLE 			= $(DEFN) $(HEAD)
-EXEC			= $(BIN)/$(MAIN)
 SRCS			= $(addsuffix .cpp, $(addprefix $(SRC)/,$(MODS)))
 OBJS			= $(addsuffix .o, $(addprefix $(OBJ)/,$(MODS)))
 INCS			= $(addsuffix .h, $(addprefix $(INC)/,$(ALLE)))
 
-all: $(OBJS) $(EXEC)
+all: $(OBJS) ./$(MAIN)
 
 new: clean all run
 
@@ -26,12 +24,12 @@ neu: all run
 $(OBJ)/%.o:	$(SRC)/%.cpp $(INCS)
 	$(CC) $(CFLAGS) $< -I$(INC) -o $@
 
-$(EXEC): $(OBJS)
+./$(MAIN): $(OBJS)
 	$(CC) $(LFLAGS) $^ -o $@
 
 run:
-	$(EXEC)
+	./$(MAIN)
 
 clean:
 	rm $(OBJ)/*
-	rm $(EXEC)
+	rm ./$(MAIN)
