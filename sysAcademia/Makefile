@@ -6,7 +6,7 @@ SRC 			= ./src
 CFLAGS 		= -c -Wall
 LFLAGS 		= -Wall
 MAIN			= Main
-DEFN			= stdafx Principal Menu Dados Entidade Pessoa \
+DEFN			= stdafx Principal Entidade Pessoa \
 						Universidade Departamento Disciplina Professor Aluno
 HEAD			= Lista Elemento
 MODS			= $(MAIN) $(DEFN)

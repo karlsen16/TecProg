@@ -55,6 +55,7 @@ int Disciplina::getN(){
 
 void Disciplina::addAluno (Aluno *L) {
   listaAlunos->addEnt(L);
+  getDep()->getListaA()->addEnt(L);
 }
 
 Aluno* Disciplina::getAluno (string S) {

@@ -1,3 +1,5 @@
+
+
 #include "stdafx.h"
 #include "Departamento.h"
 #include "Universidade.h"
@@ -6,17 +8,19 @@ Departamento::Departamento ():
 Entidade() {
   listaDisciplinas = new Lista<Disciplina>();
   listaProfessores = new Lista<Professor>();
+  listaAlunos = new Lista<Aluno>();
   inicializa();
 }
 
-Departamento::Departamento (string S, Universidade *U, int n, int np, int id):
+Departamento::Departamento (string S, Universidade *U, int n, int np, int na, int id):
 Entidade(S, id) {
   listaDisciplinas = new Lista<Disciplina>();
   listaProfessores = new Lista<Professor>();
-  inicializa(S, U, n, np, id);
+  listaAlunos = new Lista<Aluno>();
+  inicializa(S, U, n, np, na, id);
 }
 
-void Departamento::inicializa (string S, Universidade *U, int n, int np, int id) {
+void Departamento::inicializa (string S, Universidade *U, int n, int np, int na, int id) {
   setNome(S);
   setUni(U);
   setID(id);
@@ -24,6 +28,8 @@ void Departamento::inicializa (string S, Universidade *U, int n, int np, int id)
   listaDisciplinas->setNum(n);
   listaProfessores->setNome(S);
   listaProfessores->setNum(np);
+  listaAlunos->setNome(S);
+  listaAlunos->setNum(na);
 }
 
 Departamento::~Departamento () {
@@ -34,6 +40,9 @@ Departamento::~Departamento () {
   if(listaProfessores)
     delete(listaProfessores);
   listaProfessores = NULL;
+  if(listaAlunos)
+    delete(listaAlunos);
+  listaAlunos = NULL;
 }
 
 void Departamento::setUni (Universidade *U) {
@@ -52,6 +61,10 @@ int Departamento::getN(){
 
 int Departamento::getNP(){
   return listaProfessores->getN();
+}
+
+int Departamento::getNA(){
+  return listaAlunos->getN();
 }
 
 void Departamento::addDis (Disciplina *D) {
@@ -96,4 +109,24 @@ void Departamento::imprimePrfs () {
 
 Lista<Professor>* Departamento::getListaP () {
   return listaProfessores;
+}
+
+void Departamento::addAlu (Aluno *A) {
+  listaAlunos->addEnt(A);
+}
+
+Aluno* Departamento::getAlu (string S) {
+  return listaAlunos->getEnt(S);
+}
+
+void Departamento::removeAlu (string S) {
+  listaAlunos->removeEnt(S);
+}
+
+void Departamento::imprimeAlus () {
+  listaAlunos->imprimeEnts();
+}
+
+Lista<Aluno>* Departamento::getListaA () {
+  return listaAlunos;
 }
